@@ -11,32 +11,41 @@ def game():
     """
     runs the game
     """
-    rows = 5
-    columns = 5
+    rows = 15
+    columns = 15
     space = make_space(rows, columns)
     player_stats = make_player()
     player_ship = select_ship(player_stats)
     character = {"Stats": player_stats, "Ship": player_ship, "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
     achieved_goal = False
-    there_is_a_challenger = False
-    describe_current_location(rows, columns, space, character)
-    # print(f"You're in the top-left hand corner of a of this quadrant [grid (0,0)], the goal is at the "
-    #       f"bottom-right [gird ({rows - 1},{columns - 1})")
+    # there_is_a_challenger = False  #### MAY BE POSSIBLE TO REMOVE
+    describe_current_location(space, character)
+    print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
+          f"bottom-right [gird ({rows - 1},{columns - 1})")
     while is_alive(character) and not achieved_goal:
-        # player_action = choose_action
-        direction = get_user_choice()
-        valid_move = validate_move(space, character, direction)
-        if valid_move:
-            move_character(character, direction)
-            describe_current_location(rows, columns, space, character)
-            there_is_a_challenger = check_for_challenger()
-        if there_is_a_challenger:
-            # guessing_game(character)
-            combatant = construct_challenger()
-            space_combat(character, combatant)
+        player_action = input("Choose an action:\nS = Scan\nM = Move\n")
+        if player_action.upper() == "M":
+            player_action_move(character, space)
+        elif player_action.upper() == "S":
+            scan_space_grid(rows, columns, space, character)
         achieved_goal = check_if_goal_attained(rows, columns, character)
     if character.get("HP") == 0:
         print("You died")
+
+
+def player_action_move(character, space):
+    direction = get_user_choice()
+    valid_move = validate_move(space, character, direction)
+    there_is_a_challenger = False
+    if valid_move:
+        move_character(character, direction)
+        describe_current_location(space, character)
+        there_is_a_challenger = check_for_challenger()
+    if there_is_a_challenger:
+        # guessing_game(character)
+        combatant = construct_challenger()
+        space_combat(character, combatant)
+
 
 
 def check_if_goal_attained(rows, columns, character):
@@ -123,7 +132,6 @@ def combat_attack(character, challenger):
                 return
 
 
-
 def space_combat(character, challenger):
     print("You come across a hostile ship")
     while is_alive(character) and challenger["HP"] > 0:
@@ -135,7 +143,8 @@ def space_combat(character, challenger):
 
 
 def construct_challenger():
-    challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 2), "HP": r.randint(1, 2)}
+    challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 4),
+                  "Targetting":  r.randint(1, 4), "HP": r.randint(1, 5)}
     return challenger
 
 
@@ -195,7 +204,7 @@ def validate_move(space, character, direction):
 
     this function compares the intended move to the game board
 
-    :param board: a dictionary of grid paired with a room description
+    :param space: a dictionary of grid paired with a room description
     :param character: a dictionary of character location and HP
     :param direction: a string
     :precondition: direction must be a string value of either "n", "s", "e", or "w"
@@ -244,15 +253,13 @@ def scan_space_grid(rows, columns, space, character):
         print()
 
 
-def describe_current_location(rows, columns, space, character):
+def describe_current_location(space, character):
     """
     Describes the current grid location
 
     this function describes the grid location and room to the player
 
-    :param rows:
-    :param columns:
-    :param board: a dictionary of grid paired with a room description
+    :param space: a dictionary of grid paired with a room description
     :param character: a dictionary of character location and HP
     :precondition: board must be a grid in a tuple, paired with a room description
     :precondition: character grid location must be in the board grids
@@ -266,7 +273,7 @@ def describe_current_location(rows, columns, space, character):
 
 def populate_space():
     """
-    Makes space descriptions
+    Makes descriptions of space tiles
 
     this function assigns room descriptions to the grid by using random numbers
 
@@ -339,7 +346,6 @@ def make_player():
 
     this function makes a character based on starting stats
 
-    :param starting_stats:
     :precondition: starting_stats is a list of integers in order of X-coordinate, Y-coordinate, then HP
     :post-condition: a character dictionary is completed with starting coordinates and HP
     :return: a dictionary
