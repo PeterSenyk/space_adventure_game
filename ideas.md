@@ -22,3 +22,15 @@ shield
     charge when the enemy misses
         -use dodge to increase chance to miss
 
+add colored text to scan
+
+add scan as an option after finding a scanner
+
+enemies could be aliens that speak in a weird glyph, until a translator is added to quipment
+
+add an equipemnt slot in ship stats, can hold scanner, translator, missles?, 
+        - ground vehicle allows (SEARCH -add) action on moons or planets.
+
+give stations, moons, and planets random naming conventions
+
+
