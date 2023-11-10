@@ -4,6 +4,7 @@ A01376857
 """
 import random as r
 
+import boards as b
 
 def game():
     """
