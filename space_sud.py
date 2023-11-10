@@ -4,7 +4,7 @@ A01376857
 """
 import random as r
 
-import boards as b
+import copy
 
 
 def game():
@@ -22,19 +22,21 @@ def game():
     describe_current_location(rows, columns, space, character)
     # print(f"You're in the top-left hand corner of a of this quadrant [grid (0,0)], the goal is at the "
     #       f"bottom-right [gird ({rows - 1},{columns - 1})")
-    print(character)
     while is_alive(character) and not achieved_goal:
+        # player_action = choose_action
         direction = get_user_choice()
         valid_move = validate_move(space, character, direction)
         if valid_move:
             move_character(character, direction)
             describe_current_location(rows, columns, space, character)
-    #         there_is_a_challenger = check_for_challenger()
-    #     if there_is_a_challenger:
-    #         guessing_game(character)
-    #     achieved_goal = check_if_goal_attained(rows, columns, character)
-    # if character.get("HP") == 0:
-    #     print("You died")
+            there_is_a_challenger = check_for_challenger()
+        if there_is_a_challenger:
+            # guessing_game(character)
+            combatant = construct_challenger()
+            space_combat(character, combatant)
+        achieved_goal = check_if_goal_attained(rows, columns, character)
+    if character.get("HP") == 0:
+        print("You died")
 
 
 def check_if_goal_attained(rows, columns, character):
@@ -71,39 +73,83 @@ def is_alive(character):
         return True
 
 
-# def guessing_game(character):
-#     """
-#     Challenges the character to a guessing game
-#
-#     this function creates a random number between 1-5 inclusive, and asks the character to guess
-#
-#     :param character: a dictionary of character location and HP
-#     :precondition: character must have an HP value of 1 or greater
-#     :post-condition: if the character guesses correctly they move on, if they guess wrong they loose 1 HP
-#     :return: a string based on whether the character guessed right or wrong
-#     """
-#     number_to_guess = r.randint(1, 5)
-#     player_guess = int(input("A challenger approaches... Test your luck and guess a number between 1 & 5 :\n"))
-#     if player_guess == number_to_guess:
-#         print("Lucky guess, this time...  HP=", character.get("HP"))
-#         return character["HP"]
-#     else:
-#         character["HP"] -= 1
-#         print("Wrong! the number was", number_to_guess, "Your HP =", character.get("HP"))
-#         return character["HP"]
+def guessing_game(character):
+    """
+    Challenges the character to a guessing game
+
+    this function creates a random number between 1-5 inclusive, and asks the character to guess
+
+    :param character: a dictionary of character location and HP
+    :precondition: character must have an HP value of 1 or greater
+    :post-condition: if the character guesses correctly they move on, if they guess wrong they loose 1 HP
+    :return: a string based on whether the character guessed right or wrong
+    """
+    number_to_guess = r.randint(1, 5)
+    player_guess = int(input("A challenger approaches... Test your luck and guess a number between 1 & 5 :\n"))
+    if player_guess == number_to_guess:
+        print("Lucky guess, this time...  HP=", character["Ship"]["HP"])
+        return character["Ship"]["HP"]
+    else:
+        character["Ship"]["HP"] -= 1
+        print("Wrong! the number was", number_to_guess, "Your HP =", character["Ship"]["HP"])
+        return character["Ship"]["HP"]
 
 
-# def check_for_challenger():
-#     """
-#     Checks if there is a challenger at the character location
-#
-#     this functions checks if there's a challenger by chance by using a random integer between 1-4 inclusive
-#
-#     post-condition: if the random integer is 1, there will be a challenger at the character location
-#     :return: Boolean True
-#     """
-#     if r.randint(1, 4) == 1:
-#         return True
+# Work on ship hp reaching 0, remove some lines of code if possible
+def combat_attack(character, challenger):
+    if character["Ship"]["Movement"] >= challenger["Movement"]:
+        challenger["HP"] -= character["Ship"]["Attack"]
+        print("You attack the enemy\ntheir HP= ", challenger["HP"])
+        if challenger["HP"] < 1:
+            print("You destroyed the hostile ship")
+            # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
+            return
+        else:
+            character["Ship"]["HP"] -= challenger["Attack"]
+            print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
+            return
+    else:
+        character["Ship"]["HP"] -= challenger["Attack"]
+        print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
+        if character["Ship"]["HP"] < 1:
+            print("You have been destroyed")
+            return is_alive(character)
+        else:
+            challenger["HP"] -= character["Ship"]["Attack"]
+            print("You attack the enemy!\ntheir HP= ", challenger["HP"])
+            if challenger["HP"] < 1:
+                print("You destroyed the hostile ship")
+                # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
+                return
+
+
+
+def space_combat(character, challenger):
+    print("You come across a hostile ship")
+    while is_alive(character) and challenger["HP"] > 0:
+        print(character["Ship"]["HP"])
+        print(challenger["HP"])
+        player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\n")
+        if player_action.upper() == "A":
+            combat_attack(character, challenger)
+
+
+def construct_challenger():
+    challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 2), "HP": r.randint(1, 2)}
+    return challenger
+
+
+def check_for_challenger():
+    """
+    Checks if there is a challenger at the character location
+
+    this functions checks if there's a challenger by chance by using a random integer between 1-4 inclusive
+
+    post-condition: if the random integer is 1, there will be a challenger at the character location
+    :return: Boolean True
+    """
+    if r.randint(1, 4) == 1:
+        return True
 
 
 def move_calculator(character, direction):
@@ -158,7 +204,6 @@ def validate_move(space, character, direction):
     """
     temp_coordinates = copy.deepcopy(character)
     move_calculator(temp_coordinates, direction)
-    print(temp_coordinates)
     if ((temp_coordinates["Coordinates"]["X-coordinate"], temp_coordinates["Coordinates"]["Y-coordinate"])
             in space.keys()):
         return True
@@ -216,7 +261,6 @@ def describe_current_location(rows, columns, space, character):
     """
     location_of_character = [character["Coordinates"].get("X-coordinate"), character["Coordinates"].get("Y-coordinate")]
     location_key = tuple(location_of_character)
-    scan_space_grid(rows, columns, space, character)
     return print(f"You're current coordinates are: ", location_of_character, "\n", space[location_key][1])
 
 

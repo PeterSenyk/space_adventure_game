@@ -70,3 +70,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+    while character["Ship"]["HP"] > 0 or challenger["HP"] > 0:
+        if character["Ship"]["Movement"] > challenger["Movement"]:
+            challenger["HP"] -= character["Ship"]["Attack"]
+        else:
+            character["Ship"]["HP"] -= challenger["Attack"]
