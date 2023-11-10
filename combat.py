@@ -1,6 +1,5 @@
 import random as r
-
-from space_sud import is_alive
+from checks import is_alive
 
 
 def construct_challenger():
