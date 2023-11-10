@@ -6,6 +6,7 @@ import random as r
 
 import boards as b
 
+
 def game():
     """
     runs the game
@@ -19,14 +20,15 @@ def game():
     achieved_goal = False
     there_is_a_challenger = False
     describe_current_location(rows, columns, space, character)
-    # print(f"You're in the bottom-left hand corner of a maze [grid (0,0)], the goal is at the "
-    #       f"top-right [gird ({rows - 1},{columns - 1})")
-    # while is_alive(character) and not achieved_goal:
-    #     direction = get_user_choice()
-    #     valid_move = validate_move(board, character, direction)
-    #     if valid_move:
-    #         move_character(character, direction)
-    #         describe_current_location(rows, columns, board, character)
+    # print(f"You're in the top-left hand corner of a of this quadrant [grid (0,0)], the goal is at the "
+    #       f"bottom-right [gird ({rows - 1},{columns - 1})")
+    print(character)
+    while is_alive(character) and not achieved_goal:
+        direction = get_user_choice()
+        valid_move = validate_move(space, character, direction)
+        if valid_move:
+            move_character(character, direction)
+            describe_current_location(rows, columns, space, character)
     #         there_is_a_challenger = check_for_challenger()
     #     if there_is_a_challenger:
     #         guessing_game(character)
@@ -48,7 +50,7 @@ def check_if_goal_attained(rows, columns, character):
     :post-condition: The function will change the value of achieved_goal to True, ending the game
     :return: Boolean value True
     """
-    if (character.get("X-coordinate"), character.get("Y-coordinate")) == (rows - 1, columns - 1):
+    if (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"]) == (rows - 1, columns - 1):
         print("congrats you win")
         return True
 
@@ -115,13 +117,13 @@ def move_calculator(character, direction):
     :precondition: move must be a string value of either "n", "s", "e", or "w"
     :post-condition: the players X or Y coordinates are changed based on input
     """
-    if direction.lower() == "n":
+    if direction.lower() == "w":
         character["Coordinates"]["Y-coordinate"] -= 1
     elif direction.lower() == "s":
         character["Coordinates"]["Y-coordinate"] += 1
-    elif direction.lower() == "e":
+    elif direction.lower() == "d":
         character["Coordinates"]["X-coordinate"] += 1
-    elif direction.lower() == "w":
+    elif direction.lower() == "a":
         character["Coordinates"]["X-coordinate"] -= 1
     return character
 
@@ -141,7 +143,7 @@ def move_character(character, direction):
     move_calculator(character, direction)
 
 
-def validate_move(board, character, direction):
+def validate_move(space, character, direction):
     """
     Validates a character move
 
@@ -154,10 +156,11 @@ def validate_move(board, character, direction):
     :post-condition: returns True if the move is in the game board, and False if the move is outside the board grid
     :return: Boolean True or False
     """
-    temp_character = character.copy()
-    move_calculator(temp_character, direction)
-    temp_character_location = [(temp_character.get("X-coordinate")), (temp_character.get("Y-coordinate"))]
-    if tuple(temp_character_location) in board.keys():
+    temp_coordinates = copy.deepcopy(character)
+    move_calculator(temp_coordinates, direction)
+    print(temp_coordinates)
+    if ((temp_coordinates["Coordinates"]["X-coordinate"], temp_coordinates["Coordinates"]["Y-coordinate"])
+            in space.keys()):
         return True
     else:
         print("Not a valid move")
@@ -172,7 +175,7 @@ def get_user_choice():
 
     :return: a string value representing the direction the player wants to move
     """
-    direction_to_travel = input("Enter a direction to travel [n = north, e = east, s = south, w = west] :\n")
+    direction_to_travel = input("Enter a direction to travel [w = Up, a = Left, s = Down, d = Right] :\n")
     return direction_to_travel
 
 
@@ -192,8 +195,6 @@ def scan_space_grid(rows, columns, space, character):
             elif space[column, row][0] == 4:
                 print(" & ", end="")
             elif space[column, row][0] >= 5:
-                print(" - ", end="")
-            else:
                 print(" - ", end="")
         print()
 
@@ -302,7 +303,7 @@ def make_player():
     player_last_name = input("Please type your last name\n")
     player_name = "Captain " + player_last_name
     print("Congratulations", player_name, "on graduating the Space Academy at the top of your class\n")
-    player_stats = {"X-coordinate": 0, "Y-coordinate": 0, "Name": player_name}
+    player_stats = {"Name": player_name}
     return player_stats
 
 
