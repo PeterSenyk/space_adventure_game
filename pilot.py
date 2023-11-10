@@ -4,12 +4,13 @@ def select_ship(player_stats):
 
     this funtion lets the player select their ship for the game
 
-    :return:
+    :post-condition: a dictionary is added to the character dictionary adding starting ship stats
+    :return: a dictionary
     """
     print(player_stats["Name"], "Here are your choices for a ship")
     print("ANVIL ARROW: Attack [1], Movement [3], HP [5], Shield [2], Targeting [4], Cargo Space [2]")
     print("AEGIS GLADIUS: Attack [2], Movement [2], HP [5], Shield [2], Targeting [4], Cargo Space [2]")
-    print("DRAKE BUCCANEER: Attack [3], Movement [2], HP [4], Shield [2], Targeting [4], Cargo Space [2]")
+    print("DRAKE BUCCANEER: Attack [3], Movement [2], HP [4], Shield [1], Targeting [5], Cargo Space [2]")
     new_ship = input("Please select:\n[A] for the ANVIL ARROW\n"
                      "[G] for the AEGIS GLADIUS\n[B] for the DRAKE BUCCANEER\n")
     if new_ship.upper() == "A":
@@ -30,9 +31,8 @@ def make_player():
     """
     Makes a character
 
-    this function makes a character based on starting stats
+    this function makes a character based on player input
 
-    :precondition: starting_stats is a list of integers in order of X-coordinate, Y-coordinate, then HP
     :post-condition: a character dictionary is completed with starting coordinates and HP
     :return: a dictionary
     """
