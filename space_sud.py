@@ -15,7 +15,7 @@ def game():
     board = make_board(rows, columns)
     player_stats = make_player()
     player_ship = select_ship(player_stats)
-    character = {"Stats": player_stats, "Ship": player_ship}
+    character = {"Stats": player_stats, "Ship": player_ship, "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
     achieved_goal = False
     there_is_a_challenger = False
     describe_current_location(rows, columns, board, character)
@@ -116,13 +116,13 @@ def move_calculator(character, direction):
     :post-condition: the players X or Y coordinates are changed based on input
     """
     if direction.lower() == "n":
-        character["Y-coordinate"] -= 1
+        character["Coordinates"]["Y-coordinate"] -= 1
     elif direction.lower() == "s":
-        character["Y-coordinate"] += 1
+        character["Coordinates"]["Y-coordinate"] += 1
     elif direction.lower() == "e":
-        character["X-coordinate"] += 1
+        character["Coordinates"]["X-coordinate"] += 1
     elif direction.lower() == "w":
-        character["X-coordinate"] -= 1
+        character["Coordinates"]["X-coordinate"] -= 1
     return character
 
 
@@ -179,7 +179,7 @@ def get_user_choice():
 def print_board_grid(rows, columns, character):
     for row in range(rows):
         for column in range(columns):
-            if column == character["X-coordinate"] and row == character["Y-coordinate"]:
+            if column == character["Coordinates"]["X-coordinate"] and row == character["Coordinates"]["Y-coordinate"]:
                 print(" X ", end="")
             elif column == columns - 1 and row == rows - 1:
                 print(" $ ")
@@ -203,32 +203,32 @@ def describe_current_location(rows, columns, board, character):
     :post-condition: describes the location and room to the player
     :return: prints a string to the player
     """
-    location_of_character = [character.get("X-coordinate"), character.get("Y-coordinate")]
+    location_of_character = [character["Coordinates"].get("X-coordinate"), character["Coordinates"].get("Y-coordinate")]
     location_key = tuple(location_of_character)
     print_board_grid(rows, columns, character)
     return print(f"You're current coordinates are: ", location_of_character, "\nYou see :", board.get(location_key))
 
 
-def make_room():
+def populate_space():
     """
-    Makes room descriptions
+    Makes space descriptions
 
     this function assigns room descriptions to the grid by using random numbers
 
     :post-condition: returns a random room description
     :return: a string
     """
-    room_randomizer = r.randint(1, 5)
+    room_randomizer = r.randint(1, 10)
     if room_randomizer == 1:
-        return "You see brick walls in a dimly lit room, the smell is unbearable."
+        return "You are in an asteroid belt, there are asteroids everywhere! Travel carefully."
     if room_randomizer == 2:
-        return "You see a four-way intersection, with timber walls lined with torches lighting the way."
+        return "You are orbiting the dark side of a moon, You think of the legendary ancient ballads of Pink Floyd."
     if room_randomizer == 3:
-        return "You see a  courtyard full of shrubs and grass, the sun it out and shining."
+        return "You come across a ship wreck, You start to wonder who could have caused this."
     if room_randomizer == 4:
-        return "You see a large kitchen, you could cook for 30 people in here, but maybe another time..."
-    if room_randomizer == 5:
-        return "You see large stone columns leading to the ceiling, there is a large banquet table in the middle."
+        return "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind."
+    if room_randomizer >= 5:
+        return "You are in the void of space, the sheer amount of nothingness is eerie."
 
 
 def make_board(rows, columns):
@@ -244,10 +244,10 @@ def make_board(rows, columns):
     :post-condition: returns a board with grids and room descriptions
     :return: a dictionary
     """
-    new_board = {}
-    for column in range(rows):
-        for row in range(columns):
-            new_board[(column, row)] = make_room()
+    new_board = {(0,0): "You are in the Crusader Command Station"}
+    for column in range(2, rows):
+        for row in range(2, columns):
+            new_board[(column, row)] = populate_space()
     return new_board
 
 
