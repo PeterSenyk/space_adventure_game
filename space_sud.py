@@ -12,13 +12,13 @@ def game():
     """
     rows = 5
     columns = 5
-    board = make_board(rows, columns)
+    space = make_space(rows, columns)
     player_stats = make_player()
     player_ship = select_ship(player_stats)
     character = {"Stats": player_stats, "Ship": player_ship, "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
     achieved_goal = False
     there_is_a_challenger = False
-    describe_current_location(rows, columns, board, character)
+    describe_current_location(rows, columns, space, character)
     # print(f"You're in the bottom-left hand corner of a maze [grid (0,0)], the goal is at the "
     #       f"top-right [gird ({rows - 1},{columns - 1})")
     # while is_alive(character) and not achieved_goal:
@@ -176,19 +176,29 @@ def get_user_choice():
     return direction_to_travel
 
 
-def print_board_grid(rows, columns, character):
+def scan_space_grid(rows, columns, space, character):
     for row in range(rows):
         for column in range(columns):
             if column == character["Coordinates"]["X-coordinate"] and row == character["Coordinates"]["Y-coordinate"]:
-                print(" X ", end="")
+                print("[X]", end="")
             elif column == columns - 1 and row == rows - 1:
                 print(" $ ")
+            elif space[column, row][0] == 1:
+                print(":::", end="")
+            elif space[column, row][0] == 2:
+                print(" o ", end="")
+            elif space[column, row][0] == 3:
+                print(" # ", end="")
+            elif space[column, row][0] == 4:
+                print(" & ", end="")
+            elif space[column, row][0] >= 5:
+                print(" - ", end="")
             else:
                 print(" - ", end="")
         print()
 
 
-def describe_current_location(rows, columns, board, character):
+def describe_current_location(rows, columns, space, character):
     """
     Describes the current grid location
 
@@ -205,8 +215,8 @@ def describe_current_location(rows, columns, board, character):
     """
     location_of_character = [character["Coordinates"].get("X-coordinate"), character["Coordinates"].get("Y-coordinate")]
     location_key = tuple(location_of_character)
-    print_board_grid(rows, columns, character)
-    return print(f"You're current coordinates are: ", location_of_character, "\nYou see :", board.get(location_key))
+    scan_space_grid(rows, columns, space, character)
+    return print(f"You're current coordinates are: ", location_of_character, "\n", space[location_key][1])
 
 
 def populate_space():
@@ -218,20 +228,26 @@ def populate_space():
     :post-condition: returns a random room description
     :return: a string
     """
-    room_randomizer = r.randint(1, 10)
-    if room_randomizer == 1:
-        return "You are in an asteroid belt, there are asteroids everywhere! Travel carefully."
-    if room_randomizer == 2:
-        return "You are orbiting the dark side of a moon, You think of the legendary ancient ballads of Pink Floyd."
-    if room_randomizer == 3:
-        return "You come across a ship wreck, You start to wonder who could have caused this."
-    if room_randomizer == 4:
-        return "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind."
-    if room_randomizer >= 5:
-        return "You are in the void of space, the sheer amount of nothingness is eerie."
+    space_randomizer = r.randint(1, 10)
+    if space_randomizer == 1:
+        space_tile = [1, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully."]
+        return space_tile
+    if space_randomizer == 2:
+        space_tile = [2, "You are orbiting the dark side of a moon, You think of the legendary "
+                         "ancient ballads of Pink Floyd."]
+        return space_tile
+    if space_randomizer == 3:
+        space_tile = [3, "You come across a ship wreck, You start to wonder who could have caused this."]
+        return space_tile
+    if space_randomizer == 4:
+        space_tile = [4, "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind."]
+        return space_tile
+    if space_randomizer >= 5:
+        space_tile = [5, "You are in the void of space, the sheer amount of nothingness is eerie."]
+        return space_tile
 
 
-def make_board(rows, columns):
+def make_space(rows, columns):
     """
     Makes the board grid
 
@@ -244,11 +260,11 @@ def make_board(rows, columns):
     :post-condition: returns a board with grids and room descriptions
     :return: a dictionary
     """
-    new_board = {(0,0): "You are in the Crusader Command Station"}
-    for column in range(2, rows):
-        for row in range(2, columns):
-            new_board[(column, row)] = populate_space()
-    return new_board
+    new_space = {}
+    for row in range(rows):
+        for column in range(columns):
+            new_space[(column, row)] = populate_space()
+    return new_space
 
 
 def select_ship(player_stats):
