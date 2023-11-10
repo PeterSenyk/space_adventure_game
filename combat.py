@@ -5,7 +5,7 @@ from space_sud import is_alive
 
 def construct_challenger():
     challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 3),
-                  "Targetting": r.randint(1, 4), "HP": r.randint(1, 2)}
+                  "Targeting": r.randint(1, 4), "HP": r.randint(1, 2)}
     return challenger
 
 

@@ -1,5 +1,6 @@
 import copy
 
+
 def move_calculator(character, direction):
     """
     Calculates the characters move

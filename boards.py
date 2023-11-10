@@ -1,5 +1,6 @@
 import random as r
 
+
 def describe_current_location(space, character):
     """
     Describes the current grid location
