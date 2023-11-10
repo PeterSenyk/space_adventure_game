@@ -2,7 +2,6 @@
 Peter Senyk
 A01376857
 """
-import random as r
 import actions
 import boards
 import checks
