@@ -1,5 +1,6 @@
 import random as r
 
+
 def guessing_game(character):
     """
     Challenges the character to a guessing game
