@@ -4,21 +4,21 @@ A01376857
 """
 import random as r
 
-import copy
-
 import boards
 
 import pilot
 
 import movement
 
+import combat
+
 
 def game():
     """
     runs the game
     """
-    rows = 15
-    columns = 15
+    rows = 8
+    columns = 8
     space = boards.make_space(rows, columns)
     player_stats = pilot.make_player()
     player_ship = pilot.select_ship(player_stats)
@@ -49,8 +49,8 @@ def player_action_move(character, space):
         there_is_a_challenger = check_for_challenger()
     if there_is_a_challenger:
         # guessing_game(character)
-        combatant = construct_challenger()
-        space_combat(character, combatant)
+        combatant = combat.construct_challenger()
+        combat.space_combat(character, combatant)
 
 
 def check_if_goal_attained(rows, columns, character):
@@ -109,50 +109,6 @@ def guessing_game(character):
         return character["Ship"]["HP"]
 
 
-# Work on ship hp reaching 0, remove some lines of code if possible
-def combat_attack(character, challenger):
-    if character["Ship"]["Movement"] >= challenger["Movement"]:
-        challenger["HP"] -= character["Ship"]["Attack"]
-        print("You attack the enemy\ntheir HP= ", challenger["HP"])
-        if challenger["HP"] < 1:
-            print("You destroyed the hostile ship")
-            # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
-            return
-        else:
-            character["Ship"]["HP"] -= challenger["Attack"]
-            print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
-            return
-    else:
-        character["Ship"]["HP"] -= challenger["Attack"]
-        print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
-        if character["Ship"]["HP"] < 1:
-            print("You have been destroyed")
-            return is_alive(character)
-        else:
-            challenger["HP"] -= character["Ship"]["Attack"]
-            print("You attack the enemy!\ntheir HP= ", challenger["HP"])
-            if challenger["HP"] < 1:
-                print("You destroyed the hostile ship")
-                # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
-                return
-
-
-def space_combat(character, challenger):
-    print("You come across a hostile ship")
-    while is_alive(character) and challenger["HP"] > 0:
-        print(character["Ship"]["HP"])
-        print(challenger["HP"])
-        player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\n")
-        if player_action.upper() == "A":
-            combat_attack(character, challenger)
-
-
-def construct_challenger():
-    challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 4),
-                  "Targetting":  r.randint(1, 4), "HP": r.randint(1, 5)}
-    return challenger
-
-
 def check_for_challenger():
     """
     Checks if there is a challenger at the character location
@@ -164,9 +120,6 @@ def check_for_challenger():
     """
     if r.randint(1, 4) == 1:
         return True
-
-
-
 
 
 def scan_space_grid(rows, columns, space, character):
