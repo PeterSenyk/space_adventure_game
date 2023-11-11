@@ -4,7 +4,8 @@ from checks import is_alive
 
 def construct_challenger():
     challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 3),
-                  "Targeting": r.randint(1, 4), "HP": r.randint(1, 2)}
+                  "HP": r.randint(1, 2), "Targeting": r.randint(1, 4), "Shield": r.randint(0, 1),
+                  "Cargo":  r.randint(0, 1)}
     return challenger
 
 
