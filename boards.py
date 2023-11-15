@@ -14,9 +14,9 @@ def describe_current_location(space, character):
     :post-condition: describes the location and room to the player
     :return: prints a string to the player
     """
-    location_of_character = [character["Coordinates"].get("X-coordinate"), character["Coordinates"].get("Y-coordinate")]
+    location_of_character = [character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"]]
     location_key = tuple(location_of_character)
-    return print(f"You're current coordinates are: ", location_of_character, "\n", space[location_key][1])
+    print(f"Your current coordinates are: {location_of_character}\n{space[location_key][1]}")
 
 
 def populate_space():
