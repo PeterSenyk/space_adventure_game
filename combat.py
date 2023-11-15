@@ -17,10 +17,14 @@ def space_combat(character, challenger):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\n")
         if player_action.upper() == "A":
             combat_attack(character, challenger)
+        if player_action.upper() == "R":
+            combat_run(character, challenger)
+        if player_action.upper() == "D":
+            combat_dodgek(character, challenger)
 
 
 def combat_attack(character, challenger):
-    if character["Ship"]["Movement"] >= challenger["Movement"]:
+    if combat_compare_movement(character, challenger):
         challenger["HP"] -= character["Ship"]["Attack"]
         print("You attack the enemy\ntheir HP= ", challenger["HP"])
         if challenger["HP"] < 1:
@@ -44,3 +48,10 @@ def combat_attack(character, challenger):
                 print("You destroyed the hostile ship")
                 # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
                 return
+
+
+def combat_compare_movement(character, challenger):
+    if character["Ship"]["Movement"] >= challenger["Movement"]:
+        return True
+    else:
+        return False
