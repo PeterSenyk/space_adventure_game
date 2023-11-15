@@ -25,8 +25,8 @@ def populate_space():
 
     this function assigns room descriptions to the grid by using random numbers
 
-    :post-condition: returns a random room description
-    :return: a string
+    :post-condition: returns a random room description in a list, with an integer allocated to it
+    :return: a list
     """
     space_randomizer = r.randint(1, 10)
     if space_randomizer == 1:

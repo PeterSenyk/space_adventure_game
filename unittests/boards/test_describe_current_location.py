@@ -6,7 +6,7 @@ from boards import describe_current_location
 
 class Test(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_scan_space_grid_2_2(self, mock_stdout):
+    def test_describe_location_2_2(self, mock_stdout):
         character = {
             'Stats': {'Name': 'Captain sen'},
             'Ship': {'Ship': 'AEGIS GLADIUS', 'Attack': 3, 'Movement': 3, 'HP': 4,
