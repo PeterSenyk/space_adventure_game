@@ -17,6 +17,8 @@ def check_if_goal_attained(rows, columns, character):
     if (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"]) == (rows - 1, columns - 1):
         print("congrats you win")
         return True
+    else:
+        return False
 
 
 def is_alive(character):
