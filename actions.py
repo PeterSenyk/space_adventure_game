@@ -13,7 +13,6 @@ def player_action_move(character, space):
         boards.describe_current_location(space, character)
         there_is_a_challenger = checks.check_for_challenger()
     if there_is_a_challenger:
-        # guessing_game(character)
         combatant = combat.construct_challenger()
         combat.space_combat(character, combatant)
 

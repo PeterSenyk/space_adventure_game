@@ -12,8 +12,8 @@ def game():
     """
     runs the game
     """
-    rows = 5
-    columns = 5
+    rows = 2
+    columns = 2
     space = boards.make_space(rows, columns)
     player_stats = pilot.make_player()
     player_ship = pilot.select_ship(player_stats)
@@ -21,7 +21,7 @@ def game():
     achieved_goal = False
     # there_is_a_challenger = False  #### MAY BE POSSIBLE TO REMOVE
     boards.describe_current_location(space, character)
-    print(character)
+    print(space)
     print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
           f"bottom-right [gird ({rows - 1},{columns - 1})")
     while checks.is_alive(character) and not achieved_goal:
