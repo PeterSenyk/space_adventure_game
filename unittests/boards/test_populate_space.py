@@ -15,7 +15,7 @@ class Test(TestCase):
     def test_populate_space_two(self, _):
         actual = populate_space()
         expected = [2, "You are orbiting the dark side of a moon, You think of the legendary "
-                         "ancient ballads of Pink Floyd."]
+                       "ancient ballads of Pink Floyd."]
         self.assertEqual(expected, actual)
 
     @patch('random.randint', return_value=3)
