@@ -12,8 +12,8 @@ def construct_challenger():
 def space_combat(character, challenger):
     print("You come across a hostile ship")
     while is_alive(character) and challenger["HP"] > 0:
-        print(character["Ship"]["HP"])
-        print(challenger["HP"])
+        # print(character["Ship"]["HP"])
+        # print(challenger["HP"])
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\n")
         if player_action.upper() == "A":
             attack(character, challenger)
