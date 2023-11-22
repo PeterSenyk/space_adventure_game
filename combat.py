@@ -5,7 +5,7 @@ from checks import is_alive
 def construct_hostile_ship():
     hostile_ship = {"Ship": {
         "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": r.randint(1, 3),
-        "Targeting": r.randint(1, 4), "Shield": [0, r.randint(0, 1)],
+        "Targeting": r.randint(1, 4), "Shield": [1, r.randint(0, 1)],
         "Cargo": r.randint(0, 1)
     }}
     return hostile_ship
@@ -13,16 +13,18 @@ def construct_hostile_ship():
 
 def space_combat(character, hostile_ship):
     print("You come across a hostile ship")
-    while is_alive(character) and hostile_ship["Ship"]["HP"] > 0:
+    print(hostile_ship)
+    while is_alive(character) and is_alive(hostile_ship):
         # print(character["Ship"]["HP"])
         # print(challenger["HP"])
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
         if player_action.upper() == "R":
-            run(character, hostile_ship)  # add function
+            run(character, hostile_ship)
+            break
         if player_action.upper() == "D":
-            dodge(character, hostile_ship)  # add function
+            dodge(character, hostile_ship)
 
 
 def attack_sequence(character, hostile_ship):
@@ -44,6 +46,13 @@ def attack_sequence(character, hostile_ship):
             print("You survive with", character["Ship"]["HP"], "HP remaining")
             print("You attack the hostile ship")
             attack(character, hostile_ship)
+            if is_alive(hostile_ship):
+                print("The hostile ship survives with", hostile_ship["Ship"]["HP"], "HP remaining")
+            else:
+                print("You destroy the hostile ship !")
+                character["Stats"]["Accolades"]["Ships Destroyed"] += 1
+        else:
+            print("You were destroyed\nGAME OVER")
 
 
 def attack(attacker, defender):
@@ -52,12 +61,16 @@ def attack(attacker, defender):
 
 
 def dodge(character, hostile_ship):
-    if check_for_hit(hostile_ship, character):
-        dodge_chance = character["Ship"]["Movement"] + r.randint(1, 4)
-        if dodge_chance <= r.randint(5, 10):
-            check_shields(hostile_ship, character)
-        else:
-            shield_recharge(character)
+    dodge_chance = (character["Ship"]["Movement"] + r.randint(1, 6))
+    hit_chance = r.randint(5, 9)
+    if dodge_chance <= hit_chance:
+        print(dodge_chance)
+        print(hit_chance)
+        check_shields(hostile_ship, character)
+    else:
+        print(dodge_chance)
+        print(hit_chance)
+        shield_recharge(character)
 
 
 def run(character, hostile_ship):
@@ -81,8 +94,8 @@ def check_for_hit(attacker, defender):
             print("The attack lands")
             return True
         else:
-            shield_recharge(defender)
             print("The attack misses")
+            shield_recharge(defender)
             return False
 
 
@@ -100,7 +113,10 @@ def check_shields(attacker, defender):
 
 def shield_recharge(ship):
     if ship["Ship"]["Shield"][0] < ship["Ship"]["Shield"][1]:
+        print("Your shields recharge by 1 point")
         ship["Ship"]["Shield"][0] += 1
+    else:
+        print("Your shields are at MAX capacity")
 
 
 # REWORK ATTACK ---- break into atomic function, add Shields, Miss
