@@ -21,8 +21,6 @@ def game():
     achieved_goal = False
     # there_is_a_challenger = False  #### MAY BE POSSIBLE TO REMOVE
     boards.describe_current_location(space, character)
-    print(space)
-    print(character)
     print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
           f"bottom-right [gird ({rows - 1},{columns - 1})")
     while checks.is_alive(character) and not achieved_goal:

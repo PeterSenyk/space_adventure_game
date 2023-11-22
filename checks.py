@@ -26,17 +26,17 @@ def check_if_goal_attained(rows, columns, character):
         return False
 
 
-def is_alive(character):
+def is_alive(ship):
     """
     Checks if the player is still alive
 
     this function checks if the characters HP value is above zero
 
-    :param character: a dictionary of character location and HP
+    :param ship: a dictionary of character location and HP
     :precondition: character HP value must start above zero
     :return: Boolean True of False
     """
-    if character["Ship"]["HP"] <= 0:
+    if ship["Ship"]["HP"] <= 0:
         return False
     else:
         return True
