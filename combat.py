@@ -2,6 +2,12 @@ import random as r
 from checks import is_alive
 
 
+def combat_order_of_events():
+    construct_challenger()
+    compare_ships()
+    space_combat()
+
+
 def construct_challenger():
     challenger = {"Attack": r.randint(1, 2), "Movement": r.randint(1, 3),
                   "HP": r.randint(1, 2), "Targeting": r.randint(1, 4), "Shield": r.randint(0, 1),
@@ -21,6 +27,14 @@ def space_combat(character, challenger):
             run(character, challenger)  # add function
         if player_action.upper() == "D":
             dodge(character, challenger)  # add function
+
+
+def dodge(character, challenger):
+    pass
+
+
+def run(character, challenger):
+    pass
 
 
 def attack(character, challenger):
@@ -50,7 +64,7 @@ def attack(character, challenger):
                 return
 
 
-def compare_movement(character, challenger):
+def compare_ships(character, challenger): ### change to compare ships
     if character["Ship"]["Movement"] >= challenger["Movement"]:
         return True
     else:

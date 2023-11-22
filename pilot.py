@@ -36,8 +36,9 @@ def make_player():
     :post-condition: a character dictionary is completed with starting coordinates and HP
     :return: a dictionary
     """
-    player_last_name = input("Please type your last name\n")
-    player_name = "Captain " + player_last_name
-    print("Congratulations", player_name, "on graduating the Space Academy at the top of your class\n")
-    player_stats = {"Name": player_name}
+    player_name_input = input("Please type your last name\n")
+    player_last_name = player_name_input
+    player_titles = ["Trainee", "Pilot", "Captain"]
+    print(f"Congratulations {player_titles[0]} {player_last_name} on graduating the Space Academy at the top of your class\n")
+    player_stats = {"Name": player_last_name, "Accolades": {"Credits": 1000, "Ships Destroyed": 0}}
     return player_stats

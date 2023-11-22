@@ -12,8 +12,8 @@ def game():
     """
     runs the game
     """
-    rows = 10
-    columns = 10
+    rows = 3
+    columns = 2
     space = boards.make_space(rows, columns)
     player_stats = pilot.make_player()
     player_ship = pilot.select_ship(player_stats)

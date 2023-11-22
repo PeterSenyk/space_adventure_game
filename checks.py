@@ -1,6 +1,11 @@
 import random as r
 
 
+def check_if_trainee_goal_attained(character, training_space):
+    if check_character_coordinates(character) == (0, 0) and character["Accolades"]["Ships Destroyed"] == 3:
+        print("Congrats, You've completed your training")
+
+
 def check_if_goal_attained(rows, columns, character):
     """
     Checks if the game has been won
@@ -48,3 +53,17 @@ def check_for_challenger():
     """
     if r.randint(1, 4) == 1:
         return True
+
+
+def check_character_coordinates(character):
+    """
+    Checks the characters coordinates
+
+
+    :param character: character dictionary must be created
+    :precondition:
+    :post-condition: character coordinates are simplified into a tuple
+    :return: a tuple containing 2 integers
+    """
+    character_coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
+    return character_coordinates
