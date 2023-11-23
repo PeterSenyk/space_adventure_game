@@ -23,13 +23,7 @@ def game():
     print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
           f"bottom-right [gird ({rows - 1},{columns - 1})")
     while checks.is_alive(character) and not achieved_goal:
-        player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\n")
-        if player_action.upper() == "M":
-            actions.player_action_move(character, space)
-        elif player_action.upper() == "S":
-            actions.scan_space_grid(rows, columns, space, character)
-        elif player_action.upper() == "P":
-            actions.personal_stats(character)
+        actions.choose_an_action(character, space, rows, columns)
         achieved_goal = checks.check_if_goal_attained(rows, columns, character)
     if character["HP"] <= 0:
         print("You died\nGAME OVER")

@@ -4,6 +4,16 @@ import boards
 import checks
 
 
+def choose_an_action(character, space, rows, columns):
+    player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\n")
+    if player_action.upper() == "M":
+        player_action_move(character, space)
+    elif player_action.upper() == "S":
+        scan_space_grid(rows, columns, space, character)
+    elif player_action.upper() == "P":
+        personal_stats(character)
+
+
 def player_action_move(character, space):
     direction = movement.get_user_choice()
     valid_move = movement.validate_move(space, character, direction)
