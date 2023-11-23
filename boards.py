@@ -67,6 +67,24 @@ def make_space(rows, columns):
     return new_space
 
 
-
-
-
+def space_tiles_dict():
+    space_tiles = {
+        1: [1, "You're in the docking bay of the Arc-Corp training academy.", "AC1"],
+        2: [2, "You're in an empty grid in the training zone, take a moment to breathe.", " - "],
+        3: [3, "The training combat area is outlined by a ring of bright lights.", "<|>"],
+        5: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", " - "],
+        6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.", ":::"],
+        7: [7, 'You are orbiting the dark side of a moon, You think of the legendary ancient ballads of '
+               'Pink Floyd.', " o "],
+        8: [8, "You come across a ship wreck, You start to wonder who could have caused this.", " # "],
+        9: [9, "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind.", " & "],
+        10: [10, "", "???"],
+        11: [11, "", "???"],
+        12: [12, "", "???"],
+        13: [13, "", "???"],
+        14: [14, "", "???"],
+        15: [15, "", "???"],
+        99: [99, "You come across the ANOMALY, it's a swirling vortex of space and matter that pulls your ship into "
+                 "it, this was unexpected.", " @ "],
+    }
+    return space_tiles

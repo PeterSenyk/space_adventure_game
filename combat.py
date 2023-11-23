@@ -7,7 +7,7 @@ def construct_hostile_ship():
     hostile_ship = {"Ship": {
         "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": r.randint(1, 3),
         "Targeting": r.randint(1, 4), "Shield": [hostile_shield, hostile_shield],
-        "Cargo": r.randint(0, 1)
+        "Cargo": []
     }}
     return hostile_ship
 
@@ -126,8 +126,7 @@ def compare_ships(character, hostile_ship):
         "HP": character["Ship"]["HP"] - hostile_ship["Ship"]["HP"],
         "Targeting": character["Ship"]["Targeting"] - hostile_ship["Ship"]["Targeting"],
         "Shield": character["Ship"]["Shield"][0] - hostile_ship["Ship"]["Shield"][0],
-        "Cargo": character["Ship"]["Cargo"] - hostile_ship["Ship"]["Cargo"],
-    }
+         }
     return comparison_results
 
 

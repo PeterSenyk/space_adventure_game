@@ -63,7 +63,7 @@ def check_character_coordinates(character):
     :param character: character dictionary must be created
     :precondition:
     :post-condition: character coordinates are simplified into a tuple
-    :return: a tuple containing 2 integers
+    :return: 2 integers
     """
     character_coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
     return character_coordinates
