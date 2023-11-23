@@ -63,7 +63,7 @@ def attack(attacker, defender):
 
 
 def dodge(character, hostile_ship):
-    dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 6))
+    dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 7))
     hit_chance = r.randint(5, 9)
     if dodge_chance <= hit_chance:
         print(dodge_chance)
