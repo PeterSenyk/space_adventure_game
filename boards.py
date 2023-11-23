@@ -78,12 +78,12 @@ def space_tiles_dict():
                'Pink Floyd.', " o "],
         8: [8, "You come across a ship wreck, You start to wonder who could have caused this.", " # "],
         9: [9, "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind.", " & "],
-        10: [10, "", "???"],
+        10: [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Outlad Quadrant'", "AC9"],
         11: [11, "", "???"],
         12: [12, "", "???"],
         13: [13, "", "???"],
         14: [14, "", "???"],
-        15: [15, "", "???"],
+        60: [60, "You find the crew responsible for the theft from the Arc-Corp R&D station", "<$>"],
         99: [99, "You come across the ANOMALY, it's a swirling vortex of space and matter that pulls your ship into "
                  "it, this was unexpected.", " @ "],
     }
