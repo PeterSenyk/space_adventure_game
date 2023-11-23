@@ -37,3 +37,7 @@ def scan_space_grid(rows, columns, space, character):
             elif space[column, row][0] >= 5:
                 print(" - ", end="")
         print()
+
+
+def personal_stats(character):
+    print(character["Stats"])
