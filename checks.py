@@ -1,4 +1,6 @@
 import random as r
+import events
+import combat
 
 
 def check_if_trainee_goal_attained(character, training_space):
@@ -67,3 +69,17 @@ def check_character_coordinates(character):
     """
     character_coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
     return character_coordinates
+
+
+def check_for_event(character, space_tile):
+    coordinates = check_character_coordinates(character)
+    event_chance = r.randint(1, 4)
+    if space_tile[coordinates][0] == 6:
+        if event_chance <= 2:
+            events.asteroid_belt(character)
+        if event_chance == 3:
+            combatant = combat.construct_hostile_ship()
+            combat.space_combat(character, combatant)
+
+
+

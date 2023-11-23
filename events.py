@@ -58,4 +58,3 @@ def guessing_game(character):
         character["Ship"]["HP"] -= 1
         print("Wrong! the number was", number_to_guess, "Your HP =", character["Ship"]["HP"])
         return character["Ship"]["HP"]
-
