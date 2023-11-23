@@ -19,7 +19,6 @@ def game():
     player_ship = pilot.select_ship(player_stats)
     character = {"Stats": player_stats, "Ship": player_ship, "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
     achieved_goal = False
-    # there_is_a_challenger = False  #### MAY BE POSSIBLE TO REMOVE
     boards.describe_current_location(space, character)
     print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
           f"bottom-right [gird ({rows - 1},{columns - 1})")
@@ -31,7 +30,7 @@ def game():
             actions.scan_space_grid(rows, columns, space, character)
         achieved_goal = checks.check_if_goal_attained(rows, columns, character)
     if character.get("HP") == 0:
-        print("You died")
+        print("You died\nGAME OVER")
 
 
 def main():

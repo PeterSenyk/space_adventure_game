@@ -14,10 +14,7 @@ def construct_hostile_ship():
 
 def space_combat(character, hostile_ship):
     print("You come across a hostile ship")
-    print(hostile_ship)
     while is_alive(character) and is_alive(hostile_ship):
-        # print(character["Ship"]["HP"])
-        # print(challenger["HP"])
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
@@ -28,6 +25,10 @@ def space_combat(character, hostile_ship):
             dodge(character, hostile_ship)
         if player_action.upper() == "S":
             scan_ships(character, hostile_ship)
+    if character["Ship"]["HP"] == 0:
+        print("You have been destroyed by the hostile ship")
+    elif hostile_ship["Ship"]["HP"] == 0:
+        print("You have destroyed the hostile ship")
 
 
 def attack_sequence(character, hostile_ship):
@@ -40,7 +41,6 @@ def attack_sequence(character, hostile_ship):
             print("The hostile ship survives and attacks back")
             attack(hostile_ship, character)
         else:
-            print("You destroy the hostile ship !")
             character["Stats"]["Accolades"]["Ships Destroyed"] += 1
     else:
         print("The hostile ship attacks")
@@ -52,7 +52,6 @@ def attack_sequence(character, hostile_ship):
             if is_alive(hostile_ship):
                 print("The hostile ship survives with", hostile_ship["Ship"]["HP"], "HP remaining")
             else:
-                print("You destroy the hostile ship !")
                 character["Stats"]["Accolades"]["Ships Destroyed"] += 1
         else:
             print("You were destroyed\nGAME OVER")
@@ -64,7 +63,7 @@ def attack(attacker, defender):
 
 
 def dodge(character, hostile_ship):
-    dodge_chance = (character["Ship"]["Movement"] + r.randint(3, 6))
+    dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 6))
     hit_chance = r.randint(5, 9)
     if dodge_chance <= hit_chance:
         print(dodge_chance)
@@ -110,9 +109,6 @@ def deal_attack_damage(attacker, defender):
         elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"]:
             defender["Ship"]["HP"] -= 1
             print("The hull takes 1 damage")
-        else:
-            print("SHIP DESTROYED !")
-            break
 
 
 def shield_recharge(ship):
@@ -121,6 +117,23 @@ def shield_recharge(ship):
         ship["Ship"]["Shield"][0] += 1
     else:
         print("Your shields are at MAX capacity")
+
+
+def compare_ships(character, hostile_ship):
+    comparison_results = {
+        "Attack": character["Ship"]["Attack"] - hostile_ship["Ship"]["Attack"],
+        "Movement": character["Ship"]["Movement"] - hostile_ship["Ship"]["Movement"],
+        "HP": character["Ship"]["HP"] - hostile_ship["Ship"]["HP"],
+        "Targeting": character["Ship"]["Targeting"] - hostile_ship["Ship"]["Targeting"],
+        "Shield": character["Ship"]["Shield"][0] - hostile_ship["Ship"]["Shield"][0],
+        "Cargo": character["Ship"]["Cargo"] - hostile_ship["Ship"]["Cargo"],
+    }
+    return comparison_results
+
+
+def scan_ships(character, hostile_ship):
+    print("Your ship stats:\n", character["Ship"])
+    print("Hostile ship stats:\n", hostile_ship["Ship"])
 
 
 # REWORK ATTACK ---- break into atomic function, add Shields, Miss
@@ -149,20 +162,3 @@ def shield_recharge(ship):
 #                 print("You destroyed the hostile ship")
 #                 # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
 #                 return
-
-
-def compare_ships(character, hostile_ship):
-    comparison_results = {
-        "Attack": character["Ship"]["Attack"] - hostile_ship["Ship"]["Attack"],
-        "Movement": character["Ship"]["Movement"] - hostile_ship["Ship"]["Movement"],
-        "HP": character["Ship"]["HP"] - hostile_ship["Ship"]["HP"],
-        "Targeting": character["Ship"]["Targeting"] - hostile_ship["Ship"]["Targeting"],
-        "Shield": character["Ship"]["Shield"][0] - hostile_ship["Ship"]["Shield"][0],
-        "Cargo": character["Ship"]["Cargo"] - hostile_ship["Ship"]["Cargo"],
-    }
-    return comparison_results
-
-
-def scan_ships(character, hostile_ship):
-    print("Your ship stats:\n", character["Ship"])
-    print("Hostile ship stats:\n", hostile_ship["Ship"])
