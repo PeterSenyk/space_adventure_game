@@ -67,15 +67,6 @@ def make_space(rows, columns):
     return new_space
 
 
-def training_space():
-    training_area = {
-                    (0, 0): [1, "You're in the docking bay of the Arc-Corp training academy"],
-                    (1, 0): [2, "You're in an empty grid in the training zone, take a moment to breathe."],
-                    (0, 1): [3, "The training combat area is outlined by a ring of bright lights."],
-                    (1, 1): [2, "You're in an empty grid in the training zone, take a moment to breathe."],
-                    (0, 2): [3, "The training combat area is outlined by a ring of bright lights."],
-                    (1, 2): [3, "The training combat area is outlined by a ring of bright lights."],
-                    }
 
 
 
