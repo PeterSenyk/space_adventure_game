@@ -1,4 +1,41 @@
 import random as r
+import combat
+
+
+def asteroid_belt(character):
+    print("Theres more asteroids than you expected, you're going to have to fly by instinct here")
+    asteroids = r.randint(1, 3)
+    for attempts in range(asteroids):
+        correct_path = r.randint(1, 4)
+        get_flight_path = input("You only see small windows to pass through, pick a direction to steer\n"
+                                "W = Up\nS = Down\nA = Left\nD = Right\n")
+        chosen_path = clean_asteroid_game_direction(get_flight_path)
+        if chosen_path == correct_path:
+            combat.shield_recharge(character)
+        else:
+            asteroid_damage(character)
+
+
+def asteroid_damage(character):
+    if character["Ship"]["Shield"][0] > 0:
+        character["Ship"]["Shield"][0] -= 1
+        print("The Shields reflect 1 damage")
+    elif character["Ship"]["Shield"][0] <= 0 < character["Ship"]["HP"]:
+        character["Ship"]["HP"] -= 1
+        print("The hull takes 1 damage")
+    else:
+        print("You hit an asteroid head on, your ship is reduced to ashes and dust")
+
+
+def clean_asteroid_game_direction(direction):
+    if direction.upper() == "W":
+        return 1
+    elif direction.upper() == "S":
+        return 2
+    elif direction.upper() == "A":
+        return 3
+    elif direction.upper() == "D":
+        return 4
 
 
 def guessing_game(character):
