@@ -1,6 +1,5 @@
 import random as r
 import events
-import combat
 
 
 def check_if_trainee_goal_attained(character, training_space):
@@ -82,4 +81,8 @@ def check_for_event(character, space_tile):
             combat.space_combat(character, combatant)
 
 
-
+def training_goal(character):
+    if character["Stats"]["Accolades"]["Ships Destroyed"] >= 3:
+        return True
+    else:
+        return False

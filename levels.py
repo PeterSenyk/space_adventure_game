@@ -2,20 +2,10 @@ import boards
 import checks
 
 
-def training_space():
-    training_area = {
-        (0, 0): 1, (1, 0): 2,
-        (0, 1): 3, (1, 1): 2,
-        (0, 2): 3, (1, 2): 3,
-    }
-    return training_area
 
 
-def training_goal(character):
-    if character["Stats"]["Accolades"]["Ships Destroyed"] >= 3:
-        return True
-    else:
-        return False
+
+
 
 
 def outlaw_space():

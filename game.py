@@ -2,31 +2,25 @@
 Peter Senyk
 A01376857
 """
-import actions
-import boards
+import start_game as start
 import checks
-import pilot
+import boards
+import actions
 
 
 def game():
     """
     runs the game
     """
-    rows = 6
-    columns = 6
-    space = boards.make_space(rows, columns)
-    player_stats = pilot.make_player()
-    player_ship = pilot.select_ship(player_stats)
-    character = {"Stats": player_stats, "Ship": player_ship, "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
-    achieved_goal = False
-    boards.describe_current_location(space, character)
-    print(f"You're in the top-left hand corner of this quadrant [grid (0,0)], the goal is at the "
-          f"bottom-right [gird ({rows - 1},{columns - 1})")
-    while checks.is_alive(character) and not achieved_goal:
-        actions.choose_an_action(character, space, rows, columns)
-        achieved_goal = checks.check_if_goal_attained(rows, columns, character)
-    if character["HP"] <= 0:
-        print("You died\nGAME OVER")
+    character = {"Stats": {"Title": ["Trainee", "Ace", "Captain"], "Name": "", "Accolades": []},
+                 "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+                          "Shield": [2, 2], "Cargo": []},
+                 "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    start.build_character(character)
+    print(character)
+    while character["Ship"]["HP"] > 0 and not checks.training_goal:
+        space = boards.training_space()
+        actions.choose_an_action(character, space, 2, 3)
 
 
 def main():

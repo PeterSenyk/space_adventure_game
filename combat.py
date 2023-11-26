@@ -1,5 +1,5 @@
 import random as r
-from checks import is_alive
+# from checks import is_alive
 
 
 def construct_hostile_ship():

@@ -88,3 +88,11 @@ def space_tiles_dict():
                  "it, this was unexpected.", " @ "],
     }
     return space_tiles
+
+def training_space():
+    training_area = {
+        (0, 0): 1, (1, 0): 2,
+        (0, 1): 3, (1, 1): 2,
+        (0, 2): 3, (1, 2): 3,
+    }
+    return training_area
