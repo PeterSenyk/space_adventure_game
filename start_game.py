@@ -3,6 +3,12 @@ import pilot
 import space_ships
 
 
+def base_character():
+    character = {"Stats": {"Title": ["Trainee", "Ace", "Captain"], "Name": "", "Accolades": []},
+                 "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+                          "Shield": [2, 2], "Cargo": []},
+                 "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    return character
 def build_character(character):
     get_player_last_name(character)
     print(f"Welcome to the Academy {character['Stats']['Title'][0]} {character['Stats']['Name']}")

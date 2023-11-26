@@ -12,17 +12,13 @@ def game():
     """
     runs the game
     """
-    character = {"Stats": {"Title": ["Trainee", "Ace", "Captain"], "Name": "", "Accolades": []},
-                 "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
-                          "Shield": [2, 2], "Cargo": []},
-                 "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    character = start.base_character()
     space_tiles = boards.space_tiles_dict()
     start.build_character(character)
     print(character)
     training_goal = False
     while character["Ship"]["HP"][0] > 0 and not training_goal:
         space = boards.training_space(space_tiles)
-        print(space)
         actions.choose_an_action(character, space, 2, 3)
 
 

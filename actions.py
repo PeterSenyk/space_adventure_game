@@ -37,8 +37,9 @@ def scan_space_grid(rows, columns, space, character):
             elif column == columns - 1 and row == rows - 1:
                 print(" $ ")
             else:
-                room_description = space[(column, row)]
-                print(room_description)
+                tile_number = space[(row, column)][0]
+                tile_desc = boards.space_tiles_dict()
+                print(tile_desc[tile_number][2], end="")
         print()
 
 
