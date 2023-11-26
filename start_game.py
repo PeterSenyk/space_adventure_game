@@ -39,13 +39,13 @@ def choose_training_ship(character):
                           "[G] for the AEGIS TITAN\n[B] for the DRAKE CUTTER\n")
     if training_ship.upper() == "A":
         character["Ship"] = {"Name": "ANVIL ARROW", "Attack": 1,
-                             "Movement": 3, "HP": 5, "Targeting": 4,
+                             "Movement": 3, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
     if training_ship.upper() == "G":
         character["Ship"] = {"Name": "AEGIS GLADIUS", "Attack": 2,
-                             "Movement": 2, "HP": 5, "Targeting": 4,
+                             "Movement": 2, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
     if training_ship.upper() == "B":
         character["Ship"] = {"Name": "DRAKE BUCCANEER", "Attack": 3,
-                             "Movement": 2, "HP": 4, "Targeting": 4,
+                             "Movement": 2, "HP": [4, 4], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}

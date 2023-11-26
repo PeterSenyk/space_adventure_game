@@ -36,16 +36,9 @@ def scan_space_grid(rows, columns, space, character):
                 print("[X]", end="")
             elif column == columns - 1 and row == rows - 1:
                 print(" $ ")
-            elif space[column, row][0] == 1:
-                print(":::", end="")
-            elif space[column, row][0] == 2:
-                print(" o ", end="")
-            elif space[column, row][0] == 3:
-                print(" # ", end="")
-            elif space[column, row][0] == 4:
-                print(" & ", end="")
-            elif space[column, row][0] >= 5:
-                print(" - ", end="")
+            else:
+                room_description = space[(column, row)]
+                print(room_description)
         print()
 
 

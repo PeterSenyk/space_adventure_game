@@ -16,10 +16,13 @@ def game():
                  "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
                           "Shield": [2, 2], "Cargo": []},
                  "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    space_tiles = boards.space_tiles_dict()
     start.build_character(character)
     print(character)
-    while character["Ship"]["HP"] > 0 and not checks.training_goal:
-        space = boards.training_space()
+    training_goal = False
+    while character["Ship"]["HP"][0] > 0 and not training_goal:
+        space = boards.training_space(space_tiles)
+        print(space)
         actions.choose_an_action(character, space, 2, 3)
 
 

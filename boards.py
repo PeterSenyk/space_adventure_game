@@ -89,10 +89,11 @@ def space_tiles_dict():
     }
     return space_tiles
 
-def training_space():
+
+def training_space(space_tiles):
     training_area = {
-        (0, 0): 1, (1, 0): 2,
-        (0, 1): 3, (1, 1): 2,
-        (0, 2): 3, (1, 2): 3,
+        (0, 0): space_tiles[1], (1, 0): space_tiles[2],
+        (0, 1): space_tiles[3], (1, 1): space_tiles[2],
+        (0, 2): space_tiles[3], (1, 2): space_tiles[3],
     }
     return training_area
