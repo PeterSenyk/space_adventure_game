@@ -10,5 +10,9 @@ def is_alive(ship):
     """
     if ship["Ship"]["HP"][0] <= 0:
         return False
-    else:
-        return True
+
+def check_space_tile(character, space, tile_desc):
+
+    pass
+
+

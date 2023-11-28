@@ -4,12 +4,12 @@ import boards
 from code_to_rework import checks
 
 
-def choose_an_action(character, space, rows, columns):
+def choose_an_action(character, space, tile_desc, rows, columns):
     player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\n")
     if player_action.upper() == "M":
         player_action_move(character, space)
     elif player_action.upper() == "S":
-        scan_space_grid(rows, columns, space, character)
+        scan_space_grid(character, space, tile_desc, columns, rows)
     elif player_action.upper() == "P":
         personal_stats(character)
 
@@ -28,16 +28,13 @@ def player_action_move(character, space):
     #     combat.shield_recharge(character)
 
 
-def scan_space_grid(rows, columns, space, character):
+def scan_space_grid(character, space, tile_desc, columns, rows):
     for row in range(rows):
         for column in range(columns):
             if column == character["Coordinates"]["X-coordinate"] and row == character["Coordinates"]["Y-coordinate"]:
                 print("[X]", end="")
-            elif column == columns - 1 and row == rows - 1:
-                print(" $ ")
             else:
-                tile_number = space[(row, column)][0]
-                tile_desc = boards.space_tiles_dict()
+                tile_number = space[(column, row)][0]
                 print(tile_desc[tile_number][2], end="")
         print()
 
