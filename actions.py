@@ -20,12 +20,7 @@ def player_action_move(character, space):
     valid_move = movement.validate_move(space, character, direction)
     if not valid_move:
         return
-    # boards.describe_current_location(space, character)
-    # if there_is_a_challenger:
-    #     combatant = combat.construct_hostile_ship()
-    #     combat.space_combat(character, combatant)
-    # else:
-    #     combat.shield_recharge(character)
+    game_checks.check_space_tile(character, space)
 
 
 def scan_space_grid(character, space, columns, rows):
@@ -40,4 +35,7 @@ def scan_space_grid(character, space, columns, rows):
 
 
 def personal_stats(character):
-    print(character["Stats"])
+    print(character["Stats"]["Title"]," ", end="")
+    print(character["Stats"]["Name"])
+    print(f"Accolades: {character['Stats']['Accolades']}")
+

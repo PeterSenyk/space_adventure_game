@@ -8,7 +8,7 @@ def training_loop(character):
     space = training_space(space_tiles)
     while game_checks.is_alive(character) and not training_goal:
         actions.choose_an_action(character, space, 3, 2)
-        game_checks.check_space_tile(character, space)
+
 
 
 def training_space(space_tiles):
