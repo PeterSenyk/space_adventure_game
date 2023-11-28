@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from pilot import make_player
+from code_to_rework.pilot import make_player
 
 
 class Test(TestCase):

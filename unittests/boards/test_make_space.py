@@ -1,7 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from boards import make_space
-from boards import populate_space
+from code_to_rework.boards import make_space
 
 
 class Test(TestCase):

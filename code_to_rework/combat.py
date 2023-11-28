@@ -1,5 +1,5 @@
 import random as r
-from checks import is_alive
+import checks
 
 
 def construct_hostile_ship():
@@ -14,7 +14,7 @@ def construct_hostile_ship():
 
 def space_combat(character, hostile_ship):
     print("You come across a hostile ship")
-    while is_alive(character) and is_alive(hostile_ship):
+    while character["Ship"]["HP"][0] > 0 and checks.is_alive(hostile_ship):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
@@ -36,7 +36,7 @@ def attack_sequence(character, hostile_ship):
     if comparison_results["Movement"] >= 0:
         print("You attack the hostile ship")
         attack(character, hostile_ship)
-        if is_alive(hostile_ship):
+        if checks.is_alive(hostile_ship):
             print(f"The hostile ship has", hostile_ship["Ship"]["HP"], "HP remaining")
             print("The hostile ship survives and attacks back")
             attack(hostile_ship, character)
@@ -45,11 +45,11 @@ def attack_sequence(character, hostile_ship):
     else:
         print("The hostile ship attacks")
         attack(hostile_ship, character)
-        if is_alive(character):
+        if character["Ship"]["HP"][0] > 0:
             print("You survive with", character["Ship"]["HP"], "HP remaining")
             print("You attack the hostile ship")
             attack(character, hostile_ship)
-            if is_alive(hostile_ship):
+            if checks.is_alive(hostile_ship):
                 print("The hostile ship survives with", hostile_ship["Ship"]["HP"], "HP remaining")
             else:
                 character["Stats"]["Accolades"]["Ships Destroyed"] += 1

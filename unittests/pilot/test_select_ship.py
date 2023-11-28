@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from pilot import select_ship
+from code_to_rework.pilot import select_ship
 
 
 class Test(TestCase):

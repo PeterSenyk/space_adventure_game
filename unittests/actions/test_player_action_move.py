@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from actions import player_action_move
+from code_to_rework.actions import player_action_move
 
 
 class Test(TestCase):

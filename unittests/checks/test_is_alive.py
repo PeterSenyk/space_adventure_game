@@ -1,5 +1,5 @@
 from unittest import TestCase
-from checks import is_alive
+from code_to_rework.checks import is_alive
 
 
 class Test(TestCase):

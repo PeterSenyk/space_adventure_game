@@ -2,7 +2,6 @@
 Peter Senyk
 A01376857
 """
-import levels
 import start_game as start
 
 
@@ -12,7 +11,9 @@ def game():
     """
     character = start.base_character()
     start.build_character(character)
-    levels.training_level(character)
+    print(character["Stats"])
+    print(character["Ship"])
+    # levels.training_level(character)
 
 
 def main():

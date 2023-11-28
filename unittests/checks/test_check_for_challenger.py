@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from checks import check_for_challenger
+from code_to_rework.checks import check_for_challenger
 
 
 class Test(TestCase):

@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 import io
-from actions import scan_space_grid
+from code_to_rework.actions import scan_space_grid
 
 
 class Test(TestCase):

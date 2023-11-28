@@ -41,7 +41,7 @@ def is_alive(ship):
     :precondition: character HP value must start above zero
     :return: Boolean True of False
     """
-    if ship["Ship"]["HP"] <= 0:
+    if ship["Ship"]["HP"][0] <= 0:
         return False
     else:
         return True

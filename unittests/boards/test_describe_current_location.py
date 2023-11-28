@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 import io
-from boards import describe_current_location
+from code_to_rework.boards import describe_current_location
 
 
 class Test(TestCase):

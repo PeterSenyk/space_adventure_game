@@ -1,5 +1,5 @@
 from unittest import TestCase
-from checks import check_if_goal_attained
+from code_to_rework.checks import check_if_goal_attained
 
 
 class Test(TestCase):
