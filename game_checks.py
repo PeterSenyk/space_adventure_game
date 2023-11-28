@@ -10,9 +10,20 @@ def is_alive(ship):
     """
     if ship["Ship"]["HP"][0] <= 0:
         return False
+    else:
+        return True
 
-def check_space_tile(character, space, tile_desc):
 
+def get_player_coordinates(character):
+    x_coordinate = character["Coordinates"]["X-coordinate"]
+    y_coordinate = character["Coordinates"]["Y-coordinate"]
+    coordinates = (x_coordinate, y_coordinate)
+    return coordinates
+
+
+def check_space_tile(character, space):
+    coordinates = get_player_coordinates(character)
+    print(space[coordinates][1])
     pass
 
 

@@ -23,19 +23,19 @@ def move_calculator(character, direction):
     return character
 
 
-def move_character(character, direction):
-    """
-    Changes the characters X or Y coordinate
-
-    this function changes the characters X or Y coordinate based on the input
-
-    :param character: a dictionary of character location and HP
-    :param direction: a string
-    :precondition: direction must be a string value of either "n", "s", "e", or "w"
-    :precondition: the move is validated prior to changing the character coordinates
-    :post-condition: the characters coordinates are changed
-    """
-    move_calculator(character, direction)
+# def move_character(character, direction):
+#     """
+#     Changes the characters X or Y coordinate
+#
+#     this function changes the characters X or Y coordinate based on the input
+#
+#     :param character: a dictionary of character location and HP
+#     :param direction: a string
+#     :precondition: direction must be a string value of either "n", "s", "e", or "w"
+#     :precondition: the move is validated prior to changing the character coordinates
+#     :post-condition: the characters coordinates are changed
+#     """
+#     move_calculator(character, direction)
 
 
 def validate_move(space, character, direction):
@@ -55,6 +55,7 @@ def validate_move(space, character, direction):
     move_calculator(temp_coordinates, direction)
     if ((temp_coordinates["Coordinates"]["X-coordinate"], temp_coordinates["Coordinates"]["Y-coordinate"])
             in space.keys()):
+        move_calculator(character, direction)
         return True
     else:
         print("Not a valid move")

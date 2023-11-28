@@ -6,10 +6,9 @@ def training_loop(character):
     training_goal = False
     space_tiles = training_space_tiles()
     space = training_space(space_tiles)
-    tile_desc = training_space_tiles()
     while game_checks.is_alive(character) and not training_goal:
-        actions.choose_an_action(character, space, tile_desc, 3, 2)
-
+        actions.choose_an_action(character, space, 3, 2)
+        game_checks.check_space_tile(character, space)
 
 
 def training_space(space_tiles):
