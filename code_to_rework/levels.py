@@ -1,6 +1,6 @@
 from code_to_rework import checks
-import boards
 import actions
+import boards
 
 
 def training_level(character):

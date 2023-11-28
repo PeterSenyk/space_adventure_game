@@ -1,11 +1,12 @@
-from code_to_rework import checks
+import game_checks
 import actions
+
 
 def training_loop(character):
     training_goal = False
     space_tiles = training_space_tiles()
     space = training_space(space_tiles)
-    while checks.is_alive(character) and not training_goal:
+    while game_checks.is_alive(character) and not training_goal:
         actions.choose_an_action(character, space, 2, 3)
     pass
 

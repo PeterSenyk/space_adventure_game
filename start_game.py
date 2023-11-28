@@ -9,7 +9,9 @@ def base_character():
 def build_character(character):
     get_player_last_name(character)
     print(f"Welcome to the Academy {character['Stats']['Title']} {character['Stats']['Name']}")
-    choose_training_ship(character)
+    valid_ship = False
+    while not valid_ship:
+        valid_ship = choose_training_ship(character)
     return character
 
 
@@ -39,16 +41,24 @@ def choose_training_ship(character):
     print("AEGIS TITAN: Attack [2], Movement [2], HP [5], Shield [2], Targeting [4], Cargo Space [2]")
     print("DRAKE CUTTER: Attack [3], Movement [2], HP [4], Shield [1], Targeting [5], Cargo Space [2]")
     training_ship = input("Please select:\n[A] for the ANVIL AURORA\n"
-                          "[G] for the AEGIS TITAN\n[B] for the DRAKE CUTTER\n")
+                          "[T] for the AEGIS TITAN\n[C] for the DRAKE CUTTER\n")
     if training_ship.upper() == "A":
         character["Ship"] = {"Name": "ANVIL AURORA", "Attack": 1,
                              "Movement": 3, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
-    if training_ship.upper() == "G":
+        valid_ship = True
+        return valid_ship
+    if training_ship.upper() == "T":
         character["Ship"] = {"Name": "AEGIS TITAN", "Attack": 2,
                              "Movement": 2, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
-    if training_ship.upper() == "B":
+        valid_ship = True
+        return valid_ship
+    if training_ship.upper() == "C":
         character["Ship"] = {"Name": "DRAKE CUTTER", "Attack": 3,
                              "Movement": 2, "HP": [4, 4], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
+        valid_ship = True
+        return valid_ship
+    else:
+        print("Please choose a valid selection")
