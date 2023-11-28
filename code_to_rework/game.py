@@ -3,6 +3,7 @@ Peter Senyk
 A01376857
 """
 import start_game as start
+import training_level
 
 
 def game():
@@ -13,7 +14,7 @@ def game():
     start.build_character(character)
     print(character["Stats"])
     print(character["Ship"])
-    # levels.training_level(character)
+    training_level.training_loop(character)
 
 
 def main():

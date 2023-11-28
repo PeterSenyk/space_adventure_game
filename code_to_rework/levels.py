@@ -1,4 +1,4 @@
-import checks
+from code_to_rework import checks
 import boards
 import actions
 

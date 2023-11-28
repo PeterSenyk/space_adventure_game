@@ -91,9 +91,9 @@ def space_tiles_dict():
 
 
 def training_space(space_tiles):
-    training_area = {
+    old_training_area = {
         (0, 0): space_tiles[1], (1, 0): space_tiles[2],
         (0, 1): space_tiles[3], (1, 1): space_tiles[2],
         (0, 2): space_tiles[3], (1, 2): space_tiles[3],
     }
-    return training_area
+    return old_training_area

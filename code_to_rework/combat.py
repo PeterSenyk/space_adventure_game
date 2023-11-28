@@ -1,5 +1,5 @@
 import random as r
-import checks
+from code_to_rework import checks
 
 
 def construct_hostile_ship():

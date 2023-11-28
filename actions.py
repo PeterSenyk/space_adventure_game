@@ -1,7 +1,7 @@
 import movement
 import combat
 import boards
-import checks
+from code_to_rework import checks
 
 
 def choose_an_action(character, space, rows, columns):
