@@ -2,10 +2,8 @@
 Peter Senyk
 A01376857
 """
+import levels
 import start_game as start
-import checks
-import boards
-import actions
 
 
 def game():
@@ -13,13 +11,8 @@ def game():
     runs the game
     """
     character = start.base_character()
-    space_tiles = boards.space_tiles_dict()
     start.build_character(character)
-    print(character)
-    training_goal = False
-    while character["Ship"]["HP"][0] > 0 and not training_goal:
-        space = boards.training_space(space_tiles)
-        actions.choose_an_action(character, space, 2, 3)
+    levels.training_level(character)
 
 
 def main():

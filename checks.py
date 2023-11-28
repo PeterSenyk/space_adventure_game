@@ -2,6 +2,10 @@ import random as r
 import events
 
 
+def check_space_tile(character, space, ):
+   pass
+
+
 def check_if_trainee_goal_attained(character, training_space):
     if check_character_coordinates(character) == (0, 0) and character["Accolades"]["Ships Destroyed"] == 3:
         print("Congrats, You've completed your training")

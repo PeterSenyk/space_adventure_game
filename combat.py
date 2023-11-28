@@ -1,5 +1,5 @@
 import random as r
-# from checks import is_alive
+from checks import is_alive
 
 
 def construct_hostile_ship():
@@ -135,29 +135,4 @@ def scan_ships(character, hostile_ship):
     print("Hostile ship stats:\n", hostile_ship["Ship"])
 
 
-# REWORK ATTACK ---- break into atomic function, add Shields, Miss
-# def attack(character, challenger):
-#     if compare_ships(character, challenger):
-#         challenger["HP"] -= character["Ship"]["Attack"]
-#         print("You attack the enemy\ntheir HP= ", challenger["HP"])
-#         if challenger["HP"] < 1:
-#             print("You destroyed the hostile ship")
-#             # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
-#             return
-#         else:
-#             character["Ship"]["HP"] -= challenger["Attack"]
-#             print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
-#             return
-#     else:
-#         character["Ship"]["HP"] -= challenger["Attack"]
-#         print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
-#         if not is_alive(character):
-#             print("You have been destroyed")
-#             return
-#         else:
-#             challenger["HP"] -= character["Ship"]["Attack"]
-#             print("You attack the enemy!\ntheir HP= ", challenger["HP"])
-#             if challenger["HP"] < 1:
-#                 print("You destroyed the hostile ship")
-#                 # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
-#                 return
+

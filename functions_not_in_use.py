@@ -41,3 +41,31 @@ def makename():
         print(e)
     else:
         print(another_capitalized_name)
+
+
+# REWORK ATTACK ---- break into atomic function, add Shields, Miss
+# def attack(character, challenger):
+#     if compare_ships(character, challenger):
+#         challenger["HP"] -= character["Ship"]["Attack"]
+#         print("You attack the enemy\ntheir HP= ", challenger["HP"])
+#         if challenger["HP"] < 1:
+#             print("You destroyed the hostile ship")
+#             # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
+#             return
+#         else:
+#             character["Ship"]["HP"] -= challenger["Attack"]
+#             print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
+#             return
+#     else:
+#         character["Ship"]["HP"] -= challenger["Attack"]
+#         print("The enemy ship attacks!\nYour HP= ", character["Ship"]["HP"])
+#         if not is_alive(character):
+#             print("You have been destroyed")
+#             return
+#         else:
+#             challenger["HP"] -= character["Ship"]["Attack"]
+#             print("You attack the enemy!\ntheir HP= ", challenger["HP"])
+#             if challenger["HP"] < 1:
+#                 print("You destroyed the hostile ship")
+#                 # character["Stats"]["Ships Destroyed"] += 1  #### add this later ?
+#                 return

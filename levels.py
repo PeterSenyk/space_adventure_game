@@ -1,8 +1,15 @@
 import boards
 import checks
+import boards
+import actions
 
 
-
+def training_level(character):
+    training_goal = False
+    space_tiles = boards.space_tiles_dict()
+    while character["Ship"]["HP"][0] > 0 and not training_goal:
+        space = boards.training_space(space_tiles)
+        actions.choose_an_action(character, space, 2, 3)
 
 
 

@@ -71,7 +71,7 @@ def space_tiles_dict():
     space_tiles = {
         1: [1, "You're in the docking bay of the Arc-Corp training academy.", "AC1"],
         2: [2, "You're in an empty grid in the training zone, take a moment to breathe.", " - "],
-        3: [3, "The training combat area is outlined by a ring of bright lights.", "<|>"],
+        3: [3, "The training combat area is outlined by a ring of bright lights.", "[H]"],
         5: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", " - "],
         6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.", ":::"],
         7: [7, 'You are orbiting the dark side of a moon, You think of the legendary ancient ballads of '
