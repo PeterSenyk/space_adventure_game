@@ -1,5 +1,6 @@
 import random as r
-from code_to_rework import checks
+import game_checks
+
 
 
 def construct_hostile_ship():
@@ -13,8 +14,7 @@ def construct_hostile_ship():
 
 
 def space_combat(character, hostile_ship):
-    print("You come across a hostile ship")
-    while character["Ship"]["HP"][0] > 0 and checks.is_alive(hostile_ship):
+    while character["Ship"]["HP"][0] > 0 and game_checks.is_alive(hostile_ship):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
@@ -25,31 +25,31 @@ def space_combat(character, hostile_ship):
             dodge(character, hostile_ship)
         if player_action.upper() == "S":
             scan_ships(character, hostile_ship)
-    if character["Ship"]["HP"] == 0:
+    if character["Ship"]["HP"][0] == 0:
         print("You have been destroyed by the hostile ship")
-    elif hostile_ship["Ship"]["HP"] == 0:
+    elif hostile_ship["Ship"]["HP"][0] == 0:
         print("You have destroyed the hostile ship")
 
 
 def attack_sequence(character, hostile_ship):
     comparison_results = compare_ships(character, hostile_ship)
     if comparison_results["Movement"] >= 0:
-        print("You attack the hostile ship")
+        print("You fire at the hostile ship")
         attack(character, hostile_ship)
-        if checks.is_alive(hostile_ship):
+        if game_checks.is_alive(hostile_ship):
             print(f"The hostile ship has", hostile_ship["Ship"]["HP"], "HP remaining")
-            print("The hostile ship survives and attacks back")
+            print("The hostile ship survives and fires back")
             attack(hostile_ship, character)
         else:
             character["Stats"]["Accolades"]["Ships Destroyed"] += 1
     else:
-        print("The hostile ship attacks")
+        print("The hostile ship fires at you")
         attack(hostile_ship, character)
         if character["Ship"]["HP"][0] > 0:
             print("You survive with", character["Ship"]["HP"], "HP remaining")
-            print("You attack the hostile ship")
+            print("You fire at the hostile ship")
             attack(character, hostile_ship)
-            if checks.is_alive(hostile_ship):
+            if game_checks.is_alive(hostile_ship):
                 print("The hostile ship survives with", hostile_ship["Ship"]["HP"], "HP remaining")
             else:
                 character["Stats"]["Accolades"]["Ships Destroyed"] += 1
@@ -66,12 +66,8 @@ def dodge(character, hostile_ship):
     dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 7))
     hit_chance = r.randint(5, 9)
     if dodge_chance <= hit_chance:
-        print(dodge_chance)
-        print(hit_chance)
         deal_attack_damage(hostile_ship, character)
     else:
-        print(dodge_chance)
-        print(hit_chance)
         shield_recharge(character)
 
 
@@ -106,8 +102,8 @@ def deal_attack_damage(attacker, defender):
         if defender["Ship"]["Shield"][0] > 0:
             defender["Ship"]["Shield"][0] -= 1
             print("The Shields reflect 1 damage")
-        elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"]:
-            defender["Ship"]["HP"] -= 1
+        elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"][0]:
+            defender["Ship"]["HP"][0] -= 1
             print("The hull takes 1 damage")
 
 
@@ -123,7 +119,6 @@ def compare_ships(character, hostile_ship):
     comparison_results = {
         "Attack": character["Ship"]["Attack"] - hostile_ship["Ship"]["Attack"],
         "Movement": character["Ship"]["Movement"] - hostile_ship["Ship"]["Movement"],
-        "HP": character["Ship"]["HP"] - hostile_ship["Ship"]["HP"],
         "Targeting": character["Ship"]["Targeting"] - hostile_ship["Ship"]["Targeting"],
         "Shield": character["Ship"]["Shield"][0] - hostile_ship["Ship"]["Shield"][0],
          }

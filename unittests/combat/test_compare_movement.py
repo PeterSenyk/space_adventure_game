@@ -1,5 +1,5 @@
 from unittest import TestCase
-from code_to_rework.combat import compare_movement
+from combat import compare_movement
 
 
 class Test(TestCase):

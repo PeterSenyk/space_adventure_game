@@ -1,5 +1,5 @@
 def base_character():
-    character = {"Stats": {"Title": "Trainee", "Name": "", "Accolades": []},
+    character = {"Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0}},
                  "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
                           "Shield": [2, 2], "Cargo": []},
                  "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}

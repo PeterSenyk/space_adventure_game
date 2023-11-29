@@ -12,9 +12,6 @@ def game():
     """
     character = start.base_character()
     start.build_character(character)
-    print(character["Stats"])
-    print(character["Ship"])
-    print(character["Ship"]["HP"][0])
     training_level.training_loop(character)
 
 

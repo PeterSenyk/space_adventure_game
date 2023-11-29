@@ -23,7 +23,10 @@ def get_player_coordinates(character):
 
 def check_space_tile(character, space):
     coordinates = get_player_coordinates(character)
-    print(space[coordinates][1])
+    tile_event_number = space[coordinates][0]
+    if tile_event_number == 3:
+        print("You see a training hostile")
+
     pass
 
 
