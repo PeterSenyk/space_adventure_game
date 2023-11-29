@@ -53,7 +53,6 @@ def construct_training_hostile():
 def check_training_tile(character, space):
     coordinates = game_checks.get_player_coordinates(character)
     tile_event_number = space[coordinates][0]
-    print(tile_event_number)
     if tile_event_number == 3:
         hostile_ship = construct_training_hostile()
         combat.space_combat(character, hostile_ship)
