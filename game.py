@@ -4,6 +4,7 @@ A01376857
 """
 import start_game as start
 import training_level
+import pilot_level
 
 
 def game():
@@ -13,6 +14,7 @@ def game():
     character = start.base_character()
     start.build_character(character)
     training_level.training_loop(character)
+    pilot_level.pilot_loop(character)
 
 
 def main():
