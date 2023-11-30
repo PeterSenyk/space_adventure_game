@@ -40,3 +40,6 @@ def personal_stats(character):
     print(character["Stats"]["Title"], " ", end="")
     print(character["Stats"]["Name"])
     print(f"Accolades: {character['Stats']['Accolades']}")
+    print("Your ship HP is", character["Ship"]["HP"][0], "out of", character["Ship"]["HP"][1])
+    print("Your ship shield is", character["Ship"]["Shield"][0], "out of",
+          character["Ship"]["Shield"][1])
