@@ -62,3 +62,43 @@ def choose_training_ship(character):
         return valid_ship
     else:
         print("Please choose a valid selection")
+
+
+def choose_fighter_ship(character):
+    """
+    Selects a ship for the game
+
+    this funtion lets the player select their ship for the game
+
+    :post-condition: a dictionary is added to the character dictionary adding starting ship stats
+    :return: a dictionary
+    """
+    print(character['Stats']['Title'], character["Stats"]["Name"], "Here are your choices for a Fighter ship with "
+                                                                   "their respective stats")
+    print("ANVIL ARROW: Attack [2], Movement [5], HP [4], Shield [4], Targeting [5], Cargo Space [2]")
+    print("AEGIS GLADIUS: Attack [3], Movement [2], HP [6], Shield [6], Targeting [4], Cargo Space [2]")
+    print("DRAKE BUCCANEER: Attack [5], Movement [3], HP [3], Shield [4], Targeting [5], Cargo Space [2]")
+    fighter_ship = input("Please select:\n[A] for the ANVIL ARROW\n"
+                          "[G] for the AEGIS GLADIUS\n[B] for the DRAKE BUCCANEER\n")
+    if fighter_ship.upper() == "A":
+        character["Ship"] = {"Name": "ANVIL AURORA", "Attack": 1,
+                             "Movement": 3, "HP": [5, 5], "Targeting": 4,
+                             "Shield": [2, 2], "Cargo": []}
+        valid_ship = True
+        return valid_ship
+    if fighter_ship.upper() == "T":
+        character["Ship"] = {"Name": "AEGIS GLADIUS", "Attack": 3,
+                             "Movement": 2, "HP": [5, 5], "Targeting": 4,
+                             "Shield": [2, 2], "Cargo": []}
+        valid_ship = True
+        return valid_ship
+    if fighter_ship.upper() == "C":
+        character["Ship"] = {"Name": "DRAKE CUTTER", "Attack": 3,
+                             "Movement": 2, "HP": [4, 4], "Targeting": 4,
+                             "Shield": [2, 2], "Cargo": []}
+        valid_ship = True
+        return valid_ship
+    else:
+        print("Please choose a valid selection")
+        # TODO
+        # work on fighter ship balance
