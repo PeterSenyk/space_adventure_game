@@ -1,5 +1,5 @@
 import combat
-import game_checks
+import checks
 import actions
 import random as r
 

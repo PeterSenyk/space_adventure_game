@@ -26,7 +26,9 @@ def check_space_tile(character, space):
     tile_event_number = space[coordinates][0]
     if tile_event_number == 3:
         print("You see a training hostile")
-
     pass
 
 
+def level_one_goal(character):
+    if character["Stats"]["Accolades"]["Ships Destroyed"] == 3:
+        return True

@@ -61,9 +61,11 @@ def make_space(rows, columns):
     :return: a dictionary
     """
     new_space = {}
+    tile_dict = space_tiles_dict()
     for row in range(rows):
         for column in range(columns):
-            new_space[(column, row)] = populate_space()
+            space_tile = r.randint(1, 10)
+            new_space[(column, row)] = tile_dict[space_tile]
     return new_space
 
 
@@ -72,6 +74,7 @@ def space_tiles_dict():
         1: [1, "You're in the docking bay of the Arc-Corp training academy.", "AC1"],
         2: [2, "You're in an empty grid in the training zone, take a moment to breathe.", " - "],
         3: [3, "The training combat area is outlined by a ring of bright lights.", "[H]"],
+        4: [3, "You see lots of debris ahead of you, watch out !", "xxx"],
         5: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", " - "],
         6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.", ":::"],
         7: [7, 'You are orbiting the dark side of a moon, You think of the legendary ancient ballads of '

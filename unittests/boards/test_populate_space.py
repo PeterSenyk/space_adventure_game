@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from code_to_rework.boards import populate_space
+from boards import populate_space
 
 
 class Test(TestCase):

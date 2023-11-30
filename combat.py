@@ -1,5 +1,5 @@
 import random as r
-import game_checks
+import checks
 
 
 

@@ -2,6 +2,9 @@
 Peter Senyk
 A01376857
 """
+import boards
+import checks
+import game_loop
 import start_game as start
 import training_level
 import pilot_level
@@ -13,8 +16,8 @@ def game():
     """
     character = start.base_character()
     start.build_character(character)
-    training_level.training_loop(character)
-    pilot_level.pilot_loop(character)
+    game_loop.level_one_loop(character)
+
 
 
 def main():

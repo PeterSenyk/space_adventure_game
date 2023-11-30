@@ -1,4 +1,4 @@
-import game_checks
+import checks
 import movement
 # import combat
 # import boards
@@ -20,7 +20,7 @@ def player_action_move(character, space):
     valid_move = movement.validate_move(space, character, direction)
     if not valid_move:
         return
-    game_checks.check_space_tile(character, space)
+    checks.check_space_tile(character, space)
 
 
 def scan_space_grid(character, space, columns, rows):
