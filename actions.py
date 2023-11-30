@@ -21,8 +21,9 @@ def player_action_move(character, space):
     valid_move = movement.validate_move(space, character, direction)
     if not valid_move:
         return
-    boards.describe_current_location(space, character)
-    checks.check_space_tile(character, space)
+    else:
+        boards.describe_current_location(space, character)
+        checks.check_space_tile(character, space)
 
 
 def scan_space_grid(character, space, columns, rows):
