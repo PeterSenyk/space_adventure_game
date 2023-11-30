@@ -1,6 +1,8 @@
 import combat
 import random as r
 
+import events
+
 
 def is_alive(ship):
     """
@@ -28,29 +30,45 @@ def get_player_coordinates(character):
 def check_space_tile(character, space):
     coordinates = get_player_coordinates(character)
     tile_event_number = space[coordinates][0]
-    if tile_event_number == 3:
-        print("You see a training hostile")
-        hostile_ship = combat.construct_training_hostile()
-        combat.space_combat(character, hostile_ship)
-    if tile_event_number == 4:
-        print("Try to dodge the debris if you can")
-        correct_route = r.randint(1, 3)
-        choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
-        if choice == correct_route:
-            print("You avoided the debris !")
-            combat.shield_recharge(character)
-            if "Debris Avoided" not in character:
-                character["Stats"]["Accolades"]["Debris Avoided"] = 1
-            else:
-                character["Stats"]["Accolades"]["Debris Avoided"] += 1
-        else:
-            print("You collide with the debris")
-            combat.deal_other_damage(character, 1)
-    pass
+    match tile_event_number:
+        case 3:
+            events.training_combat(character)
+
+
+
+# def check_space_tile(character, space):
+#     coordinates = get_player_coordinates(character)
+#     tile_event_number = space[coordinates][0]
+#     if tile_event_number == 3:
+#         print("You see a training hostile")
+#         hostile_ship = combat.construct_training_hostile()
+#         combat.space_combat(character, hostile_ship)
+#     if tile_event_number == 4:
+#         print("Try to dodge the debris if you can")
+#         correct_route = r.randint(1, 3)
+#         choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
+#         if choice in [1, 2, 3]:
+#             if choice == correct_route:
+#                 print("You avoided the debris !")
+#                 combat.shield_recharge(character)
+#                 if "Debris Avoided" not in character:
+#                     character["Stats"]["Accolades"]["Debris Avoided"] = 1
+#                 else:
+#                     character["Stats"]["Accolades"]["Debris Avoided"] += 1
+#             else:
+#                 print("You collide with the debris")
+#                 combat.deal_other_damage(character, 1)
+#         else:
+#             print("Choose a valid route")
 
 
 def level_one_goal(character):
     ships_destroyed = character["Stats"]["Accolades"]["Ships Destroyed"]
     debris_avoided = character["Stats"]["Accolades"]["Debris Avoided"]
     if ships_destroyed + debris_avoided == 4:
+        return True
+
+
+def level_two_goal(character):
+    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"]:
         return True

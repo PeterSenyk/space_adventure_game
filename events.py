@@ -1,6 +1,11 @@
 import random as r
 import combat
 
+def training_combat(character):
+    print("You see a training hostile")
+    hostile_ship = combat.construct_training_hostile()
+    combat.space_combat(character, hostile_ship)
+
 
 def asteroid_belt(character):
     print("Theres more asteroids than you expected, you're going to have to fly by instinct here")

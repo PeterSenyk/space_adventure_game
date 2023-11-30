@@ -79,9 +79,9 @@ def choose_fighter_ship(character):
     print("AEGIS GLADIUS: Attack [3], Movement [2], HP [6], Shield [6], Targeting [4], Cargo Space [2]")
     print("DRAKE BUCCANEER: Attack [5], Movement [3], HP [3], Shield [4], Targeting [5], Cargo Space [2]")
     fighter_ship = input("Please select:\n[A] for the ANVIL ARROW\n"
-                          "[G] for the AEGIS GLADIUS\n[B] for the DRAKE BUCCANEER\n")
+                         "[G] for the AEGIS GLADIUS\n[B] for the DRAKE BUCCANEER\n")
     if fighter_ship.upper() == "A":
-        character["Ship"] = {"Name": "ANVIL AURORA", "Attack": 1,
+        character["Ship"] = {"Name": "ANVIL ARROW", "Attack": 1,
                              "Movement": 3, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
         valid_ship = True
@@ -92,13 +92,11 @@ def choose_fighter_ship(character):
                              "Shield": [2, 2], "Cargo": []}
         valid_ship = True
         return valid_ship
-    if fighter_ship.upper() == "C":
-        character["Ship"] = {"Name": "DRAKE CUTTER", "Attack": 3,
+    if fighter_ship.upper() == "B":
+        character["Ship"] = {"Name": "DRAKE BUCCANEER", "Attack": 3,
                              "Movement": 2, "HP": [4, 4], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}
         valid_ship = True
         return valid_ship
     else:
         print("Please choose a valid selection")
-        # TODO
-        # work on fighter ship balance
