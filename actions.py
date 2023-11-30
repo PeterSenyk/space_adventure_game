@@ -1,3 +1,4 @@
+import boards
 import checks
 import movement
 # import combat
@@ -20,6 +21,7 @@ def player_action_move(character, space):
     valid_move = movement.validate_move(space, character, direction)
     if not valid_move:
         return
+    boards.describe_current_location(space, character)
     checks.check_space_tile(character, space)
 
 
@@ -27,7 +29,7 @@ def scan_space_grid(character, space, columns, rows):
     for row in range(rows):
         for column in range(columns):
             if column == character["Coordinates"]["X-coordinate"] and row == character["Coordinates"]["Y-coordinate"]:
-                print("[X]", end="")
+                print("\033[7m[X]\033[m", end="")
             else:
                 tile_grid = (column, row)
                 print(space[tile_grid][2], end="")

@@ -16,10 +16,7 @@ def avoid_debris(character):
         if choice == correct_route:
             print("You avoided the debris !")
             combat.shield_recharge(character)
-            if "Debris Avoided" not in character:
-                character["Stats"]["Accolades"]["Debris Avoided"] = 1
-            else:
-                character["Stats"]["Accolades"]["Debris Avoided"] += 1
+            character["Stats"]["Accolades"]["Debris Avoided"] += 1
         else:
             print("You collide with the debris")
             combat.deal_other_damage(character, 1)
