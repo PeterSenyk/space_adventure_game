@@ -47,7 +47,7 @@ def populate_space():
         return space_tile
 
 
-def make_space(rows, columns):
+def make_space(rows, columns, min, max):
     """
     Makes the board grid
 
@@ -64,7 +64,7 @@ def make_space(rows, columns):
     tile_dict = space_tiles_dict()
     for row in range(rows):
         for column in range(columns):
-            space_tile = r.randint(1, 10)
+            space_tile = r.randint(min, max)
             new_space[(column, row)] = tile_dict[space_tile]
     return new_space
 

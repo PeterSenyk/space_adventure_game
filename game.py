@@ -19,7 +19,6 @@ def game():
     game_loop.level_one_loop(character)
 
 
-
 def main():
     game()
 
