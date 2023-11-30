@@ -13,7 +13,7 @@ def construct_training_hostile():
     return hostile_ship
 
 
-def construct_hostile_ship():
+def construct_medium_hostile_ship():
     hostile_shield = r.randint(0, 2)
     hostile_ship = {"Ship": {
         "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": r.randint(1, 3),
@@ -117,8 +117,8 @@ def deal_attack_damage(attacker, defender):
             print("The hull takes 1 damage")
 
 
-def deal_other_damage(defender, attack):
-    for point in range(attack):
+def deal_other_damage(defender, attack_value):
+    for point in range(attack_value):
         if defender["Ship"]["Shield"][0] > 0:
             defender["Ship"]["Shield"][0] -= 1
             print("The Shields reflect 1 damage")

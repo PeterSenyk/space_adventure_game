@@ -33,7 +33,34 @@ def check_space_tile(character, space):
     match tile_event_number:
         case 3:
             events.training_combat(character)
-
+        case 4:
+            events.avoid_debris(character)
+        case 5:
+            if r.randint(1, 5) >= 4:
+                combat.shield_recharge(character)
+        case 6:
+            events.asteroid_belt(character)
+        case 7:
+            # make a separate events !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if r.randint(1, 10) >= 6:
+                hostile_ship = combat.construct_medium_hostile_ship()
+                combat.space_combat(character, hostile_ship)
+            else:
+                combat.shield_recharge(character)
+        case 8:
+            if r.randint(1, 10) >= 6:
+                if character["Ship"]["HP"][0] <= character["Ship"]["HP"][1]:
+                    character["Ship"]["HP"][0] += 1
+            else:
+                hostile_ship = combat.construct_medium_hostile_ship()
+                combat.space_combat(character, hostile_ship)
+        case 9:
+            if r.randint(1, 10) == 10:
+                character["Ship"]["Attack"] += 1
+            if r.randint(1, 10) == 9:
+                character["Ship"]["Movement"] += 1
+            if r.randint(1, 10) == 8:
+                character["Ship"]["Movement"] += 1
 
 
 # def check_space_tile(character, space):

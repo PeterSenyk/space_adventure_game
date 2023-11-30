@@ -1,10 +1,28 @@
 import random as r
 import combat
 
+
 def training_combat(character):
     print("You see a training hostile")
     hostile_ship = combat.construct_training_hostile()
     combat.space_combat(character, hostile_ship)
+
+
+def avoid_debris(character):
+    print("Try to dodge the debris if you can")
+    correct_route = r.randint(1, 3)
+    choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
+    if choice in [1, 2, 3]:
+        if choice == correct_route:
+            print("You avoided the debris !")
+            combat.shield_recharge(character)
+            if "Debris Avoided" not in character:
+                character["Stats"]["Accolades"]["Debris Avoided"] = 1
+            else:
+                character["Stats"]["Accolades"]["Debris Avoided"] += 1
+        else:
+            print("You collide with the debris")
+            combat.deal_other_damage(character, 1)
 
 
 def asteroid_belt(character):
@@ -18,18 +36,18 @@ def asteroid_belt(character):
         if chosen_path == correct_path:
             combat.shield_recharge(character)
         else:
-            asteroid_damage(character)
+            combat.deal_other_damage(character, 1)
 
 
-def asteroid_damage(character):
-    if character["Ship"]["Shield"][0] > 0:
-        character["Ship"]["Shield"][0] -= 1
-        print("The Shields reflect 1 damage")
-    elif character["Ship"]["Shield"][0] <= 0 < character["Ship"]["HP"]:
-        character["Ship"]["HP"] -= 1
-        print("The hull takes 1 damage")
-    else:
-        print("You hit an asteroid head on, your ship is reduced to ashes and dust")
+# def asteroid_damage(character):
+#     if character["Ship"]["Shield"][0] > 0:
+#         character["Ship"]["Shield"][0] -= 1
+#         print("The Shields reflect 1 damage")
+#     elif character["Ship"]["Shield"][0] <= 0 < character["Ship"]["HP"]:
+#         character["Ship"]["HP"] -= 1
+#         print("The hull takes 1 damage")
+#     else:
+#         print("You hit an asteroid head on, your ship is reduced to ashes and dust")
 
 
 def clean_asteroid_game_direction(direction):
