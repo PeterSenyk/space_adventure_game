@@ -60,7 +60,24 @@ def check_space_tile(character, space):
             if r.randint(1, 10) == 9:
                 character["Ship"]["Movement"] += 1
             if r.randint(1, 10) == 8:
-                character["Ship"]["Movement"] += 1
+                character["Ship"]["Shield"][1] += 1
+            if r.randint(1, 10) == 7:
+                character["Ship"]["HP"][1] += 1
+            else:
+                hostile_ship = combat.construct_medium_hostile_ship()
+                combat.space_combat(character, hostile_ship)
+        case 10:
+            events.return_stolen_item
+                    remove stolen items from cargo
+                    player level up to captain
+                    move to explorer space
+        case 11:
+            combat.pirate_fight
+            add stolen items to cargo
+
+    # explorer space > upgrade to exploration ships, high hp and shields, explore anomoly @
+    # can either return with info > end game or pass through anomoly = endless space until game over ???
+
 
 
 # def check_space_tile(character, space):

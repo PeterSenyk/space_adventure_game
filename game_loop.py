@@ -27,6 +27,7 @@ def level_two(character):
     print("Before you deploy were setting you up with a brand new Fighter Class ship")
     start_game.choose_fighter_ship(character)
     space = boards.make_space(7, 7, 5, 8)
+    space[(6, 5)] = 60
     level_two_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\nYour mission "
           f"is to destroy the space pirate who stole the new Quantem Tech from our outpost, beware of the hazards on "
