@@ -2,9 +2,19 @@ import random as r
 import checks
 
 
+def construct_training_hostile():
+    hostile_shield = r.randint(0, 1)
+    hostile_hp = r.randint(1, 2)
+    hostile_ship = {"Ship": {
+        "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": [hostile_hp, hostile_hp],
+        "Targeting": r.randint(1, 3), "Shield": [hostile_shield, hostile_shield],
+        "Cargo": []
+    }}
+    return hostile_ship
+
 
 def construct_hostile_ship():
-    hostile_shield = r.randint (0, 2)
+    hostile_shield = r.randint(0, 2)
     hostile_ship = {"Ship": {
         "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": r.randint(1, 3),
         "Targeting": r.randint(1, 4), "Shield": [hostile_shield, hostile_shield],
@@ -14,7 +24,7 @@ def construct_hostile_ship():
 
 
 def space_combat(character, hostile_ship):
-    while character["Ship"]["HP"][0] > 0 and game_checks.is_alive(hostile_ship):
+    while character["Ship"]["HP"][0] > 0 and checks.is_alive(hostile_ship):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
@@ -36,7 +46,7 @@ def attack_sequence(character, hostile_ship):
     if comparison_results["Movement"] >= 0:
         print("You fire at the hostile ship")
         attack(character, hostile_ship)
-        if game_checks.is_alive(hostile_ship):
+        if checks.is_alive(hostile_ship):
             print(f"The hostile ship has", hostile_ship["Ship"]["HP"], "HP remaining")
             print("The hostile ship survives and fires back")
             attack(hostile_ship, character)
@@ -49,7 +59,7 @@ def attack_sequence(character, hostile_ship):
             print("You survive with", character["Ship"]["HP"], "HP remaining")
             print("You fire at the hostile ship")
             attack(character, hostile_ship)
-            if game_checks.is_alive(hostile_ship):
+            if checks.is_alive(hostile_ship):
                 print("The hostile ship survives with", hostile_ship["Ship"]["HP"], "HP remaining")
             else:
                 character["Stats"]["Accolades"]["Ships Destroyed"] += 1
@@ -128,6 +138,3 @@ def compare_ships(character, hostile_ship):
 def scan_ships(character, hostile_ship):
     print("Your ship stats:\n", character["Ship"])
     print("Hostile ship stats:\n", hostile_ship["Ship"])
-
-
-

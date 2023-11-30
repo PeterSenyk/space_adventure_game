@@ -35,7 +35,6 @@ def scan_space_grid(character, space, columns, rows):
 
 
 def personal_stats(character):
-    print(character["Stats"]["Title"]," ", end="")
+    print(character["Stats"]["Title"], " ", end="")
     print(character["Stats"]["Name"])
     print(f"Accolades: {character['Stats']['Accolades']}")
-

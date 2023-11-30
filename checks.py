@@ -26,6 +26,9 @@ def check_space_tile(character, space):
     tile_event_number = space[coordinates][0]
     if tile_event_number == 3:
         print("You see a training hostile")
+
+    if tile_event_number == 4:
+        print("Try to dodge the debris if you can")
     pass
 
 

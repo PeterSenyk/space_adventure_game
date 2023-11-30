@@ -2,12 +2,8 @@
 Peter Senyk
 A01376857
 """
-import boards
-import checks
 import game_loop
 import start_game as start
-import training_level
-import pilot_level
 
 
 def game():
