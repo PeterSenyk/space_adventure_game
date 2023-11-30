@@ -117,6 +117,16 @@ def deal_attack_damage(attacker, defender):
             print("The hull takes 1 damage")
 
 
+def deal_other_damage(defender, attack):
+    for point in range(attack):
+        if defender["Ship"]["Shield"][0] > 0:
+            defender["Ship"]["Shield"][0] -= 1
+            print("The Shields reflect 1 damage")
+        elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"][0]:
+            defender["Ship"]["HP"][0] -= 1
+            print("The hull takes 1 damage")
+
+
 def shield_recharge(ship):
     if ship["Ship"]["Shield"][0] < ship["Ship"]["Shield"][1]:
         print("Your shields recharge by 1 point")
