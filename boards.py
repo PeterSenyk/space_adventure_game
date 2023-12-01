@@ -55,7 +55,7 @@ def space_tiles_dict():
         9: [9, "You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.", " & "],
         10: [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Outland Quadrant'", "AC9"],
         11: [11, "You find the crew responsible for the theft from the Arc-Corp R&D station", "<$>"],
-        12: [12, "", "???"],
+        12: [12, "You see Arc-Corp Station 7, Return the stolen tech here", "AC7"],
         13: [13, "", "???"],
         14: [14, "", "???"],
         60: [60, "You find the crew responsible for the theft from the Arc-Corp R&D station", "<$>"],

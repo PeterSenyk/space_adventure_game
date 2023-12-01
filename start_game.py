@@ -60,6 +60,12 @@ def choose_training_ship(character):
                              "Shield": [2, 2], "Cargo": []}
         valid_ship = True
         return valid_ship
+    if training_ship.upper() == ("Z"):
+        character["Ship"] = {"Name": "F8C - TEST", "Attack": 10,
+                             "Movement": 10, "HP": [10, 10], "Targeting": 10,
+                             "Shield": [10, 10], "Cargo": []}
+        valid_ship = True
+        return valid_ship
     else:
         print("Please choose a valid selection")
 
@@ -86,7 +92,7 @@ def choose_fighter_ship(character):
                              "Shield": [2, 2], "Cargo": []}
         valid_ship = True
         return valid_ship
-    if fighter_ship.upper() == "T":
+    if fighter_ship.upper() == "G":
         character["Ship"] = {"Name": "AEGIS GLADIUS", "Attack": 3,
                              "Movement": 2, "HP": [5, 5], "Targeting": 4,
                              "Shield": [2, 2], "Cargo": []}

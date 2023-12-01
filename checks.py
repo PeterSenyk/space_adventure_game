@@ -72,7 +72,6 @@ def level_one_goal(character):
 
 
 def level_two_goal(character):
-
     stolen_tech_returned = events.bring_back_stolen_tech(character)
     if stolen_tech_returned:
         return True

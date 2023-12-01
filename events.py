@@ -11,15 +11,19 @@ def training_combat(character):
 def avoid_debris(character):
     print("Try to dodge the debris if you can")
     correct_route = r.randint(1, 3)
-    choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
-    if choice in [1, 2, 3]:
-        if choice == correct_route:
-            print("You avoided the debris !")
-            combat.shield_recharge(character)
-            character["Stats"]["Accolades"]["Debris Avoided"] += 1
-        else:
-            print("You collide with the debris")
-            combat.deal_other_damage(character, 1)
+    try:
+        choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
+    except ValueError:
+        print("Choose a valid selection")
+    else:
+        if choice in [1, 2, 3]:
+            if choice == correct_route:
+                print("You avoided the debris !")
+                combat.shield_recharge(character)
+                character["Stats"]["Accolades"]["Debris Avoided"] += 1
+            else:
+                print("You collide with the debris")
+                combat.deal_other_damage(character, 1)
 
 
 def asteroid_belt(character):
@@ -78,7 +82,9 @@ def pirate_combat(character):
 
 
 def bring_back_stolen_tech(character):
-    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"]:
+    coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["y-coordinate"])
+    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"] and coordinates == (2, 6):
+        character["Ship"]["Cargo"].pop()
         return True
     else:
         return False
