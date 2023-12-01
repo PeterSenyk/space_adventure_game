@@ -48,62 +48,20 @@ def check_space_tile(character, space):
             else:
                 combat.shield_recharge(character)
         case 8:
-            if r.randint(1, 10) >= 6:
-                if character["Ship"]["HP"][0] <= character["Ship"]["HP"][1]:
-                    character["Ship"]["HP"][0] += 1
-            else:
-                hostile_ship = combat.construct_medium_hostile_ship()
-                combat.space_combat(character, hostile_ship)
+            events.dark_side_of_moon(character)
         case 9:
-            if r.randint(1, 10) == 10:
-                character["Ship"]["Attack"] += 1
-            if r.randint(1, 10) == 9:
-                character["Ship"]["Movement"] += 1
-            if r.randint(1, 10) == 8:
-                character["Ship"]["Shield"][1] += 1
-            if r.randint(1, 10) == 7:
-                character["Ship"]["HP"][1] += 1
-            else:
-                hostile_ship = combat.construct_medium_hostile_ship()
-                combat.space_combat(character, hostile_ship)
-        # case 10:
-        #     events.return_stolen_item
-        #             remove stolen items from cargo
-        #             player level up to captain
-        #             move to explorer space
-        # case 11:
-        #     combat.pirate_fight
-        #     add stolen items to cargo
+            events.abandoned_space_station(character)
+        case 10:
+            events.bring_back_stolen_tech(character)
+        case 11:
+            events.pirate_combat(character)
+
 
     # explorer space > upgrade to exploration ships, high hp and shields, explore anomoly @
     # can either return with info > end game or pass through anomoly = endless space until game over ???
 
 
 
-# def check_space_tile(character, space):
-#     coordinates = get_player_coordinates(character)
-#     tile_event_number = space[coordinates][0]
-#     if tile_event_number == 3:
-#         print("You see a training hostile")
-#         hostile_ship = combat.construct_training_hostile()
-#         combat.space_combat(character, hostile_ship)
-#     if tile_event_number == 4:
-#         print("Try to dodge the debris if you can")
-#         correct_route = r.randint(1, 3)
-#         choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
-#         if choice in [1, 2, 3]:
-#             if choice == correct_route:
-#                 print("You avoided the debris !")
-#                 combat.shield_recharge(character)
-#                 if "Debris Avoided" not in character:
-#                     character["Stats"]["Accolades"]["Debris Avoided"] = 1
-#                 else:
-#                     character["Stats"]["Accolades"]["Debris Avoided"] += 1
-#             else:
-#                 print("You collide with the debris")
-#                 combat.deal_other_damage(character, 1)
-#         else:
-#             print("Choose a valid route")
 
 
 def level_one_goal(character):
@@ -114,6 +72,7 @@ def level_one_goal(character):
 
 
 def level_two_goal(character):
-    coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
-    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"] and coordinates == (2, 5):
+
+    stolen_tech_returned = events.bring_back_stolen_tech(character)
+    if stolen_tech_returned:
         return True

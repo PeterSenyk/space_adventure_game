@@ -36,17 +36,6 @@ def asteroid_belt(character):
             combat.deal_other_damage(character, 1)
 
 
-# def asteroid_damage(character):
-#     if character["Ship"]["Shield"][0] > 0:
-#         character["Ship"]["Shield"][0] -= 1
-#         print("The Shields reflect 1 damage")
-#     elif character["Ship"]["Shield"][0] <= 0 < character["Ship"]["HP"]:
-#         character["Ship"]["HP"] -= 1
-#         print("The hull takes 1 damage")
-#     else:
-#         print("You hit an asteroid head on, your ship is reduced to ashes and dust")
-
-
 def clean_asteroid_game_direction(direction):
     if direction.upper() == "W":
         return 1
@@ -58,23 +47,39 @@ def clean_asteroid_game_direction(direction):
         return 4
 
 
-def guessing_game(character):
-    """
-    Challenges the character to a guessing game
-
-    this function creates a random number between 1-5 inclusive, and asks the character to guess
-
-    :param character: a dictionary of character location and HP
-    :precondition: character must have an HP value of 1 or greater
-    :post-condition: if the character guesses correctly they move on, if they guess wrong they loose 1 HP
-    :return: a string based on whether the character guessed right or wrong
-    """
-    number_to_guess = r.randint(1, 5)
-    player_guess = int(input("A challenger approaches... Test your luck and guess a number between 1 & 5 :\n"))
-    if player_guess == number_to_guess:
-        print("Lucky guess, this time...  HP=", character["Ship"]["HP"])
-        return character["Ship"]["HP"]
+def dark_side_of_moon(character):
+    if r.randint(1, 10) >= 6:
+        if character["Ship"]["HP"][0] <= character["Ship"]["HP"][1]:
+            character["Ship"]["HP"][0] += 1
     else:
-        character["Ship"]["HP"] -= 1
-        print("Wrong! the number was", number_to_guess, "Your HP =", character["Ship"]["HP"])
-        return character["Ship"]["HP"]
+        hostile_ship = combat.construct_medium_hostile_ship()
+        combat.space_combat(character, hostile_ship)
+
+
+def abandoned_space_station(character):
+    if r.randint(1, 10) == 10:
+        character["Ship"]["Attack"] += 1
+    if r.randint(1, 10) == 9:
+        character["Ship"]["Movement"] += 1
+    if r.randint(1, 10) == 8:
+        character["Ship"]["Shield"][1] += 1
+    if r.randint(1, 10) == 7:
+        character["Ship"]["HP"][1] += 1
+    else:
+        hostile_ship = combat.construct_medium_hostile_ship()
+        combat.space_combat(character, hostile_ship)
+
+
+def pirate_combat(character):
+    hostile = combat.construct_pirate_hostile_ship()
+    combat.space_combat(character, hostile)
+    if character["Ship"]["HP"][0] > 0:
+        character["Ship"]["Cargo"].append("Explorer Class Quantum Drive")
+
+
+def bring_back_stolen_tech(character):
+    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"]:
+        return True
+    else:
+        return False
+

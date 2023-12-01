@@ -19,34 +19,6 @@ def describe_current_location(space, character):
     print(f"Your current coordinates are: {location_of_character}\n{space[location_key][1]}")
 
 
-# def populate_space():
-#     """
-#     Makes descriptions of space tiles
-#
-#     this function assigns room descriptions to the grid by using random numbers
-#
-#     :post-condition: returns a random room description in a list, with an integer allocated to it
-#     :return: a list
-#     """
-#     space_randomizer = r.randint(1, 10)
-#     if space_randomizer == 1:
-#         space_tile = [1, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully."]
-#         return space_tile
-#     if space_randomizer == 2:
-#         space_tile = [2, "You are orbiting the dark side of a moon, You think of the legendary "
-#                          "ancient ballads of Pink Floyd."]
-#         return space_tile
-#     if space_randomizer == 3:
-#         space_tile = [3, "You come across a ship wreck, You start to wonder who could have caused this."]
-#         return space_tile
-#     if space_randomizer == 4:
-#         space_tile = [4, "You see the abandoned ArcCorp Space Station, You wonder what could have been left behind."]
-#         return space_tile
-#     if space_randomizer >= 5:
-#         space_tile = [5, "You are in the void of space, the sheer amount of nothingness is eerie."]
-#         return space_tile
-
-
 def make_space(rows, columns, min, max):
     """
     Makes the board grid

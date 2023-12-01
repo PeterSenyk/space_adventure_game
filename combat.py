@@ -15,9 +15,21 @@ def construct_training_hostile():
 
 def construct_medium_hostile_ship():
     hostile_shield = r.randint(0, 2)
+    hostile_hp = r.randint(2, 3)
     hostile_ship = {"Ship": {
-        "Attack": r.randint(1, 2), "Movement": r.randint(1, 3), "HP": r.randint(1, 3),
+        "Attack": r.randint(1, 2), "Movement": r.randint(1, 3),  "HP": [hostile_hp, hostile_hp],
         "Targeting": r.randint(1, 4), "Shield": [hostile_shield, hostile_shield],
+        "Cargo": []
+    }}
+    return hostile_ship
+
+
+def construct_pirate_hostile_ship():
+    hostile_shield = r.randint(3, 4)
+    hostile_hp = r.randint(5, 7)
+    hostile_ship = {"Ship": {
+        "Attack": r.randint(2, 4), "Movement": r.randint(2, 5),  "HP": [hostile_hp, hostile_hp],
+        "Targeting": r.randint(3, 4), "Shield": [hostile_shield, hostile_shield],
         "Cargo": []
     }}
     return hostile_ship
