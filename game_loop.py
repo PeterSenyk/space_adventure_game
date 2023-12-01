@@ -40,5 +40,5 @@ def level_two(character):
     if not checks.is_alive(character):
         print("Your ship exploded !\nGame Over")
     else:
-        print("Congratulations you've completed level one !\n You've achieved the title of Fighter Pilot")
-        character["Stats"]["Title"] = "Fighter Pilot"
+        print("Congratulations you've completed level two !\n You've achieved the title of Captain")
+        character["Stats"]["Title"] = "Captain"
