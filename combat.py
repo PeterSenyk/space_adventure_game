@@ -24,7 +24,7 @@ def construct_medium_hostile_ship():
 
 
 def space_combat(character, hostile_ship):
-    while character["Ship"]["HP"][0] > 0 and checks.is_alive(hostile_ship):
+    while checks.is_alive(character) and checks.is_alive(hostile_ship):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
