@@ -40,6 +40,8 @@ ACTIONS:
     SCAN: Send a radar ping, displaying all tiles in your space grid
     Personal Stats: Display your character Title and Name, along with current HP and SHIELD values for your ship
 
+======EVENTS=======
+
 COMBAT:
     ATTACK: Start an attack sequence with the hostile ship
             Order is determined by both ships movement value, higher speed and agility means you go first
@@ -51,3 +53,35 @@ COMBAT:
             Instead the chance for the hostile ships attack to miss increases, giving you a chance to recharge your SHIELDS
     RUN: You escape the fight, if your ship MOVEMENT is not high enough you will take damage while escaping
     SCAN: Display your ships current stats, as well as the hostile ship stats
+
+DEBRIS:
+    You're given possible routes to avoid the debris in space
+    CORRECT GUESS: You slip past the debris, allowing your SHIELD to recharge one point
+    INCORRECT GUESS: You fly into the space debris taking one damage, hopefully you have SHIELDS
+
+ASTEROID BELT:
+    Very similar to debris in space, but there's a chance of having to avoid more than one collision
+    CORRECT GUESS: You slip past the debris, allowing your SHIELD to recharge one point
+    INCORRECT GUESS: You fly into the space debris taking one damage, hopefully you have SHIELDS
+
+SHIP WRECK: 
+    Theres a chance you find spare parts, upgrading your ship, or repairing some hull damage (+1 HP)
+    There's also a chance that you instead meet the hostile ship that caused the wreckage, starting COMBAT
+
+MOON:
+    There's a chance of hostile ships waiting for you here, starting COMBAT
+    If there's no hostile ship, listen to some Pink Floyd, and let your SHIELD recharge by one point
+
+
+======MISSIONS=====
+
+LEVEL ONE: Complete space combat and dodge debris, get one point for doing either successfully, You need a combined value of 4 to complete the first level
+
+LEVEL TWO: Avoid the hazards of space while you track down the pirate that stole some tech from Arc-Corp, defeat the pirate and return the cargo to the station to 
+            complete level two
+
+LEVEL THREE: Explore deep into space to investigate a spacial anomaly that appeared on the radar, 
+            Return with the gathered information to complete level three, 
+            or enter the anomaly to ???
+
+

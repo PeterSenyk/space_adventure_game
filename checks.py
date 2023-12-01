@@ -66,14 +66,14 @@ def check_space_tile(character, space):
             else:
                 hostile_ship = combat.construct_medium_hostile_ship()
                 combat.space_combat(character, hostile_ship)
-        case 10:
-            events.return_stolen_item
-                    remove stolen items from cargo
-                    player level up to captain
-                    move to explorer space
-        case 11:
-            combat.pirate_fight
-            add stolen items to cargo
+        # case 10:
+        #     events.return_stolen_item
+        #             remove stolen items from cargo
+        #             player level up to captain
+        #             move to explorer space
+        # case 11:
+        #     combat.pirate_fight
+        #     add stolen items to cargo
 
     # explorer space > upgrade to exploration ships, high hp and shields, explore anomoly @
     # can either return with info > end game or pass through anomoly = endless space until game over ???
@@ -114,5 +114,6 @@ def level_one_goal(character):
 
 
 def level_two_goal(character):
-    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"]:
+    coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
+    if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"] and coordinates == (2, 5):
         return True

@@ -27,10 +27,11 @@ def level_two(character):
     print("Before you deploy were setting you up with a brand new Fighter Class ship")
     start_game.choose_fighter_ship(character)
     space = boards.make_space(7, 7, 5, 8)
-    space[(6, 5)] = 60
+    space[(2, 6)] = 12 # space station to return tech
+    space[(6, 5)] = 11 # pirate boss fight to get tech back from
     level_two_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\nYour mission "
-          f"is to destroy the space pirate who stole the new Quantem Tech from our outpost, beware of the hazards on "
+          f"is to destroy the space pirate who stole the new Quantum Tech from our outpost, beware of the hazards on "
           f"the way")
     while checks.is_alive(character) and not level_two_goal:
         actions.choose_an_action(character, space, 5, 5)
