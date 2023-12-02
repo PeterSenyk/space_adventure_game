@@ -33,8 +33,8 @@ def validate_move(space, character, direction):
 
     this function compares the intended move to the game board
 
+    :param character: a dictionary of the player character information
     :param space: a dictionary of grid paired with a list containing an integer, description, and symbol
-    :param character: a dictionary of the player character information.
     :param direction: a string value of "W" "A" "S" or "D"
     :precondition: direction must be a string of either "W" "A" "S" or "D"
     :post-condition: returns True if the move is in the game board, and False if the move is outside the board grid
