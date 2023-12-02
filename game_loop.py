@@ -92,3 +92,8 @@ def level_three(character):
     else:
         print("Congratulations you've completed level three !\n You've achieved the title of Admiral")
         character["Stats"]["Title"] = "Admiral"
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

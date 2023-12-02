@@ -7,9 +7,9 @@ def move_calculator(character, direction):
 
     this function checks the players input and changes the grid location based on the direction
 
-    :param character: a dictionary of character location and HP
-    :param direction: a string value of "n" "s" "e" or "w"
-    :precondition: move must be a string value of either "n", "s", "e", or "w"
+    :param character: a dictionary of the player character information.
+    :param direction: a string value of "W" "A" "S" or "D"
+    :precondition: direction must be a string of either "W" "A" "S" or "D"
     :post-condition: the players X or Y coordinates are changed based on input
     :raises ValueError: if direction is not one of the valid directions.
     """
@@ -33,10 +33,10 @@ def validate_move(space, character, direction):
 
     this function compares the intended move to the game board
 
-    :param space: a dictionary of grid paired with a room description
-    :param character: a dictionary of character location and HP
-    :param direction: a string
-    :precondition: direction must be a string value of either "n", "s", "e", or "w"
+    :param space: a dictionary of grid paired with a list containing an integer, description, and symbol
+    :param character: a dictionary of the player character information.
+    :param direction: a string value of "W" "A" "S" or "D"
+    :precondition: direction must be a string of either "W" "A" "S" or "D"
     :post-condition: returns True if the move is in the game board, and False if the move is outside the board grid
     :return: Boolean True or False
     """
@@ -66,3 +66,8 @@ def get_user_choice():
             return direction_to_travel
         else:
             print(f"Invalid input. Please choose one of {valid_directions}.")
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
