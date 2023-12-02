@@ -55,6 +55,16 @@ def check_space_tile(character, space):
             events.bring_back_stolen_tech(character)
         case 11:
             events.pirate_combat(character)
+        case 12:
+            pass
+        case 13:
+            events.electro_magnetic_field(character)
+        case 14:
+            events.repair_outpost(character)
+        case 15:
+            events.space_cloud(character)
+        case 16:
+            events.shady_outpost(character)
 
 
     # explorer space > upgrade to exploration ships, high hp and shields, explore anomoly @
