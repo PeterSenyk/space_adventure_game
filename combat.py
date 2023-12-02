@@ -154,6 +154,16 @@ def attack(attacker, defender):
 
 
 def dodge(character, hostile_ship):
+    """
+     conducts a dodge during combat.
+
+     this function handles a dodge action during space combat.
+
+     :param character: a dictionary of the player character information.
+     :param hostile_ship: a dictionary of the hostile ship information.
+     :precondition: the character and hostile ship have an HP value above zero.
+     :post-condition: increase the chance for the hostile ship to miss, allowing character to recharge the shield
+     """
     dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 7))
     hit_chance = r.randint(5, 9)
     if dodge_chance <= hit_chance:
@@ -163,6 +173,16 @@ def dodge(character, hostile_ship):
 
 
 def run(character, hostile_ship):
+    """
+     allows the player to run combat.
+
+     this function handles a run action during space combat.
+
+     :param character: a dictionary of the player character information.
+     :param hostile_ship: a dictionary of the hostile ship information.
+     :precondition: the character and hostile ship have an HP value above zero.
+     :post-condition: ends combat prior to either ship being destroyed.
+     """
     comparison_results = compare_ships(character, hostile_ship)
     if comparison_results["Movement"] > 0:
         print("You evade the hostile ship, and disappear into the darkness of space")
@@ -175,6 +195,17 @@ def run(character, hostile_ship):
 
 
 def check_for_hit(attacker, defender):
+    """
+     checks for an attack to land during combat
+
+     this function handles a run action during space combat.
+
+     :param defender: attacker is the dictionary in the position of attacking.
+     :param attacker: defender is the dictionary in the position of defending.
+     :precondition: the character and hostile ship have an HP value above zero.
+     :post-condition: determines whether an attack lands during combat
+     :return: a boolean True for attack hit, a boolean False for attack miss
+     """
     if attacker["Ship"]["Targeting"] >= defender["Ship"]["Movement"]:
         print("The attack lands")
         return True
@@ -189,12 +220,32 @@ def check_for_hit(attacker, defender):
 
 
 def deal_attack_damage(attacker, defender):
+    """
+     deal attack damage during combat
+
+     this function handles dealing attack damage during combat.
+
+     :param defender: attacker is the dictionary in the position of attacking.
+     :param attacker: defender is the dictionary in the position of defending.
+     :precondition: the character and hostile ship have an HP value above zero.
+     :post-condition: determines what is damaged based on the amount of attack a ship has
+     """
     attack_value = attacker["Ship"]["Attack"]
     deal_other_damage(defender, attack_value)
 
 
-def deal_other_damage(defender, attack_value):
-    for point in range(attack_value):
+def deal_other_damage(defender, damage_value):
+    """
+     handles dealing damage
+
+     this function handles dealing damage based on a damage value
+
+     :param defender: attacker is the dictionary in the position of attacking.
+     :param damage_value: a positive integer
+     :precondition: the defender must have an HP value above zero.
+     :post-condition: determines what is damaged based on the damage value
+     """
+    for point in range(damage_value):
         if defender["Ship"]["Shield"][0] > 0:
             defender["Ship"]["Shield"][0] -= 1
             print("The Shields reflect 1 damage")
@@ -204,6 +255,15 @@ def deal_other_damage(defender, attack_value):
 
 
 def shield_recharge(ship):
+    """
+     recharges the shield of a ship
+
+     this function handles shield recharging.
+
+     :param ship: a dictionary of the ship information
+     :precondition: the defender must have an HP value above zero.
+     :post-condition: determines what is damaged based on the damage value
+     """
     if ship["Ship"]["Shield"][0] < ship["Ship"]["Shield"][1]:
         print("Your shields recharge by 1 point")
         ship["Ship"]["Shield"][0] += 1
@@ -222,6 +282,16 @@ def compare_ships(character, hostile_ship):
 
 
 def scan_ships(character, hostile_ship):
+    """
+     displays both ships stats.
+
+     this function displays the stats of the characters, and hostiles ship.
+
+     :param character: a dictionary of the player character information.
+     :param hostile_ship: a dictionary of the hostile ship information.
+     :precondition: the character and hostile both must have an HP value above zero.
+     :post-condition: outputs information of character and hostile ships
+     """
     print("Your ship stats:\n", character["Ship"])
     print("Hostile ship stats:\n", hostile_ship["Ship"])
 
