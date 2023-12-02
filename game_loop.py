@@ -5,6 +5,15 @@ import start_game
 
 
 def level_one(character):
+    """
+    executes the first level of the game.
+
+    this functions runs the first level of the game where the player must defeat enemies or dodge debris.
+
+    :param character: a dictionary of the player character information.
+    :precondition: character dictionary should have a name input by the player
+    :post-condition: Completes level one of the game and updates the character's title to 'Fighter Pilot'.
+    """
     space = boards.make_space(5, 5, 1, 4)
     level_one_goal = False
     print(f"Welcome to training {character['Stats']['Title']} {character['Stats']['Name']}\nIn order to "
@@ -22,6 +31,15 @@ def level_one(character):
 
 
 def level_two(character):
+    """
+    executes the second level of the game.
+
+    this functions runs the second level of the game where the player retrieves and returns a stolen item.
+
+    :param character: a dictionary of the player character information.
+    :precondition: character dictionary should be updated from level one.
+    :post-condition: Completes level one of the game and updates the character's title to 'Captain'.
+    """
     character["Coordinates"]["X-coordinate"] = 0
     character["Coordinates"]["Y-coordinate"] = 2
     print("Before you deploy were setting you up with a brand new Fighter Class ship")
@@ -45,6 +63,15 @@ def level_two(character):
 
 
 def level_three(character):
+    """
+    executes the third level of the game.
+
+    this functions runs the third level of the game where the player investigates a space anomaly.
+
+    :param character: a dictionary of the player character information.
+    :precondition: character dictionary should be updated from level two.
+    :post-condition: Completes level one of the game and updates the character's title to 'Admiral'.
+    """
     character["Coordinates"]["X-coordinate"] = 4
     character["Coordinates"]["Y-coordinate"] = 6
     print("You're going to need an Explorer Class ship to investigate the ANOMALY")
