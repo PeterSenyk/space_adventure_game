@@ -48,20 +48,20 @@ def level_three(character):
     character["Coordinates"]["X-coordinate"] = 4
     character["Coordinates"]["Y-coordinate"] = 6
     print("You're going to need an Explorer Class ship to investigate the ANOMALY")
-    start_game.choose_fighter_ship(character)
-    outland_space = boards.make_space(8, 8, 5, 16)
-    outland_space[(0, 2)] = [99, "You reach the site of the ANOMALY\nYour sensors display what appears to be fractal "
+    start_game.choose_explorer_ship(character)
+    anomaly_space = boards.make_space(8, 8, 5, 16)
+    anomaly_space[(0, 2)] = [99, "You reach the site of the ANOMALY\nYour sensors display what appears to be fractal "
                                  "white noise\nAt the center of the distortion the sensors cannot resolve anything "
                                  "resembling normal space\nThe reading on your sensors shows that you're approaching "
                                  "the center of the ANOMALY" " @ "]
-    outland_space[(4, 7)] = [12, "You see Arc-Corp Station 7, Return the stolen tech here", "AC7"]
+    anomaly_space[(4, 7)] = [12, "You see Arc-Corp Station 7, Return the stolen tech here", "AC7"]
     level_three_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\n ")
     while checks.is_alive(character) and not level_three_goal:
-        actions.choose_an_action(character, outland_space, 7, 7)
-        level_three_goal = checks.level_two_goal(character)
+        actions.choose_an_action(character, anomaly_space, 7, 7)
+        level_three_goal = checks.level_three_goal(character)
     if not checks.is_alive(character):
         print("Your ship exploded !\nGame Over")
     else:
-        print("Congratulations you've completed level two !\n You've achieved the title of Captain")
-        character["Stats"]["Title"] = "Captain"
+        print("Congratulations you've completed level three !\n You've achieved the title of Admiral")
+        character["Stats"]["Title"] = "Admiral"
