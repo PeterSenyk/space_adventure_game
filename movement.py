@@ -11,31 +11,20 @@ def move_calculator(character, direction):
     :param direction: a string value of "n" "s" "e" or "w"
     :precondition: move must be a string value of either "n", "s", "e", or "w"
     :post-condition: the players X or Y coordinates are changed based on input
+    :raises ValueError: if direction is not one of the valid directions.
     """
-    if direction.lower() == "w":
+    valid_directions = ["W", "A", "S", "D"]
+    if direction.upper() not in valid_directions:
+        raise ValueError(f"Invalid direction. Expected one {valid_directions}, got {direction}")
+    if direction.upper() == "W":
         character["Coordinates"]["Y-coordinate"] -= 1
-    elif direction.lower() == "s":
+    elif direction.upper() == "S":
         character["Coordinates"]["Y-coordinate"] += 1
-    elif direction.lower() == "d":
+    elif direction.upper() == "D":
         character["Coordinates"]["X-coordinate"] += 1
-    elif direction.lower() == "a":
+    elif direction.upper() == "A":
         character["Coordinates"]["X-coordinate"] -= 1
     return character
-
-
-# def move_character(character, direction):
-#     """
-#     Changes the characters X or Y coordinate
-#
-#     this function changes the characters X or Y coordinate based on the input
-#
-#     :param character: a dictionary of character location and HP
-#     :param direction: a string
-#     :precondition: direction must be a string value of either "n", "s", "e", or "w"
-#     :precondition: the move is validated prior to changing the character coordinates
-#     :post-condition: the characters coordinates are changed
-#     """
-#     move_calculator(character, direction)
 
 
 def validate_move(space, character, direction):
@@ -70,5 +59,10 @@ def get_user_choice():
 
     :return: a string value representing the direction the player wants to move
     """
-    direction_to_travel = input("Enter a direction to travel [w = Up, a = Left, s = Down, d = Right] :\n")
-    return direction_to_travel
+    valid_directions = ["W", "A", "S", "D"]
+    while True:
+        direction_to_travel = input("Enter a direction to travel:\n[W] = Up\n[A] = Left\n[S] = Down\n[D] = Right\n")
+        if direction_to_travel in valid_directions:
+            return direction_to_travel
+        else:
+            print(f"Invalid input. Please choose one of {valid_directions}.")
