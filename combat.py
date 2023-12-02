@@ -131,13 +131,8 @@ def check_for_hit(attacker, defender):
 
 
 def deal_attack_damage(attacker, defender):
-    for point in range(attacker["Ship"]["Attack"]):
-        if defender["Ship"]["Shield"][0] > 0:
-            defender["Ship"]["Shield"][0] -= 1
-            print("The Shields reflect 1 damage")
-        elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"][0]:
-            defender["Ship"]["HP"][0] -= 1
-            print("The hull takes 1 damage")
+    attack_value = attacker["Ship"]["Attack"]
+    deal_other_damage(defender, attack_value)
 
 
 def deal_other_damage(defender, attack_value):
