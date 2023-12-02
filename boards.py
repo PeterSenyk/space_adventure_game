@@ -78,3 +78,8 @@ def space_tiles_dict():
                  "it, this was unexpected.", " @ "],
     }
     return space_tiles
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
