@@ -3,6 +3,13 @@ import checks
 
 
 def construct_training_hostile():
+    """
+    constructs a hostile for level one
+
+    this function constructs a hostile with stats meant for level one
+
+    :return: a dictionary representing the stats of the constructed hostile
+    """
     hostile_shield = r.randint(2, 2)
     hostile_hp = r.randint(2, 3)
     hostile_ship = {"Ship": {
@@ -14,6 +21,13 @@ def construct_training_hostile():
 
 
 def construct_medium_hostile_ship():
+    """
+    constructs a hostile for level two
+
+    this function constructs a hostile with stats meant for level tow
+
+    :return: a dictionary representing the stats of the constructed hostile
+    """
     hostile_shield = r.randint(3, 4)
     hostile_hp = r.randint(3, 5)
     hostile_ship = {"Ship": {
@@ -25,6 +39,13 @@ def construct_medium_hostile_ship():
 
 
 def construct_hard_hostile_ship():
+    """
+    constructs a hostile for level three
+
+    this function constructs a hostile with stats meant for level three
+
+    :return: a dictionary representing the stats of the constructed hostile
+    """
     hostile_shield = r.randint(4, 6)
     hostile_hp = r.randint(5, 7)
     hostile_ship = {"Ship": {
@@ -36,6 +57,13 @@ def construct_hard_hostile_ship():
 
 
 def construct_pirate_hostile_ship():
+    """
+    constructs a hostile for the level two boss
+
+    this function constructs a hostile with stats meant for the level two boss
+
+    :return: a dictionary representing the stats of the constructed hostile
+    """
     hostile_shield = r.randint(6, 7)
     hostile_hp = r.randint(7, 7)
     hostile_ship = {"Ship": {
@@ -47,6 +75,16 @@ def construct_pirate_hostile_ship():
 
 
 def space_combat(character, hostile_ship):
+    """
+    conducts the space combat sequence
+
+    this function allows the player to choose an action when they encounter a hostile ship
+
+    :param character: a dictionary of the player character information.
+    :param hostile_ship: a dictionary of the hostile ship information.
+    :precondition: the character has an HP value above zero
+    :post-condition: the play conducts the action that they've chosen
+    """
     while checks.is_alive(character) and checks.is_alive(hostile_ship):
         player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
         if player_action.upper() == "A":
@@ -65,6 +103,16 @@ def space_combat(character, hostile_ship):
 
 
 def attack_sequence(character, hostile_ship):
+    """
+     conducts the space combat sequence
+
+     this function handles combat between the character and a hostile ship
+
+     :param character: a dictionary of the player character information.
+     :param hostile_ship: a dictionary of the hostile ship information.
+     :precondition: the character has an HP value above zero
+     :post-condition: character gains 1 'Ships Destroyed' accolade if they win the space combat, game over if they loose
+     """
     comparison_results = compare_ships(character, hostile_ship)
     if comparison_results["Movement"] >= 0:
         print("You fire at the hostile ship")
@@ -91,6 +139,16 @@ def attack_sequence(character, hostile_ship):
 
 
 def attack(attacker, defender):
+    """
+     conducts an attack during combat.
+
+     this function handles an attack action during space combat.
+
+     :param defender: attacker is the dictionary in the position of attacking.
+     :param attacker: defender is the dictionary in the position of defending.
+     :precondition: the attacker and defender have an HP value above zero.
+     :post-condition: if the attack lands this function moves on to dealing damage
+     """
     if check_for_hit(attacker, defender):
         deal_attack_damage(attacker, defender)
 
@@ -166,3 +224,8 @@ def compare_ships(character, hostile_ship):
 def scan_ships(character, hostile_ship):
     print("Your ship stats:\n", character["Ship"])
     print("Hostile ship stats:\n", hostile_ship["Ship"])
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
