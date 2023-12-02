@@ -1,19 +1,25 @@
 import boards
 import checks
 import movement
-# import combat
-# import boards
-# from code_to_rework import checks
 
 
 def choose_an_action(character, space, rows, columns):
-    player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\n")
-    if player_action.upper() == "M":
-        player_action_move(character, space)
-    elif player_action.upper() == "S":
-        scan_space_grid(character, space, columns, rows)
-    elif player_action.upper() == "P":
-        personal_stats(character)
+    while True:
+        player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\nH = Help\n").upper()
+        if player_action == "M":
+            player_action_move(character, space)
+            break
+        elif player_action == "S":
+            scan_space_grid(character, space, columns, rows)
+            break
+        elif player_action == "P":
+            personal_stats(character)
+            break
+        elif player_action == "H":
+            help_information()
+            break
+        else:
+            print("Invalid action, please choose again.")
 
 
 def player_action_move(character, space):
@@ -44,3 +50,9 @@ def personal_stats(character):
     print("Your ship HP is", character["Ship"]["HP"][0], "out of", character["Ship"]["HP"][1])
     print("Your ship shield is", character["Ship"]["Shield"][0], "out of",
           character["Ship"]["Shield"][1])
+
+
+def help_information():
+    print("Type [M] for move.\n    This action allows you to choose a direction to move your character")
+    print("Type [S] for scan.\n    This action displays a grid map of your current quadrant")
+    print("Type [P] for personal stats.\n    This action displays you characters health shields and accolades")
