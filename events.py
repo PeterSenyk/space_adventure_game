@@ -138,8 +138,10 @@ def repair_outpost(character):
 def space_cloud(character):
     event_chance = r.randint(1, 10)
     if event_chance >= 4:
+        print("The cloud of gas runs through your engines clearing out any debris,\nYou gain 1 Movement")
         character["Ship"]["Movement"] += 1
     else:
+        print("The gas cloud causes your engines to burn HOT\nYou loose 1 Movement")
         character["Ship"]["Movement"] -= 1
 
 

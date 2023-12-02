@@ -46,10 +46,12 @@ def check_space_tile(character, space):
     coordinates = get_player_coordinates(character)
     tile_event_number = space[coordinates][0]
     match tile_event_number:
-        case 3:
+        case 2:
             events.training_combat(character)
-        case 4:
+        case 3:
             events.avoid_debris(character)
+        case 4:
+            events.repair_outpost(character)
         case 5:
             if r.randint(1, 5) >= 4:
                 combat.shield_recharge(character)
@@ -88,7 +90,7 @@ def level_one_goal(character):
 
     this function checks if the player has completed level one
     :param character: a dictionary of the player character information.
-    :return: a boolean True or False
+    :return: a boolean True or False.
     """
     ships_destroyed = character["Stats"]["Accolades"]["Ships Destroyed"]
     debris_avoided = character["Stats"]["Accolades"]["Debris Avoided"]

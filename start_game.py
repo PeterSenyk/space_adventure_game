@@ -104,6 +104,12 @@ def choose_fighter_ship(character):
                              "Shield": [4, 4], "Cargo": []}
         valid_ship = True
         return valid_ship
+    if fighter_ship.upper() == "Z":
+        character["Ship"] = {"Name": "F8C - TEST", "Attack": 100,
+                             "Movement": 100, "HP": [100, 100], "Targeting": 100,
+                             "Shield": [100, 100], "Cargo": []}
+        valid_ship = True
+        return valid_ship
     else:
         print("Please choose a valid selection")
 
@@ -140,6 +146,12 @@ def choose_explorer_ship(character):
         character["Ship"] = {"Name": "DRAKE CORSAIR", "Attack": 8,
                              "Movement": 4, "HP": [6, 6], "Targeting": 7,
                              "Shield": [7, 7], "Cargo": []}
+        valid_ship = True
+        return valid_ship
+    if explorer_ship.upper() == "Z":
+        character["Ship"] = {"Name": "F8C - TEST", "Attack": 100,
+                             "Movement": 100, "HP": [100, 100], "Targeting": 100,
+                             "Shield": [100, 100], "Cargo": []}
         valid_ship = True
         return valid_ship
     else:

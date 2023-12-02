@@ -62,7 +62,7 @@ def get_user_choice():
     valid_directions = ["W", "A", "S", "D"]
     while True:
         direction_to_travel = input("Enter a direction to travel:\n[W] = Up\n[A] = Left\n[S] = Down\n[D] = Right\n")
-        if direction_to_travel in valid_directions:
+        if direction_to_travel.upper() in valid_directions:
             return direction_to_travel
         else:
             print(f"Invalid input. Please choose one of {valid_directions}.")
