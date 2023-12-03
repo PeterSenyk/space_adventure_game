@@ -224,6 +224,14 @@ def space_cloud(character):
 
 
 def shady_outpost(character):
+    """
+    the player can barter with a shop owner to try and buy better weapons for the shio
+
+    the function lets the player barter for weapons, if you over or under pay you lose1 Attack, if you get the
+    value right you gain 1 Attack.
+    :param character: a dictionary of the player character information.
+    :post-condition: the players attack stat is modified
+    """
     print("You stop in the shady outpost to see what they have to offer\nA shop owner starts bartering with you "
           "attempting to sell you new weapons for your ship\nThey promise you that the weapons are better than the "
           "ones you currently have equipped\n")
@@ -247,24 +255,29 @@ def shady_outpost(character):
         return
 
 
-    def anomaly(character):
-        print("As your ship slides towards the center of the ANOMALY several alarms go off before all electrical "
-              "systems fail at once\nYour cockpit is glowing with the light coming from the ANOMALY\nThe glow flashes "
-              "different colors of starlight and gets brighter\nIn a flash your systems turn back on and the sky"
-              "around you is completely devoid of stars\nYour sensors show NOTHING, not even background radiation")
-        player_choice = int(input("You have 2 option:\n input [1] to stay and wait for rescue\n input [2] "
-                                  "to explore further"))
-        if player_choice == 1:
-            print("You realize you have enough life support and rations for 36 days\nYou decide to stay in place and "
-                  "wait for rescue\nOn day 24 madness starts to creep into the minds of you and your crew")
-        elif player_choice == 2:
-            anomaly_chance = r.randint(1, 30)
-            if anomaly_chance >= 3:
-                print("You realize you have enough life support and rations for 36 days\nYou set a heading into "
-                      "the ANOMALY, on day 24 your scanners pick up a glimmer of light")
-            else:
-                print("You realize you have enough life support and rations for 36 days\nYou set your engines "
-                      "to full power and fly in steady heading, unbeknownst to you the ANOMALY did indeed have an "
-                      "indestructible invisible inner surface\nYou collide with it at 40% of the speed of light")
+def anomaly(character):
+    """
+    this is the end of the game.
 
-
+    this function acts as a cutscene at the end of the game.
+    :param character: a dictionary of the player character information.
+    :post-condition: the game ends.
+    """
+    print("As your ship slides towards the center of the ANOMALY several alarms go off before all electrical "
+          "systems fail at once\nYour cockpit is glowing with the light coming from the ANOMALY\nThe glow flashes "
+          "different colors of starlight and gets brighter\nIn a flash your systems turn back on and the sky"
+          "around you is completely devoid of stars\nYour sensors show NOTHING, not even background radiation")
+    player_choice = int(input("You have 2 option:\n input [1] to stay and wait for rescue\n input [2] "
+                              "to explore further"))
+    if player_choice == 1:
+        print("You realize you have enough life support and rations for 36 days\nYou decide to stay in place and "
+              "wait for rescue\nOn day 24 madness starts to creep into the minds of you and your crew")
+    elif player_choice == 2:
+        anomaly_chance = r.randint(1, 30)
+        if anomaly_chance >= 3:
+            print("You realize you have enough life support and rations for 36 days\nYou set a heading into "
+                  "the ANOMALY, on day 24 your scanners pick up a glimmer of light")
+        else:
+            print("You realize you have enough life support and rations for 36 days\nYou set your engines "
+                  "to full power and fly in steady heading, unbeknownst to you the ANOMALY did indeed have an "
+                  "indestructible invisible inner surface\nYou collide with it at 40% of the speed of light")

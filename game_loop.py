@@ -1,6 +1,7 @@
 import actions
 import boards
 import checks
+import events
 import start_game
 
 
@@ -91,6 +92,7 @@ def level_three(character):
     else:
         print("Congratulations you've completed level three !\n You've achieved the title of Admiral")
         character["Stats"]["Title"] = "Admiral"
+        events.anomaly(character)
 
 
 if __name__ == "__main__":
