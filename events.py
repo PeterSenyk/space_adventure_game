@@ -3,44 +3,83 @@ import combat
 
 
 def training_combat(character):
+    """
+    randomizes a hostile ship for the training level.
+
+    this function creates a randomized hostile ship for training combat
+
+    :param character: a dictionary of the player character information.
+    :post-condition: a dictionary of the hostile information is created.
+    """
     print("You see a training hostile")
     hostile_ship = combat.construct_training_hostile()
     combat.space_combat(character, hostile_ship)
 
 
 def avoid_debris(character):
+    """
+    the player must avoid space debris to complete this event
+
+    this function asks the player to choose a number, if it matches the correct_route the player is successful
+    :param character: a dictionary of the player character information.
+    :post-condition: if the player wins they recharge 1 shield point, if they loose they take 1 damage.
+    """
     print("Try to dodge the debris if you can")
     correct_route = r.randint(1, 3)
-    try:
-        choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
-    except ValueError:
-        print("Choose a valid selection")
-    else:
-        if choice in [1, 2, 3]:
-            if choice == correct_route:
-                print("You avoided the debris !")
-                combat.shield_recharge(character)
-                character["Stats"]["Accolades"]["Debris Avoided"] += 1
+    while True:
+        try:
+            choice = int(input("Choose a heading to avoid the debris, your choices are:\n [1] [2] or [3]\n"))
+            if choice in [1, 2, 3]:
+                break
             else:
-                print("You collide with the debris")
-                combat.deal_other_damage(character, 1)
+                print("Please choose either [1], [2], or [3]]")
+        except ValueError:
+            print("Choose a valid selection")
+    if choice == correct_route:
+        print("You avoided the debris !")
+        combat.shield_recharge(character)
+        character["Stats"]["Accolades"]["Debris Avoided"] += 1
+    else:
+        print("You collide with the debris")
+        combat.deal_other_damage(character, 1)
 
 
 def asteroid_belt(character):
+    """
+    the player must avoid up to three asteroids in this event
+
+    this function challenges the player to avoid multiple asteroids by choosing which direction to fly in
+    :param character: a dictionary of the player character information.
+    :post-condition: every debris the player avoids, they recharge 1 shield point, else they take 1 damage
+    """
     print("Theres more asteroids than you expected, you're going to have to fly by instinct here")
     asteroids = r.randint(1, 3)
     for attempts in range(asteroids):
         correct_path = r.randint(1, 4)
-        get_flight_path = input("You only see small windows to pass through, pick a direction to steer\n"
-                                "W = Up\nS = Down\nA = Left\nD = Right\n")
-        chosen_path = clean_asteroid_game_direction(get_flight_path)
-        if chosen_path == correct_path:
-            combat.shield_recharge(character)
-        else:
-            combat.deal_other_damage(character, 1)
+        while True:
+            get_flight_path = input("You only see small windows to pass through, pick a direction to steer\n"
+                                    "W = Up\nS = Down\nA = Left\nD = Right\n")
+            if get_flight_path.upper in ["W", "A", "S", "D"]:
+                chosen_path = clean_asteroid_game_direction(get_flight_path)
+                if chosen_path == correct_path:
+                    combat.shield_recharge(character)
+                    break
+                else:
+                    combat.deal_other_damage(character, 1)
+                    break
+            else:
+                print("Please choose a valid direction.\nEither [W], [A], [S], or [D]")
 
 
 def clean_asteroid_game_direction(direction):
+    """
+    cleans the asteroid event direction
+
+    this function turn the asteroid event direction into an integer to test against the random number
+
+    :param direction: is a string of either "W", "A", "S", or "D"
+    :return: an integer between 1 and 4
+    """
     if direction.upper() == "W":
         return 1
     elif direction.upper() == "S":
@@ -52,6 +91,11 @@ def clean_asteroid_game_direction(direction):
 
 
 def dark_side_of_moon(character):
+    """
+    random change of the character healing 1 HP or encountering an enemy
+    :param character: a dictionary of the player character information.
+    :post-condition: the character is healed or encounters a hostile ship
+    """
     if r.randint(1, 10) >= 6:
         if character["Ship"]["HP"][0] < character["Ship"]["HP"][1]:
             character["Ship"]["HP"][0] += 1
@@ -61,6 +105,11 @@ def dark_side_of_moon(character):
 
 
 def abandoned_space_station(character):
+    """
+    allows the player to salvage parts for stat boosts, with increasing risk of encountering a hard hostile
+    :param character: a dictionary of the player character information.
+    :return:
+    """
     print("You send a salvage drone into the abandoned station")
     choose_to_leave = False
     chance_of_encounter = 0
@@ -69,41 +118,49 @@ def abandoned_space_station(character):
         choose_to_leave = pick_component(character)
         print("You're not the only one salvaging, the longer you stay the higher chance of attracting attention")
         chance_of_encounter += r.randint(1, 9)
-    if choose_to_leave:
-        return
-    elif chance_of_encounter >= 10:
+    if chance_of_encounter >= 10:
         hostile_ship = combat.construct_hard_hostile_ship()
         combat.space_combat(character, hostile_ship)
 
 
 def pick_component(character):
-    player_choice = input("[W] for weapons\n[E] for engines\n[S] for shield generators\n[H] for hull scraps\n[R] "
-                          "for targeting sensors\n[Q] to leave the station")
+    """
+    takes the players choice of salvage for a stat boost
+    :param character: a dictionary of the player character information.
+    :return:
+    """
+    while True:
+        player_choice = input("[W] for weapons\n[E] for engines\n[S] for shield generators\n[H] for hull scraps\n[R] "
+                              "for targeting sensors\n[Q] to leave the station")
+        if player_choice.upper() in ["W", "E", "S", "H", "R", "Q"]:
+            break
+        else:
+            print("Choose a valid selection")
     if player_choice.upper() == "W":
         print("The salvage drone returns with some weapon components\nYou gain 1 Attack point")
         character["Ship"]["Attack"] += 1
-        return False
     elif player_choice.upper() == "E":
         character["Ship"]["Movement"] += 1
-        return False
     elif player_choice.upper() == "S":
         character["Ship"]["Shield"][0] += 1
         character["Ship"]["Shield"][1] += 1
-        return False
     elif player_choice.upper() == "H":
         character["Ship"]["HP"][0] += 1
         character["Ship"]["HP"][1] += 1
-        return False
     elif player_choice.upper() == "R":
         character["Ship"]["Targeting"] += 1
     elif player_choice.upper() == "Q":
         return True
-    else:
-        print("Choose a valid selection")
-        return False
+    return False
 
 
 def pirate_combat(character):
+    """
+    randomizes a pirate hostile for the level two boss fight
+
+    :param character: a dictionary of the player character information.
+    :post-condition: if the player wins the combat, the "Explorer Class Quantum Drive" will be added to ship cargo.
+    """
     hostile = combat.construct_pirate_hostile_ship()
     combat.space_combat(character, hostile)
     if character["Ship"]["HP"][0] > 0:
@@ -111,6 +168,11 @@ def pirate_combat(character):
 
 
 def bring_back_stolen_tech(character):
+    """
+    completes the level two goal if the player cargo includes "Explorer Class Quantum Drive"
+    :param character: a dictionary of the player character information.
+    :return: a boolean True of False
+    """
     coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
     if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"] and coordinates == (2, 6):
         character["Ship"]["Cargo"].pop()
@@ -120,22 +182,38 @@ def bring_back_stolen_tech(character):
 
 
 def electro_magnetic_field(character):
+    """
+    a dangerous event that reduces the player shield to zero, with the chance of encountering a medium hostile ship
+    :param character:
+    """
     character["Ship"]["Shield"][0] = 0
     chance_of_combat = r.randint(1, 2)
     if chance_of_combat == 1:
-        hostile_ship = combat.construct_pirate_hostile_ship()
+        hostile_ship = combat.construct_medium_hostile_ship()
         hostile_ship["Ship"]["Shield"][0] = 0
         combat.space_combat(character, hostile_ship)
 
 
 def repair_outpost(character):
+    """
+    restores the players HP and shield
+
+    this function restores the player shield and HP to full
+
+    :param character: a dictionary of the player character information.
+    :post-condition: the player HP and shield are restored to maximum
+    """
     print("Your ships hull is repaired and your shields have been recharged")
     character["Ship"]["HP"][0] = character["Ship"]["HP"][1]
     character["Ship"]["Shield"][0] = character["Ship"]["Shield"][1]
 
 
-# hide symbol as something else !
 def space_cloud(character):
+    """
+    the player has a chance of either +1 or -1 movement
+    :param character: a dictionary of the player character information.
+    :post-condition: the player movement attribute is modified
+    """
     event_chance = r.randint(1, 10)
     if event_chance >= 4:
         print("The cloud of gas runs through your engines clearing out any debris,\nYou gain 1 Movement")
