@@ -113,7 +113,7 @@ def abandoned_space_station(character):
     print("You send a salvage drone into the abandoned station")
     choose_to_leave = False
     chance_of_encounter = 0
-    while not choose_to_leave or chance_of_encounter <= 10:
+    while not choose_to_leave or chance_of_encounter >= 10:
         print("Pick which component you want the salvage drone to look for:")
         choose_to_leave = pick_component(character)
         print("You're not the only one salvaging, the longer you stay the higher chance of attracting attention")
