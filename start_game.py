@@ -1,4 +1,11 @@
 def base_character():
+    """
+    holds the dictionary of a base character
+
+    this function holds the dictionary for the base character
+
+    :return: a dictionary for the base starting character
+    """
     character = {"Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
                  "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
                           "Shield": [2, 2], "Cargo": []},
@@ -7,6 +14,15 @@ def base_character():
 
 
 def build_character(character):
+    """
+    builds the character to start the game.
+
+    this function builds on the base character dictionary.
+
+    :param character: a dictionary of the player character information.
+    :post-condition: the starting character is built with a name and a starting ship.
+    :return: a dictionary of the player character information.
+    """
     get_player_last_name(character)
     print(f"Welcome to the Academy {character['Stats']['Title']} {character['Stats']['Name']}")
     valid_ship = False
