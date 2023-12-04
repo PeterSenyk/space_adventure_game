@@ -58,8 +58,9 @@ def asteroid_belt(character):
         correct_path = r.randint(1, 4)
         while True:
             get_flight_path = input("You only see small windows to pass through, pick a direction to steer\n"
-                                    "W = Up\nS = Down\nA = Left\nD = Right\n")
-            if get_flight_path.upper in ["W", "A", "S", "D"]:
+                                    "[W] = Up\n[S] = Down\n[A] = Left\n[D] = Right\n")
+            valid_choices = ["W", "A", "S", "D"]
+            if get_flight_path.upper() in valid_choices:
                 chosen_path = clean_asteroid_game_direction(get_flight_path)
                 if chosen_path == correct_path:
                     combat.shield_recharge(character)
@@ -118,21 +119,23 @@ def abandoned_space_station(character):
         choose_to_leave = pick_component(character)
         print("You're not the only one salvaging, the longer you stay the higher chance of attracting attention")
         chance_of_encounter += r.randint(1, 9)
-    if chance_of_encounter >= 10:
-        hostile_ship = combat.construct_hard_hostile_ship()
-        combat.space_combat(character, hostile_ship)
+        if chance_of_encounter >= 10:
+            hostile_ship = combat.construct_hard_hostile_ship()
+            combat.space_combat(character, hostile_ship)
+            break
 
 
 def pick_component(character):
     """
     takes the players choice of salvage for a stat boost
     :param character: a dictionary of the player character information.
-    :return:
+    :return: a boolean True or False
     """
     while True:
         player_choice = input("[W] for weapons\n[E] for engines\n[S] for shield generators\n[H] for hull scraps\n[R] "
-                              "for targeting sensors\n[Q] to leave the station")
-        if player_choice.upper() in ["W", "E", "S", "H", "R", "Q"]:
+                              "for targeting sensors\n[Q] to leave the station\n")
+        valid_choices = ["W", "E", "S", "H", "R", "Q"]
+        if player_choice.upper() in valid_choices:
             break
         else:
             print("Choose a valid selection")
