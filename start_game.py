@@ -32,6 +32,31 @@ def build_character(character):
 
 
 def get_player_last_name(character):
+    """
+    formats the players last name.
+
+    this functions accepts an input and formats it to have a capitalized first letter follower by lower case letters
+
+    :param character: a dictionary of the player character information.
+    :post-condition: a capitalized last name is added to the character dictionary.
+
+    character = character = {
+            "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+            "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+                     "Shield": [2, 2], "Cargo": []},
+            "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    >>> get_player_last_name({
+            "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+            "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+                     "Shield": [2, 2], "Cargo": []},
+            "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}})
+    >>> last_name = senyk
+    >>> character
+    {"Stats": {"Title": "Trainee", "Name": "Senyk", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+    "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+             "Shield": [2, 2], "Cargo": []},
+    "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    """
     last_name = capitalize_name(input("Enter your last name to register for the Arc-Corp Space Academy\n"))
     character["Stats"]["Name"] = last_name
 
