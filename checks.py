@@ -81,10 +81,6 @@ def check_space_tile(character, space):
             events.abandoned_space_station(character)
         case 10:
             combat.shield_recharge(character)
-        # case 11:
-        #     pass
-        # case 12:
-        #     pass
         case 13:
             events.electro_magnetic_field(character)
         case 15:
@@ -104,6 +100,14 @@ def level_one_goal(character):
     this function checks if the player has completed level one
     :param character: a dictionary of the player character information.
     :return: a boolean True or False.
+
+    >>> player = {
+    ...        "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 2, "Debris Avoided": 2}},
+    ...        "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+    ...                 "Shield": [2, 2], "Cargo": []},
+    ...        "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    >>> level_one_goal(player)
+    True
     """
     ships_destroyed = character["Stats"]["Accolades"]["Ships Destroyed"]
     debris_avoided = character["Stats"]["Accolades"]["Debris Avoided"]
