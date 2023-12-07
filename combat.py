@@ -261,7 +261,7 @@ def deal_other_damage(defender, damage_value):
             defender["Ship"]["HP"][0] -= 1
             hull_damage += 1
         if shield_damage > 0:
-            print(f"The shields took {shield_damage} damage\nThe hull took {hull_damage} damage")
+            print(f"The shields reflect {shield_damage} damage\nThe hull took {hull_damage} damage")
         else:
             print(f"The hull took {hull_damage} damage")
 
