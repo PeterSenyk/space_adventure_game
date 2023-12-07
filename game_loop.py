@@ -26,7 +26,7 @@ def level_one(character):
     if not checks.is_alive(character):
         print("Your ship exploded !\nGame Over")
     else:
-        print("Congratulations you've completed level one !\n You've achieved the title of Fighter Pilot\nYou're being"
+        print("Congratulations you've completed level one !\n You've achieved the title of Fighter Pilot\nYou're being "
               "deployed to the Out-Land Quadrant to help deal with the space pirate issue that they're experiencing")
         character["Stats"]["Title"] = "Fighter Pilot"
 
@@ -46,9 +46,12 @@ def level_two(character):
     print("Before you deploy were setting you up with a brand new Fighter Class ship")
     start_game.choose_fighter_ship(character)
     outland_space = boards.make_space(7, 7, 4, 8)
-    outland_space[(0, 2)] = [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-land Quadrant'", "AC9"]
-    outland_space[(2, 6)] = [12, "You see Arc-Corp Station 7, Return the stolen tech here", "AC7"]
-    outland_space[(6, 5)] = [11, "You find the crew responsible for the theft from the Arc-Corp R&D station", "<$>"]
+    outland_space[(0, 2)] = [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-land Quadrant'",
+                             "\033[32m\033[40m[AC9]\033[m"]
+    outland_space[(2, 6)] = [12, "You see Arc-Corp Station 7, Return the stolen tech here",
+                             "\033[32m\033[40m[AC7]\033[m"]
+    outland_space[(6, 5)] = [11, "You find the crew responsible for the theft from the Arc-Corp R&D station",
+                             "\033[31m\033[40m<$>\033[m"]
     level_two_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\nYour mission "
           f"is to destroy the space pirate who stole the new Quantum Tech from our outpost, beware of the hazards on "

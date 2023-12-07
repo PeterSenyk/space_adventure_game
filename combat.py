@@ -64,10 +64,10 @@ def construct_pirate_hostile_ship():
 
     :return: a dictionary representing the stats of the constructed hostile
     """
-    hostile_shield = r.randint(6, 7)
-    hostile_hp = r.randint(7, 7)
+    hostile_shield = r.randint(4, 7)
+    hostile_hp = r.randint(4, 7)
     hostile_ship = {"Ship": {
-        "Attack": r.randint(5, 7), "Movement": r.randint(2, 6),  "HP": [hostile_hp, hostile_hp],
+        "Attack": r.randint(3, 4), "Movement": r.randint(2, 6),  "HP": [hostile_hp, hostile_hp],
         "Targeting": r.randint(5, 6), "Shield": [hostile_shield, hostile_shield],
         "Cargo": []
     }}

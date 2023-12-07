@@ -6,7 +6,6 @@ import game_loop
 import start_game as start
 
 
-
 def run_game():
     """
     runs the game
