@@ -99,6 +99,8 @@ def dark_side_of_moon(character):
     """
     if r.randint(1, 10) >= 6:
         if character["Ship"]["HP"][0] < character["Ship"]["HP"][1]:
+            print("You have a chance to repair your ship, you gain 1 HP\nCurrent HP: ", character["Ship"]['HP'][0],
+                  "out of", character["Ship"]['HP'][1])
             character["Ship"]["HP"][0] += 1
     else:
         hostile_ship = combat.construct_medium_hostile_ship()
@@ -258,12 +260,12 @@ def shady_outpost(character):
         return
 
 
-def anomaly(character):
+def anomaly():
     """
     this is the end of the game.
 
     this function acts as a cutscene at the end of the game.
-    :param character: a dictionary of the player character information.
+
     :post-condition: the game ends.
     """
     print("As your ship slides towards the center of the ANOMALY several alarms go off before all electrical "
