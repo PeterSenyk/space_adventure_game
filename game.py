@@ -2,7 +2,6 @@
 Peter Senyk
 A01376857
 """
-import checks
 import game_loop
 import start_game as start
 
@@ -13,12 +12,12 @@ def run_game():
     """
     character = start.base_character()
     start.build_character(character)
-    if not game_loop.level_one(character):
-        print("Unfortunately you did not survive level one")
-        return
-    if not game_loop.level_two(character):
-        print("Unfortunately you did not survive level two")
-        return
+    # if not game_loop.level_one(character):
+    #     print("Unfortunately you did not survive level one")
+    #     return
+    # if not game_loop.level_two(character):
+    #     print("Unfortunately you did not survive level two")
+    #     return
     if not game_loop.level_three(character):
         print("Unfortunately you did not survive level three")
         return

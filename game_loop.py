@@ -60,7 +60,6 @@ def level_two(character):
     while checks.is_alive(character) and not level_two_goal:
         actions.choose_an_action(character, out_land_space, 7, 7)
         level_two_goal = checks.level_two_goal(character)
-        print(level_two_goal)
     if not checks.is_alive(character):
         return False
     else:
@@ -97,6 +96,7 @@ def level_three(character):
         return False
     else:
         events.anomaly()
+        return True
 
 
 if __name__ == "__main__":

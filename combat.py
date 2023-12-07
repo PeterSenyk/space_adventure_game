@@ -170,8 +170,8 @@ def dodge(character, hostile_ship):
      :precondition: the character and hostile ship have an HP value above zero.
      :post-condition: increase the chance for the hostile ship to miss, allowing character to recharge the shield
      """
-    dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 7))
-    hit_chance = r.randint(5, 9)
+    dodge_chance = (character["Ship"]["Movement"] + r.randint(4, 8))
+    hit_chance = r.randint(4, 7)
     if dodge_chance <= hit_chance:
         deal_attack_damage(hostile_ship, character)
     else:
@@ -194,7 +194,7 @@ def run(character, hostile_ship):
         print("You evade the hostile ship, and disappear into the darkness of space")
         return True
     elif comparison_results["Movement"] <= 0:
-        character["Ship"]["HP"] -= comparison_results["Movement"]
+        character["Ship"]["HP"][0] -= comparison_results["Movement"]
         print("You attempt evasive maneuvers, but the hostile ship stays on target, "
               "you escape into the darkness but not without taking some damage")
         return True

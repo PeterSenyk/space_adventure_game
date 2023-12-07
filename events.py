@@ -248,22 +248,31 @@ def shady_outpost(character):
     print("You stop in the shady outpost to see what they have to offer\nA shop owner starts bartering with you "
           "attempting to sell you new weapons for your ship\nThey promise you that the weapons are better than the "
           "ones you currently have equipped\n")
-    user_choice = input("To pass on this offer select: [N]\nTo barter with the shop owner select: [Y]")
+    user_choice = input("To pass on this offer select: [N]\nTo barter with the shop owner select: [Y]\n")
     if user_choice.upper() == "Y":
         print("The shop owner asks you to make them an offer on the new weapons")
         credit_minimum = r.randint(1, 5) * 1000
         credit_maximum = credit_minimum + (r.randint(2, 3) * 1000)
-        player_offer = int(input("Enter a value that you're willing to pay for the new weapons between 0 and 10000\n"))
-        if credit_minimum <= player_offer <= credit_maximum:
-            print("You make a good deal\nThe new weapons are pretty shiny\nYou gain 1 Attack point")
-            character["Ship"]["Attack"] += 1
-        elif player_offer < credit_minimum:
-            print("You tryin' to rip me off ?!?\nThe new weapons installed are rusty\nYou loose 1 Attack point")
-            character["Ship"]["Attack"] -= 1
-        elif player_offer > credit_maximum:
-            print("The shop owner takes you for a sucker\nThe new weapons look great, they make a weird noise when "
-                  "starting up though\nYou loose 1 Attack point")
-            character["Ship"]["Attack"] -= 1
+        while True:
+            try:
+                player_offer = int(input("Enter a value that you're willing to pay for the new weapons between "
+                                         "0 and 10000\n"))
+            except ValueError:
+                print("Please choose a value between 0 and 10000")
+            else:
+                if credit_minimum <= player_offer <= credit_maximum:
+                    print("You make a good deal\nThe new weapons are pretty shiny\nYou gain 1 Attack point")
+                    character["Ship"]["Attack"] += 1
+                    break
+                elif player_offer < credit_minimum:
+                    print("You tryin' to rip me off ?!?\nThe new weapons installed are rusty\nYou loose 1 Attack point")
+                    character["Ship"]["Attack"] -= 1
+                    break
+                elif player_offer > credit_maximum:
+                    print("The shop owner takes you for a sucker\nThe new weapons look great, they make a weird "
+                          "noise when starting up though\nYou loose 1 Attack point")
+                    character["Ship"]["Attack"] -= 1
+                    break
     else:
         return
 
