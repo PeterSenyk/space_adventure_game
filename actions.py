@@ -17,21 +17,21 @@ def choose_an_action(character, space, rows, columns):
     :post-condition: the game moves on to the chosen action
     """
     while True:
-        player_action = input("Choose an action:\nS = Scan\nM = Move\nP = Check Personal Stats\nH = Help\n").upper()
-        if player_action == "M":
+        player_action = input("Choose an action:\n[S] = Scan\n[M] = Move\n[P] = Check Personal Stats\n[H] = Help\n")
+        if player_action.upper() == "M":
             player_action_move(character, space)
             break
-        elif player_action == "S":
+        elif player_action.upper() == "S":
             scan_space_grid(character, space, columns, rows)
             break
-        elif player_action == "P":
+        elif player_action.upper() == "P":
             personal_stats(character)
             break
-        elif player_action == "H":
+        elif player_action.upper() == "H":
             help_information()
             break
         else:
-            print("Invalid action, please choose again.")
+            print("Invalid action, please choose either [W] [A] [S] or [D] ")
 
 
 def player_action_move(character, space):
@@ -94,6 +94,7 @@ def personal_stats(character):
 
 
 def help_information():
+    print("Any character in square brackets [ ] indicates a key-press")
     print("Type [M] for move.\n    This action allows you to choose a direction to move your character")
     print("Type [S] for scan.\n    This action displays a grid map of your current quadrant")
     print("Type [P] for personal stats.\n    This action displays you characters health shields and accolades")

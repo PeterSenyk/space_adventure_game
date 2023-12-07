@@ -86,7 +86,13 @@ def space_combat(character, hostile_ship):
     :post-condition: the play conducts the action that they've chosen
     """
     while checks.is_alive(character) and checks.is_alive(hostile_ship):
-        player_action = input("Choose an action\nA = Attack\nR = Run\nD = Dodge\nS = Scan\n")
+        while True:
+            player_action = input("Choose an action\n[A] = Attack\n[R] = Run\n[D] = Dodge\n[S] = Scan\n")
+            valid_action = ["A", "R", "D", "S"]
+            if player_action in valid_action:
+                break
+            else:
+                print(f"Invalid action please choose on of the following: {valid_action}")
         if player_action.upper() == "A":
             attack_sequence(character, hostile_ship)
         if player_action.upper() == "R":
@@ -97,9 +103,9 @@ def space_combat(character, hostile_ship):
         if player_action.upper() == "S":
             scan_ships(character, hostile_ship)
     if character["Ship"]["HP"][0] == 0:
-        print("You have been destroyed by the hostile ship")
+        print("\033[31mYou have been destroyed by the hostile ship\033[m")
     elif hostile_ship["Ship"]["HP"][0] == 0:
-        print("You have destroyed the hostile ship")
+        print("\033[32mYou have destroyed the hostile ship\033[m")
 
 
 def attack_sequence(character, hostile_ship):
@@ -246,12 +252,18 @@ def deal_other_damage(defender, damage_value):
      :post-condition: determines what is damaged based on the damage value
      """
     for point in range(damage_value):
+        shield_damage = 0
+        hull_damage = 0
         if defender["Ship"]["Shield"][0] > 0:
             defender["Ship"]["Shield"][0] -= 1
-            print("The Shields reflect 1 damage")
+            shield_damage += 1
         elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"][0]:
             defender["Ship"]["HP"][0] -= 1
-            print("The hull takes 1 damage")
+            hull_damage += 1
+        if shield_damage > 0:
+            print(f"The shields took {shield_damage} damage\nThe hull took {hull_damage} damage")
+        else:
+            print(f"The hull took {hull_damage} damage")
 
 
 def shield_recharge(ship):
