@@ -1,5 +1,4 @@
 from unittest import TestCase
-import events
 from checks import level_two_goal
 
 
@@ -11,7 +10,6 @@ class Test(TestCase):
             "Ship": {"Name": "test ship", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
                      "Shield": [2, 2], "Cargo": []},
             "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
-        events.bring_back_stolen_tech(player)
         actual = level_two_goal(player)
         expected = False
         self.assertEqual(expected, actual)
