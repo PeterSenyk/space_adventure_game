@@ -46,11 +46,11 @@ def level_two(character):
     print("Before you deploy were setting you up with a brand new Fighter Class ship")
     start_game.choose_fighter_ship(character)
     outland_space = boards.make_space(7, 7, 4, 8)
-    outland_space[(0, 2)] = [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-land Quadrant'",
+    outland_space[(0, 2)] = [70, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-land Quadrant'",
                              "\033[32m\033[40m[AC9]\033[m"]
-    outland_space[(2, 6)] = [12, "You see Arc-Corp Station 7, Return the stolen tech here",
+    outland_space[(2, 6)] = [59, "You see Arc-Corp Station 7, Return the stolen tech here",
                              "\033[32m\033[40m[AC7]\033[m"]
-    outland_space[(6, 5)] = [11, "You find the crew responsible for the theft from the Arc-Corp R&D station",
+    outland_space[(6, 5)] = [60, "You find the crew responsible for the theft from the Arc-Corp R&D station",
                              "\033[31m\033[40m<$>\033[m"]
     level_two_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\nYour mission "

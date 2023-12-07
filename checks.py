@@ -53,23 +53,18 @@ def check_space_tile(character, space):
         case 4:
             events.repair_outpost(character)
         case 5:
-            if r.randint(1, 5) >= 4:
-                combat.shield_recharge(character)
+            combat.shield_recharge(character)
         case 6:
             events.asteroid_belt(character)
         case 7:
-            # make a separate events !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            if r.randint(1, 10) >= 6:
-                hostile_ship = combat.construct_medium_hostile_ship()
-                combat.space_combat(character, hostile_ship)
-            else:
-                combat.shield_recharge(character)
-        case 8:
             events.dark_side_of_moon(character)
+        case 8:
+            print("You salvage some pats of the ship to repair your HP by 1 point")
+            character["Ship"]["HP"][0] += 1
         case 9:
             events.abandoned_space_station(character)
         case 10:
-            events.bring_back_stolen_tech(character)
+            combat.shield_recharge(character)
         case 11:
             events.pirate_combat(character)
         case 12:
@@ -82,6 +77,9 @@ def check_space_tile(character, space):
             events.space_cloud(character)
         case 16:
             events.shady_outpost(character)
+        case 59:
+            events.bring_back_stolen_tech(character)
+
 
 
 def level_one_goal(character):
@@ -132,4 +130,5 @@ def level_three_goal(character):
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()
