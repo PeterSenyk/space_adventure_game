@@ -21,12 +21,8 @@ REPLACE THIS LINE WITH ANY COMMENTS
 
 TUTORIAL
 
-start game
-    create character
-    choose ship
-
-
 SHIPS:
+    *** For testing purposes, selecting "Z" during any ship selection screen will return a test ship that makes gameplay easy
     when given the opportunity to choose new ships the stats are represented as
     ATTACK: The amount of damage a ship can do per attack
     MOVEMENT: The speed/agility of the ship
@@ -81,27 +77,9 @@ LEVEL TWO: Avoid the hazards of space while you track down the pirate that stole
             complete level two
 
 LEVEL THREE: Explore deep into space to investigate a spacial anomaly that appeared on the radar, 
-            Return with the gathered information to complete level three, 
-            or enter the anomaly to ???
 
 
-Space Legend
-You're in the docking bay of the Arc-Corp training academy. AC1
-You're in an empty grid in the training zone, take a moment to breathe.  - 
-The training combat area is outlined by a ring of bright lights. [H]
-You see lots of debris ahead of you, watch out ! xxx
-You come across a repair outpost [+]
-You are in the void of space, the sheer amount of nothingness is eerie.  - 
-You are in an asteroid belt, there are asteroids everywhere! Travel carefully. :::
-You are orbiting the dark side of a moon, You think of the legendary ancient ballads of Pink Floyd. ( )
-You come across a ship wreck, You start to wonder who could have caused this.  # 
-You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.  & 
-You've entered a region filled with the colorful gases and dust of a distant nebula, a stellar nursery where stars are born. *~*
-Your sensors detect an electro-magnetic field, read-out are showing that your shields have lost all power ~*~
-You come across a repair outpost [+]
-You find yourself in a pocket of gas in space {G}
-You come across a shady looking outpost [¿]
-You see Arc-Corp Station 7, Return the stolen tech here [AC7]
-You find the crew responsible for the theft from the Arc-Corp R&D station <$>
+
+
 
 
