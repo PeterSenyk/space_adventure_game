@@ -34,6 +34,15 @@ def get_player_coordinates(character):
 
     :param character: a dictionary of the player character information.
     :return: the players coordinate as a tuple.
+
+    >>> player = {
+    ...        "Stats": {"Title": "Trainee", "Name": "T", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+    ...        "Ship": {"Name": "AEGIS TITAN", "Attack": 3,
+    ...                 "Movement": 2, "HP": [4, 4], "Targeting": 3,
+    ...                 "Shield": [3, 3], "Cargo": []},
+    ...        "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    >>> get_player_coordinates(player)
+    (0, 0)
     """
     x_coordinate = character["Coordinates"]["X-coordinate"]
     y_coordinate = character["Coordinates"]["Y-coordinate"]
