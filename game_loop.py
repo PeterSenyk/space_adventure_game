@@ -97,9 +97,3 @@ def level_three(character):
     else:
         events.anomaly()
         return True
-
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()

@@ -306,8 +306,3 @@ def scan_ships(character, hostile_ship):
      """
     print("Your ship stats:\n", character["Ship"])
     print("Hostile ship stats:\n", hostile_ship["Ship"])
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

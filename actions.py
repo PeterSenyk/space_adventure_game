@@ -98,8 +98,3 @@ def help_information():
     print("Type [M] for move.\n    This action allows you to choose a direction to move your character")
     print("Type [S] for scan.\n    This action displays a grid map of your current quadrant")
     print("Type [P] for personal stats.\n    This action displays you characters health shields and accolades")
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

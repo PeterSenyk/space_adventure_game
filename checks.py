@@ -125,9 +125,3 @@ def level_three_goal(character):
         return True
     else:
         return False
-
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()
