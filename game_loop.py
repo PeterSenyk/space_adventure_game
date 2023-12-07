@@ -24,7 +24,7 @@ def level_one(character):
         actions.choose_an_action(character, space, 5, 5)
         level_one_goal = checks.level_one_goal(character)
     if not checks.is_alive(character):
-        print("Your ship exploded !\nGame Over")
+        return False
     else:
         print("Congratulations you've completed level one !\n You've achieved the title of Fighter Pilot\nYou're being "
               "deployed to the Out-Land Quadrant to help deal with the space pirate issue that they're experiencing")
@@ -60,10 +60,11 @@ def level_two(character):
         actions.choose_an_action(character, outland_space, 7, 7)
         level_two_goal = checks.level_two_goal(character)
     if not checks.is_alive(character):
-        print("Your ship exploded !\nGame Over")
+        return False
     else:
         print("Congratulations you've completed level two !\n You've achieved the title of Captain")
         character["Stats"]["Title"] = "Captain"
+        return
 
 
 def level_three(character):
@@ -91,11 +92,9 @@ def level_three(character):
         actions.choose_an_action(character, anomaly_space, 7, 7)
         level_three_goal = checks.level_three_goal(character)
     if not checks.is_alive(character):
-        print("Your ship exploded !\nGame Over")
+        return False
     else:
-        print("Congratulations you've completed level three !\n You've achieved the title of Admiral")
-        character["Stats"]["Title"] = "Admiral"
-        events.anomaly(character)
+        events.anomaly()
 
 
 if __name__ == "__main__":
