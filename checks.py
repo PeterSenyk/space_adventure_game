@@ -1,5 +1,4 @@
 import combat
-import random as r
 import events
 
 
