@@ -12,6 +12,13 @@ def is_alive(ship):
     :param ship: a dictionary of character location and HP.
     :precondition: character HP value must start above zero.
     :return: Boolean True of False.
+
+    >>> ship = {"Ship": {"Name": "AEGIS TITAN", "Attack": 3, "Movement": 2, "HP": [4, 4], "Targeting": 3, "Shield": [3, 3], "Cargo": []}}
+    >>> is_alive(ship)
+    True
+    >>> ship = {"Ship": {"Name": "AEGIS TITAN", "Attack": 3, "Movement": 2, "HP": [0, 4], "Targeting": 3, "Shield": [3, 3], "Cargo": []}}
+    >>> is_alive(ship)
+    False
     """
     if ship["Ship"]["HP"][0] <= 0:
         return False
