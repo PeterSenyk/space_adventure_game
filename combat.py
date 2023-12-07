@@ -89,7 +89,7 @@ def space_combat(character, hostile_ship):
         while True:
             player_action = input("Choose an action\n[A] = Attack\n[R] = Run\n[D] = Dodge\n[S] = Scan\n")
             valid_action = ["A", "R", "D", "S"]
-            if player_action in valid_action:
+            if player_action.upper() in valid_action:
                 break
             else:
                 print(f"Invalid action please choose on of the following: {valid_action}")
@@ -251,19 +251,19 @@ def deal_other_damage(defender, damage_value):
      :precondition: the defender must have an HP value above zero.
      :post-condition: determines what is damaged based on the damage value
      """
+    original_shield = defender["Ship"]["Shield"][0]
+    original_hp = defender["Ship"]["HP"][0]
     for point in range(damage_value):
-        shield_damage = 0
-        hull_damage = 0
         if defender["Ship"]["Shield"][0] > 0:
             defender["Ship"]["Shield"][0] -= 1
-            shield_damage += 1
         elif defender["Ship"]["Shield"][0] <= 0 < defender["Ship"]["HP"][0]:
             defender["Ship"]["HP"][0] -= 1
-            hull_damage += 1
-        if shield_damage > 0:
-            print(f"The shields reflect {shield_damage} damage\nThe hull took {hull_damage} damage")
-        else:
-            print(f"The hull took {hull_damage} damage")
+    shield_damage = original_shield - defender["Ship"]["Shield"][0]
+    hull_damage = original_hp - defender["Ship"]["HP"][0]
+    if shield_damage > 0:
+        print(f"The shields reflect {shield_damage} damage\nThe hull took {hull_damage} damage")
+    else:
+        print(f"The hull took {hull_damage} damage")
 
 
 def shield_recharge(ship):

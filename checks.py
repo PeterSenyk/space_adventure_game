@@ -65,21 +65,20 @@ def check_space_tile(character, space):
             events.abandoned_space_station(character)
         case 10:
             combat.shield_recharge(character)
-        case 11:
-            events.pirate_combat(character)
-        case 12:
-            pass
+        # case 11:
+        #     pass
+        # case 12:
+        #     pass
         case 13:
             events.electro_magnetic_field(character)
-        case 14:
-            events.repair_outpost(character)
         case 15:
             events.space_cloud(character)
         case 16:
             events.shady_outpost(character)
         case 59:
             events.bring_back_stolen_tech(character)
-
+        case 60:
+            events.pirate_combat(character)
 
 
 def level_one_goal(character):

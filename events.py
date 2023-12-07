@@ -180,6 +180,7 @@ def pirate_combat(character):
 def bring_back_stolen_tech(character):
     """
     completes the level two goal if the player cargo includes "Explorer Class Quantum Drive"
+
     :param character: a dictionary of the player character information.
     :return: a boolean True of False
     """

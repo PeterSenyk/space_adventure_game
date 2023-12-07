@@ -56,27 +56,28 @@ def space_tiles_dict():
         0: [0, "You're in the docking bay of the Arc-Corp training academy.", "AC1"],
         1: [1, "You're in an empty grid in the training zone, take a moment to breathe.", "\033[40m - \033[m"],
         2: [2, "The training combat area is outlined by a ring of bright lights.", "\033[31m\033[40m[H]\033[m"],
-        3: [3, "You see lots of debris ahead of you, watch out !", "\033[35m\033[40mxxx\033[m"],
+        3: [3, "You see lots of debris ahead of you, watch out !", "\033[35m\033[40mxXx\033[m"],
         4: [4, "You come across a repair outpost", "\033[32m\033[40m[+]\033[m"],
         5: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
         6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.",
             "\033[37m\033[40m:::\033[m"],
         7: [7, 'You are orbiting the dark side of a moon, You think of the legendary ancient ballads of '
                'Pink Floyd.', "\033[35m\033[40m( )\033[m"],
-        8: [8, "You come across a ship wreck, You start to wonder who could have caused this.",
-            "\033[31m\033[40m # \033[m"],
+        8: [8, "You come across a ship wreck, You start to wonder who could have caused "
+               "this.", "\033[31m\033[40m # \033[m"],
         9: [9, "You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.",
             "\033[33m\033[40m & \033[m"],
-        10: [10,  "You've entered a region filled with the colorful gases and dust of a distant nebula,"
-                  " a stellar nursery where stars are born.", "\033[36m\033[40m*~*\033[m"],
+        10: [10, "You've entered a region filled with the colorful gases and dust of a distant nebula,"
+                 " a stellar nursery where stars are born.", "\033[36m\033[40m*~*\033[m"],
         11: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
         12: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
         13: [13, "Your sensors detect an electro-magnetic field, read-outs are showing that your shields have lost "
                  "all power.", "\033[33m\033[40m~*~\033[m"],
-        14: [14, "You come across a repair outpost.", "\033[32m\033[40m[+]\033[m"],
+        14: [9, "You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.",
+             "\033[33m\033[40m & \033[m"],
         15: [15, "You find yourself in a pocket of gas in space.", "\033[36m\033[40m{G}\033[m"],
         16: [16, "You come across a shady looking outpost.", "\033[35m\033[40m[¿]\033[m"],
-        59: [59, "You see Arc-Corp Station 7, Return the stolen tech here.", "\033[32m\033[40m[AC7]\033[m"],
+        # 59: [59, "You see Arc-Corp Station 7, Return the stolen tech here.", "\033[32m\033[40m[AC7]\033[m"],
         60: [60, "You find the crew responsible for the theft from the Arc-Corp R&D station.",
              "\033[31m\033[40m<$>\033[m"],
     }
@@ -85,4 +86,5 @@ def space_tiles_dict():
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

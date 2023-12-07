@@ -29,6 +29,7 @@ def level_one(character):
         print("Congratulations you've completed level one !\n You've achieved the title of Fighter Pilot\nYou're being "
               "deployed to the Out-Land Quadrant to help deal with the space pirate issue that they're experiencing")
         character["Stats"]["Title"] = "Fighter Pilot"
+        return True
 
 
 def level_two(character):
@@ -47,9 +48,9 @@ def level_two(character):
     start_game.choose_fighter_ship(character)
     outland_space = boards.make_space(7, 7, 4, 8)
     outland_space[(0, 2)] = [70, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-land Quadrant'",
-                             "\033[32m\033[40m[AC9]\033[m"]
+                             "\033[32m\033[40mAC9\033[m"]
     outland_space[(2, 6)] = [59, "You see Arc-Corp Station 7, Return the stolen tech here",
-                             "\033[32m\033[40m[AC7]\033[m"]
+                             "\033[32m\033[40mAC7\033[m"]
     outland_space[(6, 5)] = [60, "You find the crew responsible for the theft from the Arc-Corp R&D station",
                              "\033[31m\033[40m<$>\033[m"]
     level_two_goal = False
@@ -59,12 +60,13 @@ def level_two(character):
     while checks.is_alive(character) and not level_two_goal:
         actions.choose_an_action(character, outland_space, 7, 7)
         level_two_goal = checks.level_two_goal(character)
+        print(level_two_goal)
     if not checks.is_alive(character):
         return False
     else:
         print("Congratulations you've completed level two !\n You've achieved the title of Captain")
         character["Stats"]["Title"] = "Captain"
-        return
+        return True
 
 
 def level_three(character):
@@ -81,7 +83,7 @@ def level_three(character):
     character["Coordinates"]["Y-coordinate"] = 6
     print("You're going to need an Explorer Class ship to investigate the ANOMALY")
     start_game.choose_explorer_ship(character)
-    anomaly_space = boards.make_space(8, 8, 5, 16)
+    anomaly_space = boards.make_space(8, 8, 4, 16)
     anomaly_space[(0, 2)] = [99, "You reach the site of the ANOMALY\nYour sensors display what appears to be fractal "
                                  "white noise\nAt the center of the distortion the sensors cannot resolve anything "
                                  "resembling normal space\nThe reading on your sensors shows that you're approaching "
