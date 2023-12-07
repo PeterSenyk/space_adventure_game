@@ -81,7 +81,7 @@ def level_three(character):
     anomaly_space[(0, 2)] = [99, "You reach the site of the ANOMALY\nYour sensors display what appears to be fractal "
                                  "white noise\nAt the center of the distortion the sensors cannot resolve anything "
                                  "resembling normal space\nThe reading on your sensors shows that you're approaching "
-                                 "the center of the ANOMALY", " @ "]
+                                 "the center of the ANOMALY", "\033[30m\033[44m @ \033[m"]
     level_three_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\n ")
     while checks.is_alive(character) and not level_three_goal:

@@ -59,23 +59,26 @@ def space_tiles_dict():
         3: [3, "You see lots of debris ahead of you, watch out !", "\033[35m\033[40mxxx\033[m"],
         4: [4, "You come across a repair outpost", "\033[32m\033[40m[+]\033[m"],
         5: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
-        6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.", "\033[37m\033[40m:::\033[m"],
+        6: [6, "You are in an asteroid belt, there are asteroids everywhere! Travel carefully.",
+            "\033[37m\033[40m:::\033[m"],
         7: [7, 'You are orbiting the dark side of a moon, You think of the legendary ancient ballads of '
-               'Pink Floyd.', "\033[35m\033[40m(o)\033[m"],
-        8: [8, "You come across a ship wreck, You start to wonder who could have caused this.", "\033[31m\033[40m # \033[m"],
-        9: [9, "You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.", "\033[33m\033[40m & \033[m"],
-        10: [10, "You're in Arc-Corp station AD-V09 in the outskirts of the 'Out-Land Quadrant'", "\033[34m\033[40mAC9\033[m"],
-        11: [11, "", "???"],
-        12: [12, "", "???"],
+               'Pink Floyd.', "\033[35m\033[40m( )\033[m"],
+        8: [8, "You come across a ship wreck, You start to wonder who could have caused this.",
+            "\033[31m\033[40m # \033[m"],
+        9: [9, "You see an abandoned ArcCorp Space Station, You wonder what could have been left behind.",
+            "\033[33m\033[40m & \033[m"],
+        10: [10,  "You've entered a region filled with the colorful gases and dust of a distant nebula,"
+                  " a stellar nursery where stars are born.", "\033[36m\033[40m*~*\033[m"],
+        11: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
+        12: [5, "You are in the void of space, the sheer amount of nothingness is eerie.", "\033[37m\033[40m - \033[m"],
         13: [13, "Your sensors detect a electro-magnetic field, read-out are showing that your shields have lost "
                  "all power", "\033[33m\033[40m~*~\033[m"],
         14: [14, "You come across a repair outpost", "\033[32m\033[40m[+]\033[m"],
         15: [15, "You find yourself in a pocket of gas in space", "\033[36m\033[40m{G}\033[m"],
         16: [16, "You come across a shady looking outpost", "\033[35m\033[40m[¿]\033[m"],
         59: [59, "You see Arc-Corp Station 7, Return the stolen tech here", "\033[32m\033[40m[AC7]\033[m"],
-        60: [60, "You find the crew responsible for the theft from the Arc-Corp R&D station", "\033[31m\033[40m<$>\033[m"],
-        99: [99, "You come across the ANOMALY, it's a swirling vortex of space and matter that pulls your ship into "
-                 "it, this was unexpected.", "\033[35m\033[44m@*\033[m"],
+        60: [60, "You find the crew responsible for the theft from the Arc-Corp R&D station",
+             "\033[31m\033[40m<$>\033[m"],
     }
     return space_tiles
 
