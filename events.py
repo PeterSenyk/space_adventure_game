@@ -145,16 +145,21 @@ def pick_component(character):
         print("The salvage drone returns with some weapon components\nYou gain 1 Attack point")
         character["Ship"]["Attack"] += 1
     elif player_choice.upper() == "E":
+        print("The salvage drone returns with some weapon components\nYou gain 1 Movement point")
         character["Ship"]["Movement"] += 1
     elif player_choice.upper() == "S":
+        print("The salvage drone returns with some weapon components\nYou gain 1 Shield point")
         character["Ship"]["Shield"][0] += 1
         character["Ship"]["Shield"][1] += 1
     elif player_choice.upper() == "H":
+        print("The salvage drone returns with some weapon components\nYou gain 1 HP point")
         character["Ship"]["HP"][0] += 1
         character["Ship"]["HP"][1] += 1
     elif player_choice.upper() == "R":
+        print("The salvage drone returns with some weapon components\nYou gain 1 Targeting point")
         character["Ship"]["Targeting"] += 1
     elif player_choice.upper() == "Q":
+        print("You leave the abandoned station")
         return True
     return False
 
@@ -189,6 +194,7 @@ def bring_back_stolen_tech(character):
 def electro_magnetic_field(character):
     """
     a dangerous event that reduces the player shield to zero, with the chance of encountering a medium hostile ship
+
     :param character:
     """
     character["Ship"]["Shield"][0] = 0
@@ -215,7 +221,8 @@ def repair_outpost(character):
 
 def space_cloud(character):
     """
-    the player has a chance of either +1 or -1 movement
+    the player has a chance of either +1 or -1 Movement point
+
     :param character: a dictionary of the player character information.
     :post-condition: the player movement attribute is modified
     """
