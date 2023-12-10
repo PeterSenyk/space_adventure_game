@@ -21,6 +21,7 @@ def run_game():
     if not game_loop.level_three(character):
         print("Unfortunately you did not survive level three")
         return
+    print("Thank you for playing.")
 
 
 def main():
