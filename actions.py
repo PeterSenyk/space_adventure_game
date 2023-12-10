@@ -94,6 +94,12 @@ def personal_stats(character):
 
 
 def help_information():
+    """
+    prints out information detailing the players available actions
+
+    :post-condition: the player gets a print-out describing the actions they can do
+    :return:
+    """
     print("Any character in square brackets [ ] indicates a key-press")
     print("Type [M] for move.\n    This action allows you to choose a direction to move your character")
     print("Type [S] for scan.\n    This action displays a grid map of your current quadrant")

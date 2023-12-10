@@ -275,6 +275,18 @@ def shield_recharge(ship):
      :param ship: a dictionary of the ship information
      :precondition: the defender must have an HP value above zero.
      :post-condition: determines what is damaged based on the damage value
+
+     >>> pilot = {
+     ...       "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+     ...       "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+     ...                "Shield": [0, 2], "Cargo": []},
+     ...        "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}}
+     >>> shield_recharge(pilot)
+     {
+         "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+      "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+             "Shield": [0, 2], "Cargo": []},
+      "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}}
      """
     if ship["Ship"]["Shield"][0] < ship["Ship"]["Shield"][1]:
         print("Your shields recharge by 1 point")
