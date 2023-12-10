@@ -316,3 +316,11 @@ def scan_ships(character, hostile_ship):
      """
     print("Your ship stats:\n", character["Ship"])
     print("Hostile ship stats:\n", hostile_ship["Ship"])
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()

@@ -88,7 +88,7 @@ def level_three(character):
                                  "resembling normal space\nThe reading on your sensors shows that you're approaching "
                                  "the center of the ANOMALY", "\033[30m\033[44m @ \033[m"]
     level_three_goal = False
-    print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\n ")
+    print(f"Welcome to the Anomaly Space {character['Stats']['Title']} {character['Stats']['Name']}\n ")
     while checks.is_alive(character) and not level_three_goal:
         actions.choose_an_action(character, anomaly_space, 7, 7)
         level_three_goal = checks.level_three_goal(character)

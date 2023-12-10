@@ -82,3 +82,11 @@ def space_tiles_dict():
              "\033[31m\033[40m<$>\033[m"],
     }
     return space_tiles
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()

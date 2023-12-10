@@ -40,22 +40,14 @@ def get_player_last_name(character):
     :param character: a dictionary of the player character information.
     :post-condition: a capitalized last name is added to the character dictionary.
 
-    character = character = {
-            "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
-            "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
-                     "Shield": [2, 2], "Cargo": []},
-            "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
-    >>> get_player_last_name({
-            "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
-            "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
-                     "Shield": [2, 2], "Cargo": []},
-            "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}})
-    >>> last_name = senyk
-    >>> character
-    {"Stats": {"Title": "Trainee", "Name": "Senyk", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
-    "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
-             "Shield": [2, 2], "Cargo": []},
-    "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    >>> character = {
+    ...    "Stats": {"Title": "Trainee", "Name": "", "Accolades": {"Ships Destroyed": 0, "Debris Avoided": 0}},
+    ...    "Ship": {"Name": "", "Attack": 2, "Movement": 2, "HP": [5, 5], "Targeting": 4,
+    ...            "Shield": [2, 2], "Cargo": []},
+    ...    "Coordinates": {"X-coordinate": 0, "Y-coordinate": 0}}
+    >>> get_player_last_name(character, "senyk")
+    >>> character["Stats"]["Name"]
+    'Senyk
     """
     last_name = capitalize_name(input("Enter your last name to register for the Arc-Corp Space Academy\n"))
     character["Stats"]["Name"] = last_name
@@ -197,3 +189,11 @@ def choose_explorer_ship(character):
         return valid_ship
     else:
         print("Please choose a valid selection")
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()

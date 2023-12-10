@@ -66,3 +66,11 @@ def get_user_choice():
             return direction_to_travel
         else:
             print(f"Invalid input. Please choose one of {valid_directions}.")
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()

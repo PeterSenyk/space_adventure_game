@@ -303,3 +303,11 @@ def anomaly():
             print("You realize you have enough life support and rations for 36 days\nYou set your engines "
                   "to full power and fly in steady heading, unbeknownst to you the ANOMALY did indeed have an "
                   "indestructible invisible inner surface\nYou collide with it at 40% of the speed of light")
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
