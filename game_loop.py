@@ -55,8 +55,8 @@ def level_two(character):
                               "\033[31m\033[40m<$>\033[m"]
     level_two_goal = False
     print(f"Welcome to the Out-Land Quadrant {character['Stats']['Title']} {character['Stats']['Name']}\nYour mission "
-          f"is to destroy the space pirate who stole the new Quantum Tech from our outpost, beware of the hazards on "
-          f"the way")
+          f"is to destroy the space pirate who stole the new Quantum Tech from our outpost and return it to grid (2, 6),"
+          f" beware of the hazards on the way")
     while checks.is_alive(character) and not level_two_goal:
         actions.choose_an_action(character, out_land_space, 7, 7)
         level_two_goal = checks.level_two_goal(character)
@@ -88,7 +88,8 @@ def level_three(character):
                                  "resembling normal space\nThe reading on your sensors shows that you're approaching "
                                  "the center of the ANOMALY", "\033[30m\033[44m @ \033[m"]
     level_three_goal = False
-    print(f"Welcome to the Anomaly Space {character['Stats']['Title']} {character['Stats']['Name']}\n ")
+    print(f"Welcome to the Anomaly Space {character['Stats']['Title']} {character['Stats']['Name']}\n We need you "
+          f"to investigate the ANOMALY in grid (0, 2) and report your findings back to us")
     while checks.is_alive(character) and not level_three_goal:
         actions.choose_an_action(character, anomaly_space, 7, 7)
         level_three_goal = checks.level_three_goal(character)
