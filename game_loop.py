@@ -97,3 +97,11 @@ def level_three(character):
     else:
         events.anomaly()
         return True
+
+
+def main():
+    return
+
+
+if __name__ == "__main__":
+    main()

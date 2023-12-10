@@ -69,7 +69,7 @@ def get_user_choice():
 
 
 def main():
-    pass
+    return
 
 
 if __name__ == "__main__":

@@ -319,7 +319,7 @@ def scan_ships(character, hostile_ship):
 
 
 def main():
-    pass
+    return
 
 
 if __name__ == "__main__":

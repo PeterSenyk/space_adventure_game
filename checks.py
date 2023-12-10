@@ -149,7 +149,7 @@ def level_three_goal(character):
 
 
 def main():
-    pass
+    return
 
 
 if __name__ == "__main__":
