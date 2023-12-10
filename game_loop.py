@@ -59,6 +59,8 @@ def level_two(character):
           f" beware of the hazards on the way")
     while checks.is_alive(character) and not level_two_goal:
         actions.choose_an_action(character, out_land_space, 7, 7)
+        print(level_two_goal)
+        print(character)
         level_two_goal = checks.level_two_goal(character)
     if not checks.is_alive(character):
         return False

@@ -186,7 +186,7 @@ def bring_back_stolen_tech(character):
     """
     coordinates = (character["Coordinates"]["X-coordinate"], character["Coordinates"]["Y-coordinate"])
     if "Explorer Class Quantum Drive" in character["Ship"]["Cargo"] and coordinates == (2, 6):
-        character["Ship"]["Cargo"].pop()
+        # character["Ship"]["Cargo"].pop()
         return True
     else:
         return False
