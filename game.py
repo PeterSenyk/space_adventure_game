@@ -12,9 +12,9 @@ def run_game():
     """
     character = start.base_character()
     start.build_character(character)
-    # if not game_loop.level_one(character):
-    #     print("Unfortunately you did not survive level one")
-    #     return
+    if not game_loop.level_one(character):
+        print("Unfortunately you did not survive level one")
+        return
     if not game_loop.level_two(character):
         print("Unfortunately you did not survive level two")
         return
