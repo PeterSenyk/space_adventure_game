@@ -24,7 +24,7 @@ def run_game():
 
 
 def main():
-    return
+    run_game()
 
 
 if __name__ == "__main__":
