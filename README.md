@@ -68,6 +68,23 @@ MOON:
     There's a chance of hostile ships waiting for you here, starting COMBAT
     If there's no hostile ship, listen to some Pink Floyd, and let your SHIELD recharge by one point
 
+ABANDONED SPACE STATION:
+    Scavenge for parts to upgrade your ship, with an increased chance of a hard enemy encounter every time you take a new part
+
+ELECTRO MAGNETIC FIELD:
+    An event that reduces your shield to zero, with a chance of hostile encounter. Luckily the hostile shield is also zero.
+
+REPAIR OUTPOST:
+    Recharge both your HP and Shield back to maximum
+
+SPACE CLOUD:
+    A cloud of gas in space that either increases or decreases your ships Movement value
+
+SHADY OUTPOST:
+    Barter with a shop owner for new weapons, depending on your offer you may end up with an upgrade or downgrade for your weapons
+
+ANOMALY:
+    The climatic choice based ending of the game
 
 ======MISSIONS=====
 
